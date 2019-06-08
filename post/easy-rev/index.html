@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="j3rrry">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="codegate2019 Open CTF">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://j3rrry.netlify.com/post/easy-rev/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.747d92dc45be93ba6055a623fe5bcc0a.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.aedbb90aea2ab66bf490411581dc9ece.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-85394819-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://j3rrry.netlify.com/post/easy-rev/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@leunja">
+  <meta property="twitter:creator" content="@leunja">
+  
+  <meta property="og:site_name" content="j3rrry">
+  <meta property="og:url" content="https://j3rrry.netlify.com/post/easy-rev/">
+  <meta property="og:title" content="Easy Rev | j3rrry">
+  <meta property="og:description" content="codegate2019 Open CTF"><meta property="og:image" content="https://j3rrry.netlify.com/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-03-29T19:50:20&#43;09:00">
+  
+  <meta property="article:modified_time" content="2019-03-29T19:50:20&#43;09:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>Easy Rev | j3rrry</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">j3rrry</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/malware/"><span>Malware</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/cq/"><span>CQ-RankCalc</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Easy Rev</h1>
+
+  
+  <p class="page-subtitle">codegate2019 Open CTF</p>
+  
+
+  
+    
+
+
+
+<meta content="2019-03-29 19:50:20 &#43;0900 KST" itemprop="datePublished">
+<meta content="2019-03-29 19:50:20 &#43;0900 KST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>2019-03-29</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/easy-rev/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/ctf/">CTF</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Easy%20Rev&amp;url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2feasy-rev%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fj3rrry.netlify.com%2fpost%2feasy-rev%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2feasy-rev%2f&amp;title=Easy%20Rev"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fj3rrry.netlify.com%2fpost%2feasy-rev%2f&amp;title=Easy%20Rev"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Easy%20Rev&amp;body=https%3a%2f%2fj3rrry.netlify.com%2fpost%2feasy-rev%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="easy-rev">easy_rev</h1>
+
+<blockquote>
+<p>Easy reversing!!!</p>
+
+<p>plz you would solve in ubuntu 16.04</p>
+
+<p>by pwnwiz</p>
+
+<p><a href="http://octf.hacklab.kr/files/f1a12e5ed7884339dd4b108272ca70eb/easy_rev.zip" target="_blank">easy_rev.zip</a></p>
+</blockquote>
+
+<p>MD5: e3eda0a4cacd2927973bca03df2197c9</p>
+
+<p><br></p>
+
+<pre><code>$ file easy_rev flag
+easy_rev: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=d6ab8e0c86636e8331cc465ae54a5013598dd79e, not stripped
+flag:     openssl enc'd data with salted password
+</code></pre>
+
+<p>하나는 바이너리이고 다른 하나는 암호화된 flag이다.</p>
+
+<p><br></p>
+
+<pre><code>void __cdecl main(int argc, const char **argv, const char **envp)
+{
+  signed int i; // [sp+8h] [bp-48h]@1
+  int v6[10]; // [sp+10h] [bp-40h]@1
+
+  puts(&quot;==========================================&quot;);   // banner
+  puts(&quot;       NEWBIE REV1 right here !!&quot;);
+  puts(&quot;solve the magic I putted, and get the flag&quot;);
+  puts(&quot;==========================================&quot;);
+  printf(&quot;&gt;&gt; &quot;);
+  for ( i = 0; i &lt; 10; ++i )
+    scanf(&quot;%d&quot;, &amp;v6[i]);                                // 10개의 정수 입력
+  puts(&quot;++++++++++++++++++++++++++++++++++++++++++&quot;);
+  puts(&quot;Let's See the result!!!!&quot;);
+  puts(&quot;++++++++++++++++++++++++++++++++++++++++++&quot;);
+  if ( swap(v6) == 10 )                                 // 성공
+  {
+    puts(&quot;&gt;&gt; Yes, You got right ( IF YOU CERTAINLY INSERTED EXACTLY 10 NUMBERS )&quot;);
+    puts(&quot;&gt;&gt; You just need to 'add' all the no for every index. That sum is key for flag file !!&quot;);
+    puts(&quot;&gt;&gt; (flag file is encryted aes-256-cbc of openssl)&quot;);
+  }
+  else                                                  // 실패
+  {
+    puts(&quot;&gt;&gt; Nope :&lt; BETTER TRY HARDER THAN THAT&quot;);
+  }
+}
+</code></pre>
+
+<p>정확히 바이너리가 원하는 10개의 정수를 입력해야 성공이다.</p>
+
+<p><br></p>
+
+<pre><code>int __fastcall swap(int *a1)
+{
+  int result = 0; // [sp+18h] [bp-48h]@1
+  int v4 = 3; // [sp+1Ch] [bp-44h]@1
+  int i; // [sp+24h] [bp-3Ch]@1
+  int j; // [sp+28h] [bp-38h]@9
+  int k; // [sp+2Ch] [bp-34h]@12
+  int v9[10] = {0x4f, 4, 0x24, 0x274, 0x75, 0x3e, 0x99a, 0xffffff9b, 0x29, 0xef}; // [sp+30h] [bp-30h]@1
+
+  for ( i = 0; i &lt; 10; ++i )    // a1의 인덱스i에 따라 서로 다른 값과 xor
+  {
+    if ( i % 3 == 1)
+      v4 -= i;
+    else if ( i % 3 == 2 )
+      v4 += i;
+    else
+      v4 *= i;
+    a1[i] ^= v4;
+  }
+
+  for ( j = 0; j &lt; 10; ++j )    // 0xF 와 xor
+    a1[j] ^= 0xF;
+
+  for ( k = 0; k &lt; 10; ++k )    // v9와 모두 같아야 함
+  {
+    if ( a1[k] == v9[k] )
+      ++result;
+  }
+  return result;
+}
+</code></pre>
+
+<p>swap 함수는 정수형 배열 <code>v9</code>를 만들고 두 가지 연산을 한다.
+
+
+
+<figure>
+
+<img src="https://user-images.githubusercontent.com/19237789/55238845-ccfa0000-5278-11e9-986f-ca0d4e19e526.png" alt="loop1.png" width="60%" height="60%" />
+
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  <h4>&lt;그림1&gt; loop 1</h4>
+  
+</figcaption>
+
+</figure>
+<code>a1</code>의 인덱스(i)에 따라 서로 다른 값과 xor 연산하고 0xF 와 한번더 xor 연산을 한 값이 정수형 배열 <code>v9</code>와 같아야 한다.</p>
+
+<p><br></p>
+
+<pre><code>64 -12 42 632 -123 53 2445 -123 63 1
+</code></pre>
+
+<p>위의 10개의 숫자를 넣으면</p>
+
+<pre><code>$ ./easy_rev
+==========================================
+       NEWBIE REV1 right here !!
+solve the magic I putted, and get the flag
+==========================================
+&gt;&gt; 64 -12 42 632 -123 53 2445 -123 63 1
+++++++++++++++++++++++++++++++++++++++++++
+Let's See the result!!!!
+++++++++++++++++++++++++++++++++++++++++++
+&gt;&gt; Yes, You got right ( IF YOU CERTAINLY INSERTED EXACTLY 10 NUMBERS )
+&gt;&gt; You just need to 'add' all the no for every index. That sum is key for flag file !!
+&gt;&gt; (flag file is encryted aes-256-cbc of openssl)
+</code></pre>
+
+<p>10개의 숫자를 더한 값이 flag 파일의 key라고 알려준다.</p>
+
+<p><br></p>
+
+<pre><code>&gt;&gt;&gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
+3042
+</code></pre>
+
+<p>key = 3042</p>
+
+<p><br></p>
+
+<pre><code>$ openssl enc -d -aes-256-cbc -in flag -k 3042
+flag{R2versing_1s_b4sed_0n_H4cking_:)}
+</code></pre>
+
+<p>ubuntu 16.04에서 복호화했다.<br />
+<code>flag{R2versing_1s_b4sed_0n_H4cking_:)}</code></p>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/codegate/">codegate</a>
+  
+  <a class="badge badge-light" href="/tags/ctf/">CTF</a>
+  
+  <a class="badge badge-light" href="/tags/rev/">rev</a>
+  
+  <a class="badge badge-light" href="/tags/ssl/">ssl</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://j3rrry.netlify.com/">j3rrry</a></h5>
+      <h6 class="card-subtitle">K-Shield Jr. 분석대응 2기</h6>
+      <p class="card-text" itemprop="description">4년제 졸업했으며 현재 취업연계 교육을 받고 있으며 CTF 참가하는 것을 좋아합니다. 취업시켜주세요!</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/leunja" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://fb.com/n3cin1" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/j3rrry" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/trust-ctf-2019/">TRUST CTF 2019</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "j3rrry" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//j3rrry.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2019 j3rrry &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

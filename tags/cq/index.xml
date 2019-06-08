@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CQ on j3rrry</title>
+    <link>https://j3rrry.netlify.com/tags/cq/</link>
+    <description>Recent content in CQ on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 16:35:28 +0900</lastBuildDate>
+    
+	    <atom:link href="https://j3rrry.netlify.com/tags/cq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CQ-RankCalc</title>
+      <link>https://j3rrry.netlify.com/cq/</link>
+      <pubDate>Fri, 01 Mar 2019 16:35:28 +0900</pubDate>
+      
+      <guid>https://j3rrry.netlify.com/cq/</guid>
+      <description>&lt;form action=&#34;&#34;&gt;
+  &lt;input type=&#34;number&#34; id=&#34;x&#34; style=&#34;width:4em&#34; min=&#34;0&#34; placeholder=&#34;1605&#34;&gt;
+  /
+  &lt;input type=&#34;number&#34; id=&#34;y&#34; style=&#34;width:4em&#34; min=&#34;1&#34; placeholder=&#34;1730&#34;&gt;
+  &lt;br&gt;
+  
+  &lt;input type=&#34;number&#34; id=&#34;x2&#34; style=&#34;width:2em&#34; min=&#34;0&#34; placeholder=&#34;0&#34;&gt;
+  /
+  &lt;input type=&#34;number&#34; id=&#34;y2&#34; style=&#34;width:2em&#34; min=&#34;1&#34; placeholder=&#34;8&#34;&gt;
+  &lt;br&gt;
+  
+  &lt;input type=&#34;text&#34; id=&#34;questList&#34; style=&#34;width:15em&#34; placeholder=&#34;147 99 90 111 136 88 5 2 1 1&#34;&gt;
+  
+  &lt;input type=&#34;button&#34; value=&#34;Calc&#34; id=&#34;button&#34;&gt;
+&lt;/form&gt;
+
+&lt;p id=&#34;inputList&#34;&gt;&lt;/p&gt;
+&lt;p id=&#34;outputList&#34;&gt;&lt;/p&gt;
+&lt;p id=&#34;exp&#34;&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function k_combinations(set, k) {
+    var i, j, combs, head, tailcombs;
+    
+    // There is no way to take e.g. sets of 5 elements from
+    // a set of 4.
+    if (k &gt; set.length || k &lt;= 0) {
+        return [];
+    }
+    
+    // K-sized set has only one K-sized subset.
+    if (k == set.length) {
+        return [set];
+    }
+    
+    // There is N 1-sized subsets in a N-sized set.
+    if (k == 1) {
+        combs = [];
+        for (i = 0; i &lt; set.length; i++) {
+            combs.push([set[i]]);
+        }
+        return combs;
+    }
+    
+    // Assert {1 &lt; k &lt; set.length}
+    
+    // Algorithm description:
+    // To get k-combinations of a set, we want to join each element
+    // with all (k-1)-combinations of the other elements. The set of
+    // these k-sized sets would be the desired result. However, as we
+    // represent sets with lists, we need to take duplicates into
+    // account. To avoid producing duplicates and also unnecessary
+    // computing, we use the following approach: each element i
+    // divides the list into three: the preceding elements, the
+    // current element i, and the subsequent elements. For the first
+    // element, the list of preceding elements is empty. For element i,
+    // we compute the (k-1)-computations of the subsequent elements,
+    // join each with the element i, and store the joined to the set of
+    // computed k-combinations. We do not need to take the preceding
+    // elements into account, because they have already been the i:th
+    // element so they are already computed and stored. When the length
+    // of the subsequent list drops below (k-1), we cannot find any
+    // (k-1)-combs, hence the upper limit for the iteration:
+    combs = [];
+    for (i = 0; i &lt; set.length - k + 1; i++) {
+        // head is a list that includes only our current element.
+        head = set.slice(i, i + 1);
+        // We take smaller combinations from the subsequent elements
+        tailcombs = k_combinations(set.slice(i + 1), k - 1);
+        // For each (k-1)-combination we join it with the current
+        // and store it to the set of k-combinations.
+        for (j = 0; j &lt; tailcombs.length; j++) {
+            combs.push(head.concat(tailcombs[j]));
+        }
+    }
+    return combs;
+}
+
+
+/**
+ * Combinations
+ * 
+ * Get all possible combinations of elements in a set.
+ * 
+ * Usage:
+ *   combinations(set)
+ * 
+ * Examples:
+ * 
+ *   combinations([1, 2, 3])
+ *   -&gt; [[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
+ * 
+ *   combinations([1])
+ *   -&gt; [[1]]
+ */
+function combinations(set) {
+    var k, i, combs, k_combs;
+    combs = [];
+    
+    // Calculate all non-empty k-combinations
+    for (k = 1; k &lt;= set.length; k++) {
+        k_combs = k_combinations(set, k);
+        for (i = 0; i &lt; k_combs.length; i++) {
+            combs.push(k_combs[i]);
+        }
+    }
+    return combs;
+}
+function add(accumulator, a) {
+    return accumulator + a;
+}
+document.getElementById(&#39;button&#39;).onclick = function(){
+  var x = document.getElementById(&#39;x&#39;)      .value;
+  var y = document.getElementById(&#39;y&#39;)      .value;
+  var x2 = document.getElementById(&#39;x2&#39;)    .value;
+  var y2 = document.getElementById(&#39;y2&#39;)    .value;
+  var list = document.getElementById(&#39;questList&#39;).value.split(&#39; &#39;).map(item =&gt; parseInt(item) ? parseInt(item) : item);
+
+  // 남은 경험치량
+  var exp = y-x;
+  var m = exp;
+  var tmpList = [];
+  // 남은 횟수
+  var chance = y2-x2-1;
+
+  // 내림차순으로 정렬(desc)
+  list.sort((a, b) =&gt; b - a);
+  document.getElementById(&#39;inputList&#39;).innerHTML = &#39;Input: &lt;code&gt;&#39; + list.join(&#39; &#39;) + &#39;&lt;/code&gt;&#39;;
+
+  // combinations. https://gist.github.com/axelpale/3118596
+  var c = combinations(list);
+
+  for (_c of c) {
+    if (_c.length &gt; chance) break;
+    // b == 최대경험치(y) - ( 현재경험치(x) + 앞으로수행할퀘스트(_c) ) == y - (x + _c)
+    // b가 1에 가까울 수록 효율적으로 퀘스트를 진행하는 것 (단, b &gt; 0)
+    var b = exp - _c.reduce(add);
+    if (b &gt; 0 &amp;&amp; b &lt;= m){
+      m = b;
+      tmpList = _c;
+      document.getElementById(&#39;outputList&#39;).innerHTML = &#39;Output: &lt;code&gt;&#39; + tmpList.join(&#39; &#39;) + &#39;&lt;/code&gt;&#39;;
+      document.getElementById(&#39;exp&#39;).innerHTML = &#39;EXP: &#39; + (parseInt(x)+tmpList.reduce(add)) + &#39;/&#39; + y;
+    }
+  }
+}
+&lt;/script&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

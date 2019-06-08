@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>word-break on j3rrry</title>
+    <link>https://j3rrry.netlify.com/tags/word-break/</link>
+    <description>Recent content in word-break on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Fri, 10 May 2019 02:37:18 +0900</lastBuildDate>
+    
+	    <atom:link href="https://j3rrry.netlify.com/tags/word-break/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[CSS] 줄바꿈, 단어 단위로</title>
+      <link>https://j3rrry.netlify.com/post/word-break/</link>
+      <pubDate>Fri, 10 May 2019 02:37:18 +0900</pubDate>
+      
+      <guid>https://j3rrry.netlify.com/post/word-break/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;/* Body text */
+p {
+  word-break: keep-all;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;참고: &lt;a href=&#34;https://www.codingfactory.net/10658&#34; target=&#34;_blank&#34;&gt;https://www.codingfactory.net/10658&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;문법&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;word-break: normal | break-all | keep-all | inital | inherit;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;normal: 한글의 경우 문자 단위, 영어의 경우 단어 단위.&lt;/li&gt;
+&lt;li&gt;break-all: 문자 단위&lt;/li&gt;
+&lt;li&gt;keep-all: 문자 단위&lt;/li&gt;
+&lt;li&gt;inital: 기본값&lt;/li&gt;
+&lt;li&gt;inherit: 부모 요소의 속성값을 상속&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

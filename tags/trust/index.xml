@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TRUST on j3rrry</title>
+    <link>https://j3rrry.netlify.com/tags/trust/</link>
+    <description>Recent content in TRUST on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Mon, 18 Feb 2019 04:34:37 +0000</lastBuildDate>
+    
+	    <atom:link href="https://j3rrry.netlify.com/tags/trust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TRUST CTF 2019</title>
+      <link>https://j3rrry.netlify.com/post/trust-ctf-2019/</link>
+      <pubDate>Mon, 18 Feb 2019 04:34:37 +0000</pubDate>
+      
+      <guid>https://j3rrry.netlify.com/post/trust-ctf-2019/</guid>
+      <description>
+
+&lt;p&gt;퍼너블이 제일 어려웠다고 생각합니다.  왜냐하면 저는 하나도 못풀었으니끼요. 아무튼 재미있었다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mic&#34;&gt;MISC / MIC CHECK! 100 / 114 Solves&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#e-taebo&#34;&gt;MISC / Easy Taebo 100 / 43 Solves&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mess&#34;&gt;REV / Mess 100 / 31 Solves&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hello&#34;&gt;REV / Hello WorldS! 493 / 5 Solves&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mic&#34;&gt;MIC CHECK! 100 / MISC / 114 Solves&lt;/h1&gt;
+
+&lt;p&gt;디스코드(IRC) : &lt;a href=&#34;https://discord.gg/ZYyupm8&#34; target=&#34;_blank&#34;&gt;https://discord.gg/ZYyupm8&lt;/a&gt;&lt;br /&gt;
+&lt;code&gt;TRUST{Welcome_CTF_Have_FUN!}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;e-taebo&#34;&gt;Easy Taebo 100 / MISC / 43 Solves&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=evrH9vRDwEw&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=evrH9vRDwEw&lt;/a&gt;&lt;br /&gt;
+TRUST CTF에서도 태.보.해.&lt;br /&gt;
+nc server.trustctf.&lt;i&gt;&lt;/i&gt;com 44923&lt;br /&gt;
+Author  : st4nw(조정훈)&lt;br /&gt;
+Download: action_list.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;조혜련의 태보 다이어트 유튜브 영상에서는 &lt;code&gt;jab&lt;/code&gt;, &lt;code&gt;hook&lt;/code&gt; 등의 구호에 맞춰서 약 25분동안 운동을 하는 모습이 나온다.
+nc로 서버에 접속해보면 다음과 같은 문구가 나온다&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+------------------------------------------------------------------------+
+| Example)                                                               |
+|                                                                        |
+| left_jab + left_hook + right_speedball &amp;gt;&amp;gt; @==(^0^)@ @(^0^)@== (^0^)@@@ |
++------------------------------------------------------------------------+
+
+Ready : Taebo starts in 3 seconds
+
+3
+2
+1
+
+Taebo 1 : left_mid_jab + left_mid_jab + right_hook + left_kick &amp;gt;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;각 명령에 따라서 알맞은 이모티콘으로 답하면 되는 일종의 데이터 매니지먼트 프로그래밍 문제이다.
+명령에 매칭되는 이모티콘은 문제 설명에 제공되어 있는 &lt;code&gt;action_list.txt&lt;/code&gt;에 명시되어 있었다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pwn import *
+
+r = remote(&#39;server.trustctf.com&#39;, 44923)
+
+p = log.progress(&#39;Taebo&#39;)
+for i in range(100):
+    a01 = re.search(r&#39;Taebo (\d+) : (.*) &amp;gt;&amp;gt;&#39;, r.recvuntil(&#39;&amp;gt;&amp;gt; \n&#39;))
+    p.status(&#39;%s%%/100%%&#39; % a01.group(1))
+
+    a02 = re.sub(r&#39;&#39;&#39;(left_jab
+                    |left_mid_jab
+                    |mid_jab
+                    |right_mid_jab
+                    |right_jab
+                    |left_hook
+                    |right_hook
+                    |left_speedball
+                    |right_speedball
+                    |left_kick
+                    |mid_kick
+                    |right_kick)&#39;&#39;&#39;,
+            lambda x: {&#39;left_jab&#39;:&#39;@==(^0^)@&#39;     ,
+                    &#39;left_mid_jab&#39;:&#39;@=(^0^)@&#39;     ,
+                    &#39;mid_jab&#39; : &#39;@(^0^)@&#39;         ,
+                    &#39;right_mid_jab&#39; : &#39;@(^0^)=@&#39;  ,
+                    &#39;right_jab&#39; : &#39;@(^0^)==@&#39;     ,
+                    &#39;left_hook&#39; : &#39;@(^0^)@==&#39;     ,
+                    &#39;right_hook&#39; : &#39;==@(^0^)@&#39;    ,
+                    &#39;left_speedball&#39; : &#39;@@@(^0^)&#39; ,
+                    &#39;right_speedball&#39; : &#39;(^0^)@@@&#39;,
+                    &#39;left_kick&#39; : &#39;@||(^0^)==@&#39;   ,
+                    &#39;mid_kick&#39; : &#39;@==(^||^)==@&#39;   ,
+                    &#39;right_kick&#39; : &#39;@==(^0^)||@&#39;  ,
+                    }[x.group()], a01.group(2), flags=re.X)
+    r.sendline(a02.replace(&#39; + &#39;, &#39; &#39;))
+p.success()
+print r.recvuntil(&#39;}&#39;)
+
+# TRUST{w0w_y0u_9o7_4_w0nd3rfu1_b0dy_lik3_m3}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;총 100번의 태보 명령을 수행하면 Flag를 준다. nc socket 연결에 시간 제한이 있었던건 아니라서 손으로 풀 수도 있을 것 같다..?&lt;/p&gt;
+
+&lt;h1 id=&#34;mess&#34;&gt;Mess 100 / REV / 31 Solves&lt;/h1&gt;
+
+&lt;p&gt;문자열 검색을 해보면 &lt;code&gt;S3CRe7PA5sW0rD&lt;/code&gt; 이 보인다. 그걸 입력해 넣으면 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;str1 = &#39;S3CRe7PA5sW0rD&#39;
+str2 = &#39;&#39;
+str3 = &#39;&#39;
+str4 = &#39;&#39;
+
+for j in str1:
+    str2 += chr(ord(j)+5)
+for k in str2:
+    str3 += chr(ord(k)^5)
+for l in str3:
+    str4 += chr(ord(l)+5)
+
+print &#39;TRUST{%s}&#39; % str4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;TRUST{bBRWt&amp;gt;UHD\x82^5wQ}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;hello&#34;&gt;Hello WorldS! 493 / REV / 5 Solves&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So many &amp;ldquo;Hello World&amp;rdquo; programs&amp;hellip;.&lt;br /&gt;
+dukup11ch1 made 8 programs&lt;br /&gt;
+you just find his programs and write &amp;ldquo;Yara rule&amp;rdquo;&lt;br /&gt;
+&amp;ldquo;Hello World&amp;rdquo;프로그램이 많아&amp;hellip;&lt;br /&gt;
+dukup11ch1가 8개를 만들었어.&lt;br /&gt;
+그의 프로그램들을 찾고 &amp;ldquo;Yara rule&amp;rdquo;을 작성하세요&lt;br /&gt;
+nc server.trustctf.com 5252&lt;br /&gt;
+(Code the rule in one line.) (rule은 한줄로 짜시오.)&lt;br /&gt;
+Author : dukup11ch1(유기환)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;$ md5sum *
+c05ce65e737b09f71ff5ae3edebcdbea  1.exe
+cfaa3f5b852ee5cce113b3ccddeb74d0  10.exe
+a93b7803a3679e4b212603c50781201d  11.exe
+4ad23f830fd77db5ea31972dba0d320d  12.exe
+a3c9cfcf8da608cf7674296c2c8eda12  13.exe
+f65e03c6b54c42800ce05a5325bba1bf  14.exe
+3e636b5823d86e1b0f7d5412a98632b2  15.exe
+994447363b6d73f335c40ace54f03e33  16.exe
+1637028afe5f22949fd9e923495a3632  2.exe
+b9711df23fbd1e1c33e9ff2a7187360d  3.exe
+36060d31fa3f628d72400bbd27aef0fe  4.exe
+2378968a9c49099dac2d3b631e875625  5.exe
+a85e435ef9fdbd798b1c49af1f120db6  6.exe
+4fc8a49b8b3d9bb104b8d2fa69ed2356  7.exe
+24590148203d1ec7e23e6f2cab13293c  8.exe
+7c14bd0f1817100ef10c199427801008  9.exe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;전부 다른 파일들이었는데 그중에 myfile은 탐지(matched)시키고 notmine은 통과(not matched)시키는 yara rule을 만드는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;Stub Code 영역의 차이점을 이용해서 yara rule을 짰다. 오프셋 0x80 ~ 0xEF 구간을 보면 myfile과 notmine이 서로 겹치는 것이 없었다.&lt;/p&gt;
+
+&lt;p&gt;yara:&lt;br /&gt;
+&lt;code&gt;rule a { strings: $a = &amp;quot;&amp;lt;,&amp;lt;&amp;quot; $b = { 6C B0 1D } condition: $a at 128 or $b at 128}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;myfile의 Stub Code 영역인 오프셋 0x80에는 두 가지로 나뉜다. &lt;code&gt;&amp;lt;,&amp;lt;&lt;/code&gt; 로 시작하거나 &lt;code&gt;6C B0 1D&lt;/code&gt; 로 시작하거나 이다. 그래서 위치 0x80(128)에 &lt;code&gt;&amp;lt;,&amp;lt;&lt;/code&gt;이거나 &lt;code&gt;6C B0 1D&lt;/code&gt;인 rule을 만들었다.&lt;/p&gt;
+
+&lt;p&gt;FLAG : &lt;code&gt;TRUST{I9n0re_PDB_R1CH_I&#39;m_s0rry_TT}&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

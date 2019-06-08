@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>autolink on j3rrry</title>
+    <link>https://j3rrry.netlify.com/tags/autolink/</link>
+    <description>Recent content in autolink on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Thu, 21 Feb 2019 00:42:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://j3rrry.netlify.com/tags/autolink/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>class vglnk 속성 막기</title>
+      <link>https://j3rrry.netlify.com/post/class-vglnk/</link>
+      <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
+      
+      <guid>https://j3rrry.netlify.com/post/class-vglnk/</guid>
+      <description>&lt;p&gt;Github Page Theme에는 여러 Plugin들이 적용되어 있다. Posting을 하다보니 원치않는 link를 만들고 있는 것을 확인했다. HTML tag로 a tag가 사용되었으며 자동으로 color는 어두운 색으로 지정된다. 특히 폰트 색이 어두워지기 때문에 곤란해지는 상황이 일어났다. 왜냐하면 내가 사용하는 Code Block의 경우 배경색을 Dark(monokai)로 지정해서 쓰고 있기 때문에 어두운 색인 폰트가 안보이게 된 것이었다.&lt;/p&gt;
+
+&lt;p&gt;해결 방법은 두가지로 정리해볼 수 있을 것 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;class 속성 &lt;code&gt;nolinks&lt;/code&gt; 주기&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(Disqus 사용하는 분) Affiliate links 해제하기&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;첫 번째 방법은 HTML tag의 class 속성으로 &lt;code&gt;nolinks&lt;/code&gt;를 주기만 하면 된다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:twpower-s-blog&#34;&gt;&lt;a href=&#34;#fn:twpower-s-blog&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  &amp;lt;body class=&amp;quot;single-body nolinks&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;두 번째 방법은 Disqus 사용하시는 분들만 해당할 것 같다.
+구글링을 하다가 @ediano의 댓글&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Disqus&#34;&gt;&lt;a href=&#34;#fn:Disqus&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;을 읽고나서 Disqus의 문제란 것을 알게 되었다.
+&lt;a href=&#34;https://help.disqus.com/ads/how-to-disable-affiliate-linking&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/19237789/53184282-1df65300-3640-11e9-9889-f5f36499bc5e.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;
+곧바로 Disqus의 autolink에 대해 검색해보니 Affiliate link라는 것이 있다는 것을 알았다&lt;/p&gt;
+
+&lt;p&gt;Admin &amp;gt; Settings &amp;gt; &lt;a href=&#34;https://disqus.com/admin/settings/advanced/&#34; target=&#34;_blank&#34;&gt;Advanced&lt;/a&gt;로 가서 Affiliate Links 를 체크 해제하면 된다.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:twpower-s-blog&#34;&gt;&lt;a href=&#34;https://twpower.github.io/85-remove-vglnk-in-html-class-attribute&#34; target=&#34;_blank&#34;&gt;https://twpower.github.io/85-remove-vglnk-in-html-class-attribute&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:twpower-s-blog&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:Disqus&#34;&gt;&lt;a href=&#34;https://gist.github.com/alexpeattie/4729247#gistcomment-2829295&#34; target=&#34;_blank&#34;&gt;https://gist.github.com/alexpeattie/4729247#gistcomment-2829295&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:Disqus&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
