@@ -2,346 +2,346 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
-    <lastBuildDate>Mon, 24 Jun 2019 17:01:05 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2019 07:17:12 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>tmux</title>
+      <link>/tags/tmux/</link>
+      <pubDate>Thu, 27 Jun 2019 07:17:12 +0900</pubDate>
+      
+      <guid>/tags/tmux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>2019</title>
-      <link>https://j3rrry.netlify.com/tags/2019/</link>
+      <link>/tags/2019/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/2019/</guid>
+      <guid>/tags/2019/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CTF</title>
-      <link>https://j3rrry.netlify.com/tags/ctf/</link>
+      <link>/tags/ctf/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/ctf/</guid>
+      <guid>/tags/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google</title>
-      <link>https://j3rrry.netlify.com/tags/google/</link>
+      <link>/tags/google/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/google/</guid>
+      <guid>/tags/google/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>https://j3rrry.netlify.com/tags/golang/</link>
+      <link>/tags/golang/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/golang/</guid>
+      <guid>/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Brute Force</title>
-      <link>https://j3rrry.netlify.com/tags/brute-force/</link>
+      <link>/tags/brute-force/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/brute-force/</guid>
+      <guid>/tags/brute-force/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>/tags/git/</link>
+      <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
+      
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HSCTF</title>
-      <link>https://j3rrry.netlify.com/tags/hsctf/</link>
+      <link>/tags/hsctf/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/hsctf/</guid>
+      <guid>/tags/hsctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RSA</title>
-      <link>https://j3rrry.netlify.com/tags/rsa/</link>
+      <link>/tags/rsa/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/rsa/</guid>
+      <guid>/tags/rsa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SQL</title>
-      <link>https://j3rrry.netlify.com/tags/sql/</link>
+      <link>/tags/sql/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://j3rrry.netlify.com/tags/git/</link>
-      <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/tags/git/</guid>
+      <guid>/tags/sql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rand</title>
-      <link>https://j3rrry.netlify.com/tags/rand/</link>
+      <link>/tags/rand/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/rand/</guid>
+      <guid>/tags/rand/</guid>
       <description></description>
     </item>
     
     <item>
       <title>signature</title>
-      <link>https://j3rrry.netlify.com/tags/signature/</link>
+      <link>/tags/signature/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/signature/</guid>
+      <guid>/tags/signature/</guid>
       <description></description>
     </item>
     
     <item>
       <title>strings</title>
-      <link>https://j3rrry.netlify.com/tags/strings/</link>
+      <link>/tags/strings/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/strings/</guid>
+      <guid>/tags/strings/</guid>
       <description></description>
     </item>
     
     <item>
       <title>facebook</title>
-      <link>https://j3rrry.netlify.com/tags/facebook/</link>
+      <link>/tags/facebook/</link>
       <pubDate>Sat, 01 Jun 2019 21:47:09 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/facebook/</guid>
+      <guid>/tags/facebook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fbctf</title>
-      <link>https://j3rrry.netlify.com/tags/fbctf/</link>
+      <link>/tags/fbctf/</link>
       <pubDate>Sat, 01 Jun 2019 21:47:09 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/fbctf/</guid>
+      <guid>/tags/fbctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>https://j3rrry.netlify.com/tags/blog/</link>
+      <link>/tags/blog/</link>
       <pubDate>Fri, 10 May 2019 02:37:18 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/blog/</guid>
+      <guid>/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>word-break</title>
-      <link>https://j3rrry.netlify.com/tags/word-break/</link>
+      <link>/tags/word-break/</link>
       <pubDate>Fri, 10 May 2019 02:37:18 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/word-break/</guid>
+      <guid>/tags/word-break/</guid>
       <description></description>
     </item>
     
     <item>
       <title>project</title>
-      <link>https://j3rrry.netlify.com/tags/project/</link>
+      <link>/tags/project/</link>
       <pubDate>Fri, 26 Apr 2019 13:11:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Source Themes</title>
-      <link>https://j3rrry.netlify.com/tags/source-themes/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/tags/source-themes/</guid>
+      <guid>/tags/project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>codegate</title>
-      <link>https://j3rrry.netlify.com/tags/codegate/</link>
+      <link>/tags/codegate/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/codegate/</guid>
+      <guid>/tags/codegate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rev</title>
-      <link>https://j3rrry.netlify.com/tags/rev/</link>
+      <link>/tags/rev/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/rev/</guid>
+      <guid>/tags/rev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ssl</title>
-      <link>https://j3rrry.netlify.com/tags/ssl/</link>
+      <link>/tags/ssl/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/ssl/</guid>
+      <guid>/tags/ssl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CQ</title>
-      <link>https://j3rrry.netlify.com/tags/cq/</link>
+      <link>/tags/cq/</link>
       <pubDate>Fri, 01 Mar 2019 16:35:28 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/cq/</guid>
+      <guid>/tags/cq/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://j3rrry.netlify.com/tags/hugo/</link>
+      <link>/tags/hugo/</link>
       <pubDate>Mon, 25 Feb 2019 20:25:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/hugo/</guid>
+      <guid>/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>quickstart</title>
-      <link>https://j3rrry.netlify.com/tags/quickstart/</link>
+      <link>/tags/quickstart/</link>
       <pubDate>Mon, 25 Feb 2019 20:25:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/quickstart/</guid>
+      <guid>/tags/quickstart/</guid>
       <description></description>
     </item>
     
     <item>
       <title>autolink</title>
-      <link>https://j3rrry.netlify.com/tags/autolink/</link>
+      <link>/tags/autolink/</link>
       <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/autolink/</guid>
+      <guid>/tags/autolink/</guid>
       <description></description>
     </item>
     
     <item>
       <title>link</title>
-      <link>https://j3rrry.netlify.com/tags/link/</link>
+      <link>/tags/link/</link>
       <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/link/</guid>
+      <guid>/tags/link/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nolink</title>
-      <link>https://j3rrry.netlify.com/tags/nolink/</link>
+      <link>/tags/nolink/</link>
       <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/nolink/</guid>
+      <guid>/tags/nolink/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vglnk</title>
-      <link>https://j3rrry.netlify.com/tags/vglnk/</link>
+      <link>/tags/vglnk/</link>
       <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/vglnk/</guid>
+      <guid>/tags/vglnk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Template</title>
-      <link>https://j3rrry.netlify.com/tags/template/</link>
+      <link>/tags/template/</link>
       <pubDate>Wed, 20 Feb 2019 06:26:19 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/template/</guid>
+      <guid>/tags/template/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TRUST</title>
-      <link>https://j3rrry.netlify.com/tags/trust/</link>
+      <link>/tags/trust/</link>
       <pubDate>Mon, 18 Feb 2019 04:34:37 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/trust/</guid>
+      <guid>/tags/trust/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Deep Learning</title>
-      <link>https://j3rrry.netlify.com/tags/deep-learning/</link>
+      <link>/tags/deep-learning/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/deep-learning/</guid>
+      <guid>/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Demo</title>
-      <link>https://j3rrry.netlify.com/tags/demo/</link>
+      <link>/tags/demo/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/demo/</guid>
+      <guid>/tags/demo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Academic</title>
-      <link>https://j3rrry.netlify.com/tags/academic/</link>
+      <link>/tags/academic/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/academic/</guid>
+      <guid>/tags/academic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>https://j3rrry.netlify.com/tags/development/</link>
+      <link>/tags/development/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/development/</guid>
+      <guid>/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
-      <link>https://j3rrry.netlify.com/tags/go/</link>
+      <link>/tags/go/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/go/</guid>
+      <guid>/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>templates</title>
-      <link>https://j3rrry.netlify.com/tags/templates/</link>
+      <link>/tags/templates/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/templates/</guid>
+      <guid>/tags/templates/</guid>
       <description></description>
     </item>
     
     <item>
       <title>themes</title>
-      <link>https://j3rrry.netlify.com/tags/themes/</link>
+      <link>/tags/themes/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/tags/themes/</guid>
+      <guid>/tags/themes/</guid>
       <description></description>
     </item>
     

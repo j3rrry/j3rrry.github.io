@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CQ on j3rrry</title>
-    <link>https://j3rrry.netlify.com/categories/cq/</link>
+    <link>/categories/cq/</link>
     <description>Recent content in CQ on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Fri, 01 Mar 2019 16:35:28 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/categories/cq/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/categories/cq/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CQ-RankCalc</title>
-      <link>https://j3rrry.netlify.com/cq/</link>
+      <link>/cq/</link>
       <pubDate>Fri, 01 Mar 2019 16:35:28 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/cq/</guid>
+      <guid>/cq/</guid>
       <description>&lt;form action=&#34;&#34;&gt;
   &lt;input type=&#34;number&#34; id=&#34;x&#34; style=&#34;width:4em&#34; min=&#34;0&#34; placeholder=&#34;1605&#34;&gt;
   /

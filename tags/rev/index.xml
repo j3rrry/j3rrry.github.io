@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rev on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/rev/</link>
+    <link>/tags/rev/</link>
     <description>Recent content in rev on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Fri, 29 Mar 2019 19:50:20 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/rev/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/rev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Easy Rev</title>
-      <link>https://j3rrry.netlify.com/post/easy-rev/</link>
+      <link>/post/easy-rev/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/easy-rev/</guid>
+      <guid>/post/easy-rev/</guid>
       <description>
 
 &lt;h1 id=&#34;easy-rev&#34;&gt;easy_rev&lt;/h1&gt;
@@ -36,7 +36,7 @@
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ file easy_rev flag
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ file easy_rev flag
 easy_rev: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=d6ab8e0c86636e8331cc465ae54a5013598dd79e, not stripped
 flag:     openssl enc&#39;d data with salted password
 &lt;/code&gt;&lt;/pre&gt;
@@ -45,7 +45,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;void __cdecl main(int argc, const char **argv, const char **envp)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void __cdecl main(int argc, const char **argv, const char **envp)
 {
   signed int i; // [sp+8h] [bp-48h]@1
   int v6[10]; // [sp+10h] [bp-40h]@1
@@ -77,7 +77,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;int __fastcall swap(int *a1)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int __fastcall swap(int *a1)
 {
   int result = 0; // [sp+18h] [bp-48h]@1
   int v4 = 3; // [sp+1Ch] [bp-44h]@1
@@ -129,12 +129,12 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;64 -12 42 632 -123 53 2445 -123 63 1
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;64 -12 42 632 -123 53 2445 -123 63 1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;위의 10개의 숫자를 넣으면&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ./easy_rev
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ ./easy_rev
 ==========================================
        NEWBIE REV1 right here !!
 solve the magic I putted, and get the flag
@@ -152,7 +152,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
 3042
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -160,7 +160,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
 flag{R2versing_1s_b4sed_0n_H4cking_:)}
 &lt;/code&gt;&lt;/pre&gt;
 

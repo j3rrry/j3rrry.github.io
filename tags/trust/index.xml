@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TRUST on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/trust/</link>
+    <link>/tags/trust/</link>
     <description>Recent content in TRUST on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Mon, 18 Feb 2019 04:34:37 +0000</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/trust/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/trust/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TRUST CTF 2019</title>
-      <link>https://j3rrry.netlify.com/post/trust-ctf-2019/</link>
+      <link>/post/trust-ctf-2019/</link>
       <pubDate>Mon, 18 Feb 2019 04:34:37 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/trust-ctf-2019/</guid>
+      <guid>/post/trust-ctf-2019/</guid>
       <description>
 
 &lt;p&gt;퍼너블이 제일 어려웠다고 생각합니다.  왜냐하면 저는 하나도 못풀었으니끼요. 아무튼 재미있었다.&lt;/p&gt;
@@ -48,7 +48,7 @@ Download: action_list.txt&lt;/p&gt;
 &lt;p&gt;조혜련의 태보 다이어트 유튜브 영상에서는 &lt;code&gt;jab&lt;/code&gt;, &lt;code&gt;hook&lt;/code&gt; 등의 구호에 맞춰서 약 25분동안 운동을 하는 모습이 나온다.
 nc로 서버에 접속해보면 다음과 같은 문구가 나온다&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;+------------------------------------------------------------------------+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;+------------------------------------------------------------------------+
 | Example)                                                               |
 |                                                                        |
 | left_jab + left_hook + right_speedball &amp;gt;&amp;gt; @==(^0^)@ @(^0^)@== (^0^)@@@ |
@@ -145,7 +145,7 @@ nc server.trustctf.com 5252&lt;br /&gt;
 Author : dukup11ch1(유기환)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code&gt;$ md5sum *
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ md5sum *
 c05ce65e737b09f71ff5ae3edebcdbea  1.exe
 cfaa3f5b852ee5cce113b3ccddeb74d0  10.exe
 a93b7803a3679e4b212603c50781201d  11.exe

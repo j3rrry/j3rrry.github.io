@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Template on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/template/</link>
+    <link>/tags/template/</link>
     <description>Recent content in Template on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Wed, 20 Feb 2019 06:26:19 +0000</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/template/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/template/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo Templating</title>
-      <link>https://j3rrry.netlify.com/post/hugo-tamplating/</link>
+      <link>/post/hugo-tamplating/</link>
       <pubDate>Wed, 20 Feb 2019 06:26:19 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hugo-tamplating/</guid>
+      <guid>/post/hugo-tamplating/</guid>
       <description>
 
 &lt;p&gt;.&lt;/p&gt;
@@ -28,7 +28,7 @@
 
 &lt;p&gt;without &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         {{ with .Site.Params.headerSubtext }}
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;{{ . }}&amp;lt;/p&amp;gt;
         {{ end }}
@@ -37,7 +37,7 @@
 
 &lt;p&gt;with &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         {{- with .Site.Params.headerSubtext }}
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;{{ . }}&amp;lt;/p&amp;gt;
         {{ end -}}
@@ -46,7 +46,7 @@
 
 &lt;p&gt;RESULT without:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
 
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;K-Shield Jr. CM 2기&amp;lt;/p&amp;gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;RESULT with:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;K-Shield Jr. CM 2기&amp;lt;/p&amp;gt;
         &amp;lt;h1 class=&amp;quot;list-header-title&amp;quot;&amp;gt;posts&amp;lt;/h1&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;

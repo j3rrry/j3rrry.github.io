@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rand on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/rand/</link>
+    <link>/tags/rand/</link>
     <description>Recent content in rand on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Wed, 05 Jun 2019 18:56:10 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/rand/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/rand/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HSCTF 6 Writeup</title>
-      <link>https://j3rrry.netlify.com/post/hsctf-6-writeup/</link>
+      <link>/post/hsctf-6-writeup/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hsctf-6-writeup/</guid>
+      <guid>/post/hsctf-6-writeup/</guid>
       <description>
 
 &lt;p&gt;Hsctf 6 Writeup&lt;/p&gt;
@@ -465,7 +465,7 @@ binsh = next(e.search(&#39;/bin/sh&#39;))
 
 &lt;p&gt;&lt;code&gt;/bin/sh&lt;/code&gt;를 매개변수로 전달하려고보니.. 이번 문제는 ELF64 바이너리였다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
     Arch:     amd64-64-little
     RELRO:    Partial RELRO
     Stack:    No canary found
@@ -1406,7 +1406,7 @@ cool.png로 변경 후 열어보면 flag가 있다.&lt;/p&gt;
 strings 로 푸는것도 아닌거같고 footer도 정상이다.
 그렇다면 header를 확인해보니&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;I found this cool file. Its really cool!
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;I found this cool file. Its really cool!
 &amp;lt;89&amp;gt;PNG^M
 ^Z
 ^@^@^@^MIHDR^@^@^D¶^@^@^@Y^H^F^@^@^@#;­Ñ^@^@^@^DgAMA^@^@±&amp;lt;8f&amp;gt;^Küa^E^@^@^@^FbKGD^@ÿ^@ÿ^@ÿ ½§&amp;lt;93&amp;gt;^@^@^@   pHYs^@^@^K^S^@^@^K^S^A^@&amp;lt;9a&amp;gt;&amp;lt;9c&amp;gt;^X^@^@^@^GtIME^Gã^E^_^O^K^V&amp;lt;80&amp;gt;â &amp;lt;92&amp;gt;^@^@ ^@IDATxÚì]ex^TW^W~ïÌ

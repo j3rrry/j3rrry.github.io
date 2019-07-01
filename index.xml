@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>j3rrry</title>
-    <link>https://j3rrry.netlify.com/</link>
+    <link>/</link>
     <description>Recent content on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Example Page 1</title>
-      <link>https://j3rrry.netlify.com/courses/example/example1/</link>
+      <link>/courses/example/example1/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://j3rrry.netlify.com/courses/example/example1/</guid>
+      <guid>/courses/example/example1/</guid>
       <description>
 
 &lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>Example Page 2</title>
-      <link>https://j3rrry.netlify.com/courses/example/example2/</link>
+      <link>/courses/example/example2/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://j3rrry.netlify.com/courses/example/example2/</guid>
+      <guid>/courses/example/example2/</guid>
       <description>
 
 &lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;
@@ -86,10 +86,10 @@
     
     <item>
       <title>Example Talk</title>
-      <link>https://j3rrry.netlify.com/talk/example/</link>
+      <link>/talk/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/talk/example/</guid>
+      <guid>/talk/example/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
@@ -109,11 +109,231 @@
     </item>
     
     <item>
+      <title>Troubleshooting</title>
+      <link>/post/troubleshooting/</link>
+      <pubDate>Tue, 02 Jul 2019 04:36:38 +0900</pubDate>
+      
+      <guid>/post/troubleshooting/</guid>
+      <description>&lt;p&gt;프로필 사진 설정은 content/authors/admin/avatar.jpg 이다.&lt;br /&gt;
+config.toml 은 &lt;code&gt;baseurl = &amp;quot;/&amp;quot;&lt;/code&gt; 해야지 상대 주소로 적용됨&lt;br /&gt;
+참고 : &lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues/383&#34; target=&#34;_blank&#34;&gt;https://github.com/gcushen/hugo-academic/issues/383&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Highlight</title>
+      <link>/post/highlight/</link>
+      <pubDate>Thu, 27 Jun 2019 11:04:12 +0900</pubDate>
+      
+      <guid>/post/highlight/</guid>
+      <description>
+
+&lt;h1 id=&#34;index&#34;&gt;Index&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#markup-index&#34;&gt;markup&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#c-index&#34;&gt;c&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#css-index&#34;&gt;css&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#python-index&#34;&gt;python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-index&#34;&gt;go&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;markup-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;markup&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;markup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;c-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;c&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+
+int main(){
+    int a = 1, b = 2;
+    printf(&amp;quot;%d\n&amp;quot;, a+b);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;css-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;css&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;p {
+    word-break: keep-all;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;python-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;python&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import ctypes
+
+def main():
+    a = ctypes.c_int(0x1000000000000000000000).value
+    print a
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;go-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;go&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre data-line=&#34;2&#34;&gt;&lt;code class=&#34;language-go&#34;&gt;
+// golang
+func checkOrigin(r *http.Request) bool {
+    o := r.Header.Get(&#34;Origin&#34;)
+    if o == &#34;&#34; {
+        log.Print(&#34;Websocket missing origin and/or host&#34;)
+        return false
+    }
+    return true
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prismjs Hugo</title>
+      <link>/post/prismjs-hugo/</link>
+      <pubDate>Thu, 27 Jun 2019 08:37:16 +0900</pubDate>
+      
+      <guid>/post/prismjs-hugo/</guid>
+      <description>&lt;p&gt;layout/partials/custom_head.html&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/customization/#customize-style-css&#34; target=&#34;_blank&#34;&gt;https://sourcethemes.com/academic/docs/customization/#customize-style-css&lt;/a&gt;&lt;br /&gt;
+config/_default/params.toml&lt;br /&gt;
+custom.css&lt;br /&gt;
+ssets/css/&lt;br /&gt;
+config/_default/params.toml&lt;br /&gt;
+plugins_css = [&amp;ldquo;custom&amp;rdquo;] 확장자없이&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options&#34; target=&#34;_blank&#34;&gt;https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options&lt;/a&gt;&lt;br /&gt;
+highlight = false&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;config.toml&lt;/th&gt;
+&lt;th&gt;page front matter&lt;/th&gt;
+&lt;th&gt;highlighting enabled for page?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;unset or true&lt;/td&gt;
+&lt;td&gt;unset or true&lt;/td&gt;
+&lt;td&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;unset or true&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;no&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;unset or false&lt;/td&gt;
+&lt;td&gt;no&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위의 &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/#option-highlight&#34; target=&#34;_blank&#34;&gt;표&lt;/a&gt;를 보면 config.toml이나 param.toml에 unset된 상태이고 page front matter 도 unset이면 기본으로 highlighting이 된다.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tmux</title>
+      <link>/post/tmux/</link>
+      <pubDate>Thu, 27 Jun 2019 07:17:12 +0900</pubDate>
+      
+      <guid>/post/tmux/</guid>
+      <description>
+
+&lt;h1 id=&#34;index&#34;&gt;Index&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#prefix-key-index&#34;&gt;Prefix key&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sessions-windows-panes-index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reorder-tmux-windows-index&#34;&gt;Reorder tmux windows?&lt;/a&gt; &lt;code&gt;C-b + .&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#my-config-file-index&#34;&gt;My config file&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;prefix-key-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Prefix key&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;프리픽스 키란, tmux 단축키를 사용하기위해 먼저 선행되어야하는 키이다.&lt;br /&gt;
+인공지능 스피커를 부를 때 선행되는 호출 명령어와 똑같다.&lt;br /&gt;
+기본 프리픽스 키는 C-b(Ctrl+b) 이다.&lt;br /&gt;
+만약 프리픽스 키를 &lt;a href=&#34;https://www.gnu.org/software/screen/manual/screen.html&#34; target=&#34;_blank&#34;&gt;screen&lt;/a&gt;과 같이 C-a(Ctrl+a) 로 바꾸고 싶다면&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# ~/.tmux.conf
+set -g prefix C-a
+unbind C-b
+bind-key C-a send-prefix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;sessions-windows-panes-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;쉘에 &lt;code&gt;tmux&lt;/code&gt; 명령어를 치면 생성되는 것이 바로 세션이다.&lt;br /&gt;
+세션이 생성될 때 1개의 윈도우도 같이 생성된다.&lt;br /&gt;
+세션 안에서 여러개의 윈도우를 생성할 수 있으며&lt;br /&gt;
+각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.&lt;/p&gt;
+
+&lt;h1 id=&#34;reorder-tmux-windows-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Reorder tmux windows?&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;보통 session 안에서 창을 여러개 띄워 놓고 하게 되는데, &lt;code&gt;창&lt;/code&gt;의 순서를 바꾸고 싶을 때&lt;br /&gt;
+창의 이름을 바꿈으로써 순서를 바꿀 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C-b + .
+(move-window) [이름 바꾸기]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&#34; target=&#34;_blank&#34;&gt;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;my-config-file-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;My config file&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;# ~/.tmux.conf by j3rrry
+
+# command key
+set -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+
+# 0 is too far from ` ;)
+set -g base-index 1
+
+bind-key \ split-window -h
+bind-key - split-window -v
+
+# Use Alt-vim keys without prefix key to switch panes
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R
+
+set-window-option -g mode-keys vi
+
+# No delay for escape key press
+set -sg escape-time 0
+
+# THEME
+set -g status-bg black
+set -g status-fg white
+set -g window-status-current-attr bold
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Google CTF 2019 Quals</title>
-      <link>https://j3rrry.netlify.com/post/google-ctf-2019-quals/</link>
+      <link>/post/google-ctf-2019-quals/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/google-ctf-2019-quals/</guid>
+      <guid>/post/google-ctf-2019-quals/</guid>
       <description>
 
 &lt;p&gt;Google CTF 2019 Quals&lt;/p&gt;
@@ -127,7 +347,7 @@
 
 &lt;h2 id=&#34;doomed-to-repeat-it&#34;&gt;Doomed to Repeat It&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;본 Writeup은 &lt;a href=&#34;https://ctftime.org/writeup/15811&#34; target=&#34;_blank&#34;&gt;Reptilian Shapeshifters&amp;rsquo; Writeup&lt;/a&gt;을 재구성한 것입니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;본 Writeup은 &lt;a href=&#34;https://ctftime.org/writeup/15811&#34; target=&#34;_blank&#34;&gt;Reptilian Shapeshifters&amp;rsquo; Writeup&lt;/a&gt;과 &lt;a href=&#34;https://ctftime.org/writeup/15815&#34; target=&#34;_blank&#34;&gt;Sl33perSh3ll&amp;rsquo;s Writeup&lt;/a&gt;을 재구성한 것입니다.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;solves: 65&lt;/p&gt;
 
@@ -434,36 +654,36 @@ asyncio&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_event_loop()&
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;18
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;19
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;20
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;21
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;34
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;35
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;36
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;37
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;38
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;39
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;40
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;41
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;42
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;43
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;44
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;45
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;46
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;47
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;48
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;49
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;50
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;51
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;52
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;53
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;54
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;55
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;56
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;57
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;58
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;59
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;60
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;61
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;62
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// We vigorously defend against CSRF/XSRF with strict origin checks.
@@ -501,15 +721,67 @@ asyncio&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_event_loop()&
 
 &lt;p&gt;main.go 소스 코드를 확인해보면 CSRF나 XSRF를 방지하고자 &lt;kbd&gt;Origin&lt;/kbd&gt;을 확인하고 있다고 한다.
 그래서 websocket 보낼 때 Origin을 포함하지 않으면 403 Forbidden 이 뜬다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;31
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;32
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// OsRand gets some randomness from the OS.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;OsRand&lt;/span&gt;() (&lt;span style=&#34;color:#66d9ef&#34;&gt;uint64&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 64 ought to be enough for anybody
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint64&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;binary&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Read&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;rand&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Reader&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;binary&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;LittleEndian&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt;); &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;fmt&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Errorf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;couldn&amp;#39;t read random uint64: %v&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt;)
+    }
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Mix in some of our own pre-generated randomness in case the OS runs low.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// See Mining Your Ps and Qs for details.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;14496946463017271296&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;위 코드는 random/random.go 소스 코드이며 난수 발생기를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(&lt;span style=&#34;color:#ae81ff&#34;&gt;14496946463017271296&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0xc92f800000000000L&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8979835648265197673&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ctypes&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;c_uint64(res)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;value
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; bin(&lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0b100000000000000000000000000000000000000000000000&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;47&lt;/span&gt;
+True
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; bin(res)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0b100110000110100100000000000000000000000000000000000000000000000&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;47&lt;/span&gt;)
+&lt;span style=&#34;color:#ae81ff&#34;&gt;131072&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;res에 해당 숫자를 곱하면 2의 47승 아래가 전부 0으로 초기화 된다.
+OsRand()는 uint64 자료형을 쓰지만 발생하는 난수의 경우의 수는 131,072(2**17)가지 밖에 안된다.
+따라서, 13만 가지의 카드 배열을 레인보우 테이블처럼 만들어 놓고 풀면 된다.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>HSCTF 6 Writeup</title>
-      <link>https://j3rrry.netlify.com/post/hsctf-6-writeup/</link>
+      <link>/post/hsctf-6-writeup/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hsctf-6-writeup/</guid>
+      <guid>/post/hsctf-6-writeup/</guid>
       <description>
 
 &lt;p&gt;Hsctf 6 Writeup&lt;/p&gt;
@@ -957,7 +1229,7 @@ binsh = next(e.search(&#39;/bin/sh&#39;))
 
 &lt;p&gt;&lt;code&gt;/bin/sh&lt;/code&gt;를 매개변수로 전달하려고보니.. 이번 문제는 ELF64 바이너리였다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
     Arch:     amd64-64-little
     RELRO:    Partial RELRO
     Stack:    No canary found
@@ -1898,7 +2170,7 @@ cool.png로 변경 후 열어보면 flag가 있다.&lt;/p&gt;
 strings 로 푸는것도 아닌거같고 footer도 정상이다.
 그렇다면 header를 확인해보니&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;I found this cool file. Its really cool!
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;I found this cool file. Its really cool!
 &amp;lt;89&amp;gt;PNG^M
 ^Z
 ^@^@^@^MIHDR^@^@^D¶^@^@^@Y^H^F^@^@^@#;­Ñ^@^@^@^DgAMA^@^@±&amp;lt;8f&amp;gt;^Küa^E^@^@^@^FbKGD^@ÿ^@ÿ^@ÿ ½§&amp;lt;93&amp;gt;^@^@^@   pHYs^@^@^K^S^@^@^K^S^A^@&amp;lt;9a&amp;gt;&amp;lt;9c&amp;gt;^X^@^@^@^GtIME^Gã^E^_^O^K^V&amp;lt;80&amp;gt;â &amp;lt;92&amp;gt;^@^@ ^@IDATxÚì]ex^TW^W~ïÌ
@@ -1923,10 +2195,10 @@ hsctf{twoslapsnonetforce}
     
     <item>
       <title>Facebook CTF 2019</title>
-      <link>https://j3rrry.netlify.com/post/facebook-ctf-2019/</link>
+      <link>/post/facebook-ctf-2019/</link>
       <pubDate>Mon, 03 Jun 2019 14:55:25 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/facebook-ctf-2019/</guid>
+      <guid>/post/facebook-ctf-2019/</guid>
       <description>
 
 &lt;p&gt;Facebook CTF 2019&lt;/p&gt;
@@ -1985,10 +2257,10 @@ easer egg : &lt;a href=&#34;https://github.com/Hong5489/fbctf2019&#34; target=&#
     
     <item>
       <title>Facebook CTF 2019 Pwnable Overfloat Writeup</title>
-      <link>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</link>
+      <link>/post/facebook-ctf-2019-pwnable-overfloat-writeup/</link>
       <pubDate>Sat, 01 Jun 2019 21:47:09 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</guid>
+      <guid>/post/facebook-ctf-2019-pwnable-overfloat-writeup/</guid>
       <description>
 
 &lt;p&gt;Facebook CTF 2019 Pwnable Overfloat Writeup&lt;/p&gt;
@@ -2287,11 +2559,11 @@ Python3 struct module : &lt;a href=&#34;https://docs.python.org/3/library/struct
     
     <item>
       <title>[CSS] 줄바꿈, 단어 단위로</title>
-      <link>https://j3rrry.netlify.com/post/word-break/</link>
+      <link>/post/word-break/</link>
       <pubDate>Fri, 10 May 2019 02:37:18 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/word-break/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;/* Body text */
+      <guid>/post/word-break/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;/* Body text */
 p {
   word-break: keep-all;
 }
@@ -2316,10 +2588,10 @@ p {
     
     <item>
       <title>Project management</title>
-      <link>https://j3rrry.netlify.com/post/project-management/</link>
+      <link>/post/project-management/</link>
       <pubDate>Fri, 26 Apr 2019 13:11:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/project-management/</guid>
+      <guid>/post/project-management/</guid>
       <description>
 
 &lt;p&gt;목차&lt;/p&gt;
@@ -2399,10 +2671,10 @@ PM(Project Management)은 팀원들이 프로젝트를 잘 수행할 수 있도�
     
     <item>
       <title>정보보안기사</title>
-      <link>https://j3rrry.netlify.com/post/%EC%A0%95%EC%B2%98%EA%B8%B0/</link>
+      <link>/post/%EC%A0%95%EC%B2%98%EA%B8%B0/</link>
       <pubDate>Tue, 23 Apr 2019 17:37:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/%EC%A0%95%EC%B2%98%EA%B8%B0/</guid>
+      <guid>/post/%EC%A0%95%EC%B2%98%EA%B8%B0/</guid>
       <description>
 
 &lt;p&gt;시스템 보안&lt;br /&gt;
@@ -2538,27 +2810,11 @@ FTP접속 시 PORT 명령으로 보기와 같은 내용을 확인 하였다. 다
     </item>
     
     <item>
-      <title>An example preprint / working paper</title>
-      <link>https://j3rrry.netlify.com/publication/preprint/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/publication/preprint/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Easy Rev</title>
-      <link>https://j3rrry.netlify.com/post/easy-rev/</link>
+      <link>/post/easy-rev/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/easy-rev/</guid>
+      <guid>/post/easy-rev/</guid>
       <description>
 
 &lt;h1 id=&#34;easy-rev&#34;&gt;easy_rev&lt;/h1&gt;
@@ -2577,7 +2833,7 @@ FTP접속 시 PORT 명령으로 보기와 같은 내용을 확인 하였다. 다
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ file easy_rev flag
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ file easy_rev flag
 easy_rev: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=d6ab8e0c86636e8331cc465ae54a5013598dd79e, not stripped
 flag:     openssl enc&#39;d data with salted password
 &lt;/code&gt;&lt;/pre&gt;
@@ -2586,7 +2842,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;void __cdecl main(int argc, const char **argv, const char **envp)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void __cdecl main(int argc, const char **argv, const char **envp)
 {
   signed int i; // [sp+8h] [bp-48h]@1
   int v6[10]; // [sp+10h] [bp-40h]@1
@@ -2618,7 +2874,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;int __fastcall swap(int *a1)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int __fastcall swap(int *a1)
 {
   int result = 0; // [sp+18h] [bp-48h]@1
   int v4 = 3; // [sp+1Ch] [bp-44h]@1
@@ -2670,12 +2926,12 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;64 -12 42 632 -123 53 2445 -123 63 1
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;64 -12 42 632 -123 53 2445 -123 63 1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;위의 10개의 숫자를 넣으면&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ./easy_rev
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ ./easy_rev
 ==========================================
        NEWBIE REV1 right here !!
 solve the magic I putted, and get the flag
@@ -2693,7 +2949,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
 3042
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -2701,7 +2957,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
 flag{R2versing_1s_b4sed_0n_H4cking_:)}
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -2712,23 +2968,23 @@ flag{R2versing_1s_b4sed_0n_H4cking_:)}
     
     <item>
       <title>git commands</title>
-      <link>https://j3rrry.netlify.com/post/git-commands/</link>
+      <link>/post/git-commands/</link>
       <pubDate>Tue, 12 Mar 2019 02:22:38 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/git-commands/</guid>
+      <guid>/post/git-commands/</guid>
       <description>&lt;p&gt;submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>CQ-RankCalc</title>
-      <link>https://j3rrry.netlify.com/cq/</link>
+      <link>/cq/</link>
       <pubDate>Fri, 01 Mar 2019 16:35:28 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/cq/</guid>
+      <guid>/cq/</guid>
       <description>&lt;form action=&#34;&#34;&gt;
   &lt;input type=&#34;number&#34; id=&#34;x&#34; style=&#34;width:4em&#34; min=&#34;0&#34; placeholder=&#34;1605&#34;&gt;
   /
@@ -2880,10 +3136,10 @@ document.getElementById(&#39;button&#39;).onclick = function(){
     
     <item>
       <title>WannaCry 분석 보고서</title>
-      <link>https://j3rrry.netlify.com/malware/wannacry/</link>
+      <link>/malware/wannacry/</link>
       <pubDate>Wed, 27 Feb 2019 08:31:40 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/malware/wannacry/</guid>
+      <guid>/malware/wannacry/</guid>
       <description>
 
 &lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
@@ -3252,15 +3508,15 @@ b3effadce8b76aee8cd6ce2eccbb8701797468a2
     
     <item>
       <title>Quickstart Hugo Academic Theme</title>
-      <link>https://j3rrry.netlify.com/post/quickstart-hugo-academic-theme/</link>
+      <link>/post/quickstart-hugo-academic-theme/</link>
       <pubDate>Mon, 25 Feb 2019 20:25:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/quickstart-hugo-academic-theme/</guid>
+      <guid>/post/quickstart-hugo-academic-theme/</guid>
       <description>
 
 &lt;p&gt;본 포스팅에서는 hugo-academic 테마를 이용하여 Github Page에 Publishing 하는 방법을 간단하게 다룹니다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo new site my-site
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new site my-site
 $ cd my-site
 $ git init
 $ git submodule add https://github.com/gcushen/hugo-academic.git themes/academic
@@ -3302,13 +3558,13 @@ theme = &amp;quot;academic&amp;quot;
 
 &lt;p&gt;먼저 빌드를 합니다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo
 $ ls public/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;public/&lt;/code&gt; 디렉토리 안에 빌드된 사이트가 만들어진다. 빌드된 것을 Publishing 하는 것이다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd public/
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd public/
 $ git init
 $ git remote add origin https://github.com/j3rrry/j3rrry.github.io.git
 $ git add .
@@ -3340,31 +3596,31 @@ $ git push origin master
     
     <item>
       <title>Hugo Timezone and Date Format</title>
-      <link>https://j3rrry.netlify.com/post/hugo-timezone/</link>
+      <link>/post/hugo-timezone/</link>
       <pubDate>Sat, 23 Feb 2019 02:17:15 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hugo-timezone/</guid>
+      <guid>/post/hugo-timezone/</guid>
       <description>&lt;p&gt;Hugo에서는 config.toml에서 timezone을 설정하지 않는듯 하다(제가 모르는걸수도)
 그래서 어떻게 하느냐? Hugo는 Server system 시간을 따라간다는 것이다.
 제타위키의 리눅스 시간대 설정 &lt;a href=&#34;https://zetawiki.com/wiki/리눅스_KST_시간대_설정#.EB.B0.A9.EB.B2.95_2&#34; target=&#34;_blank&#34;&gt;방법 2&lt;/a&gt;를 통해서 서버의 시간대를 설정해주면 된다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;다 끝났다.
 추가적으로 archetypes에 date를 조금 손봐주는 것은 해도 되고 안해도 된다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;date: {{ dateFormat &amp;quot;2006-01-02 15:04:05 -0700&amp;quot; .Date }}
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;date: {{ dateFormat &amp;quot;2006-01-02 15:04:05 -0700&amp;quot; .Date }}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://gohugo.io/functions/dateformat/&#34; target=&#34;_blank&#34;&gt;dateFormat&lt;/a&gt;이란 것을 사용했는데&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ dateFormat &amp;quot;포맷&amp;quot; &amp;quot;시간&amp;quot; }}
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;{{ dateFormat &amp;quot;포맷&amp;quot; &amp;quot;시간&amp;quot; }}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;구문이 위와 같으며&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;2006:  년
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;2006:  년
 01:    월
 02:    일
 15:    시
@@ -3382,10 +3638,10 @@ Mon:   요일
     
     <item>
       <title>class vglnk 속성 막기</title>
-      <link>https://j3rrry.netlify.com/post/class-vglnk/</link>
+      <link>/post/class-vglnk/</link>
       <pubDate>Thu, 21 Feb 2019 00:42:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/class-vglnk/</guid>
+      <guid>/post/class-vglnk/</guid>
       <description>&lt;p&gt;Github Page Theme에는 여러 Plugin들이 적용되어 있다. Posting을 하다보니 원치않는 link를 만들고 있는 것을 확인했다. HTML tag로 a tag가 사용되었으며 자동으로 color는 어두운 색으로 지정된다. 특히 폰트 색이 어두워지기 때문에 곤란해지는 상황이 일어났다. 왜냐하면 내가 사용하는 Code Block의 경우 배경색을 Dark(monokai)로 지정해서 쓰고 있기 때문에 어두운 색인 폰트가 안보이게 된 것이었다.&lt;/p&gt;
 
 &lt;p&gt;해결 방법은 두가지로 정리해볼 수 있을 것 같다.&lt;/p&gt;
@@ -3422,10 +3678,10 @@ Mon:   요일
     
     <item>
       <title>Host On Github</title>
-      <link>https://j3rrry.netlify.com/post/host-on-github/</link>
+      <link>/post/host-on-github/</link>
       <pubDate>Wed, 20 Feb 2019 06:55:23 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/host-on-github/</guid>
+      <guid>/post/host-on-github/</guid>
       <description>
 
 &lt;p&gt;Github에 Publish하는 방법은 3 가지가 있다.&lt;/p&gt;
@@ -3448,7 +3704,7 @@ Mon:   요일
 
 &lt;p&gt;따로 branch를 만들어야한다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git branch -b gh-pages
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git branch -b gh-pages
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;master branch는 더 이상 필요가 없다.&lt;/p&gt;
@@ -3473,10 +3729,10 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
     
     <item>
       <title>Hugo Templating</title>
-      <link>https://j3rrry.netlify.com/post/hugo-tamplating/</link>
+      <link>/post/hugo-tamplating/</link>
       <pubDate>Wed, 20 Feb 2019 06:26:19 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hugo-tamplating/</guid>
+      <guid>/post/hugo-tamplating/</guid>
       <description>
 
 &lt;p&gt;.&lt;/p&gt;
@@ -3487,7 +3743,7 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
 
 &lt;p&gt;without &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         {{ with .Site.Params.headerSubtext }}
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;{{ . }}&amp;lt;/p&amp;gt;
         {{ end }}
@@ -3496,7 +3752,7 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
 
 &lt;p&gt;with &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         {{- with .Site.Params.headerSubtext }}
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;{{ . }}&amp;lt;/p&amp;gt;
         {{ end -}}
@@ -3505,7 +3761,7 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
 
 &lt;p&gt;RESULT without:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
 
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;K-Shield Jr. CM 2기&amp;lt;/p&amp;gt;
 
@@ -3514,7 +3770,7 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
 
 &lt;p&gt;RESULT with:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;      &amp;lt;header class=&amp;quot;list-header&amp;quot;&amp;gt;
         &amp;lt;p class=&amp;quot;list-header-subtext&amp;quot;&amp;gt;K-Shield Jr. CM 2기&amp;lt;/p&amp;gt;
         &amp;lt;h1 class=&amp;quot;list-header-title&amp;quot;&amp;gt;posts&amp;lt;/h1&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -3532,10 +3788,10 @@ Repo의 최상위 경로에 &lt;code&gt;/docs&lt;/code&gt; 폴더를 Publish 하
     
     <item>
       <title>TRUST CTF 2019</title>
-      <link>https://j3rrry.netlify.com/post/trust-ctf-2019/</link>
+      <link>/post/trust-ctf-2019/</link>
       <pubDate>Mon, 18 Feb 2019 04:34:37 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/trust-ctf-2019/</guid>
+      <guid>/post/trust-ctf-2019/</guid>
       <description>
 
 &lt;p&gt;퍼너블이 제일 어려웠다고 생각합니다.  왜냐하면 저는 하나도 못풀었으니끼요. 아무튼 재미있었다.&lt;/p&gt;
@@ -3566,7 +3822,7 @@ Download: action_list.txt&lt;/p&gt;
 &lt;p&gt;조혜련의 태보 다이어트 유튜브 영상에서는 &lt;code&gt;jab&lt;/code&gt;, &lt;code&gt;hook&lt;/code&gt; 등의 구호에 맞춰서 약 25분동안 운동을 하는 모습이 나온다.
 nc로 서버에 접속해보면 다음과 같은 문구가 나온다&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;+------------------------------------------------------------------------+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;+------------------------------------------------------------------------+
 | Example)                                                               |
 |                                                                        |
 | left_jab + left_hook + right_speedball &amp;gt;&amp;gt; @==(^0^)@ @(^0^)@== (^0^)@@@ |
@@ -3663,7 +3919,7 @@ nc server.trustctf.com 5252&lt;br /&gt;
 Author : dukup11ch1(유기환)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code&gt;$ md5sum *
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ md5sum *
 c05ce65e737b09f71ff5ae3edebcdbea  1.exe
 cfaa3f5b852ee5cce113b3ccddeb74d0  10.exe
 a93b7803a3679e4b212603c50781201d  11.exe
@@ -3697,10 +3953,10 @@ a85e435ef9fdbd798b1c49af1f120db6  6.exe
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>https://j3rrry.netlify.com/post/jupyter/</link>
+      <link>/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/jupyter/</guid>
+      <guid>/post/jupyter/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from IPython.core.display import Image
@@ -3760,10 +4016,10 @@ rm Untitled.md
     
     <item>
       <title>Slides</title>
-      <link>https://j3rrry.netlify.com/slides/example/</link>
+      <link>/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/slides/example/</guid>
+      <guid>/slides/example/</guid>
       <description>
 
 &lt;h1 id=&#34;welcome-to-slides&#34;&gt;Welcome to Slides&lt;/h1&gt;
@@ -3942,19 +4198,19 @@ $$&lt;/p&gt;
     
     <item>
       <title>External Project</title>
-      <link>https://j3rrry.netlify.com/project/external-project/</link>
+      <link>/project/external-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/project/external-project/</guid>
+      <guid>/project/external-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Internal Project</title>
-      <link>https://j3rrry.netlify.com/project/internal-project/</link>
+      <link>/project/internal-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/project/internal-project/</guid>
+      <guid>/project/internal-project/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
@@ -3969,10 +4225,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>Academic: the website designer for Hugo</title>
-      <link>https://j3rrry.netlify.com/post/getting-started/</link>
+      <link>/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/getting-started/</guid>
+      <guid>/post/getting-started/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;Academic&lt;/strong&gt; makes it easy to create a beautiful website for free using Markdown. Customize anything on your site with widgets, themes, and language packs.&lt;/p&gt;
@@ -4053,8 +4309,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4080,8 +4336,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4107,8 +4363,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4134,8 +4390,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4161,8 +4417,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4188,8 +4444,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4215,8 +4471,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -4242,8 +4498,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
-  &lt;img src=&#34;https://j3rrry.netlify.com/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
 
@@ -4358,33 +4614,11 @@ git submodule update --init --recursive
     </item>
     
     <item>
-      <title>An example journal article</title>
-      <link>https://j3rrry.netlify.com/publication/journal-article/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/publication/journal-article/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Creating a New Theme</title>
-      <link>https://j3rrry.netlify.com/post/creating-a-new-theme/</link>
+      <link>/post/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/creating-a-new-theme/</guid>
+      <guid>/post/creating-a-new-theme/</guid>
       <description>
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -4397,7 +4631,7 @@ git submodule update --init --recursive
 
 &lt;p&gt;Here&amp;rsquo;s an example:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;## this is a comment
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;## this is a comment
 $ echo this is a command
 this is a command
 
@@ -4516,7 +4750,7 @@ $
 
 &lt;p&gt;Running the &lt;code&gt;hugo&lt;/code&gt; command with no options will read all the available content and generate the HTML files. It will also copy all static files (that&amp;rsquo;s everything that&amp;rsquo;s not content). Since we have an empty site, it won&amp;rsquo;t do much, but it will do it very quickly.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo --verbose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo --verbose
 INFO: 2014/09/29 Using config file: config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/static/ to /Users/quoha/Sites/zafta/public/
 WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
@@ -4560,7 +4794,7 @@ $
 
 &lt;p&gt;Verify that you can run the built-in web server. It will dramatically shorten your development cycle if you do. Start it by running the &amp;ldquo;server&amp;rdquo; command. If it is successful, you will see output similar to the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo server --verbose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo server --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/static/ to /Users/quoha/Sites/zafta/public/
 WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
@@ -4578,7 +4812,7 @@ Press Ctrl+C to stop
 
 &lt;p&gt;Connect to the listed URL (it&amp;rsquo;s on the line that starts with &amp;ldquo;Web Server&amp;rdquo;). If everything is working correctly, you should get a page that shows the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;index.xml
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;index.xml
 sitemap.xml
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -4586,7 +4820,7 @@ sitemap.xml
 
 &lt;p&gt;Let’s go back and look at those warnings again.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
 WARN: 2014/09/29 Unable to locate layout: [404.html]
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -4638,7 +4872,7 @@ $
 
 &lt;p&gt;Please take a minute to fill out the theme.toml and LICENSE.md files. They&amp;rsquo;re optional, but if you&amp;rsquo;re going to be distributing your theme, it tells the world who to praise (or blame). It&amp;rsquo;s also nice to declare the license so that people will know how they can use the theme.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/theme.toml
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/theme.toml
 author = &amp;quot;michael d henderson&amp;quot;
 description = &amp;quot;a minimal working template&amp;quot;
 license = &amp;quot;MIT&amp;quot;
@@ -4653,7 +4887,7 @@ tags = [&amp;quot;tags&amp;quot;, &amp;quot;categories&amp;quot;]
 
 &lt;p&gt;Note that the the skeleton&amp;rsquo;s template files are empty. Don&amp;rsquo;t worry, we&amp;rsquo;ll be changing that shortly.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ find themes/zafta -name &#39;*.html&#39; | xargs ls -l
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;$ find themes/zafta -name &#39;*.html&#39; | xargs ls -l
 -rw-r--r--  1 quoha  staff  0 Sep 29 17:31 themes/zafta/layouts/_default/list.html
 -rw-r--r--  1 quoha  staff  0 Sep 29 17:31 themes/zafta/layouts/_default/single.html
 -rw-r--r--  1 quoha  staff  0 Sep 29 17:31 themes/zafta/layouts/index.html
@@ -4668,7 +4902,7 @@ $
 
 &lt;p&gt;Edit the file to add the theme, add a title for the site, and specify that all of our content will use the TOML format.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi config.toml
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;$ vi config.toml
 theme = &amp;quot;zafta&amp;quot;
 baseurl = &amp;quot;&amp;quot;
 languageCode = &amp;quot;en-us&amp;quot;
@@ -4683,7 +4917,7 @@ $
 
 &lt;p&gt;Now that we have an empty theme, let&amp;rsquo;s generate the site again.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo --verbose
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;$ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -4724,7 +4958,7 @@ $
 
 &lt;p&gt;Hugo supports many different types of templates. The home page is special because it gets its own type of template and its own template file. The file, layouts/index.html, is used to generate the HTML for the home page. The Hugo documentation says that this is the only required template, but that depends. Hugo&amp;rsquo;s warning message shows that it looks for three different templates:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If it can&amp;rsquo;t find any of these, it completely skips creating the home page. We noticed that when we built the site without having a theme installed.&lt;/p&gt;
@@ -4790,7 +5024,7 @@ $
 
 &lt;p&gt;Use the following commands as the basis for your workflow.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;## purge old files. hugo will recreate the public directory.
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;## purge old files. hugo will recreate the public directory.
 ##
 $ rm -rf public
 ##
@@ -4801,7 +5035,7 @@ $ hugo server --watch --verbose
 
 &lt;p&gt;Here&amp;rsquo;s sample output showing Hugo detecting a change to the template for the home page. Once generated, the web browser automatically reloaded the page. I&amp;rsquo;ve said this before, it&amp;rsquo;s amazing.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rm -rf public
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;$ rm -rf public
 $ hugo server --watch --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -4845,7 +5079,7 @@ in 1 ms
 
 &lt;p&gt;Right now, that page is empty because we don&amp;rsquo;t have any content and we don&amp;rsquo;t have any logic in the template. Let&amp;rsquo;s change that by adding some text to the template.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/index.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/index.html
 &amp;lt;!DOCTYPE html&amp;gt; 
 &amp;lt;html&amp;gt; 
 &amp;lt;body&amp;gt; 
@@ -4859,7 +5093,7 @@ $
 
 &lt;p&gt;Build the web site and then verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo --verbose
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -4886,7 +5120,7 @@ $ cat public/index.html
 
 &lt;p&gt;Note: If you&amp;rsquo;re running the server with the &lt;code&gt;--watch&lt;/code&gt; option, you&amp;rsquo;ll see different content in the file:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat public/index.html 
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ cat public/index.html 
 &amp;lt;!DOCTYPE html&amp;gt; 
 &amp;lt;html&amp;gt; 
 &amp;lt;body&amp;gt; 
@@ -4910,7 +5144,7 @@ $ cat public/index.html
 
 &lt;p&gt;Hugo has a command to generate a skeleton post, just like it does for sites and themes.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo --verbose new post/first.md
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ hugo --verbose new post/first.md
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 attempting to create  post/first.md of post
 INFO: 2014/09/29 curpath: /Users/quoha/Sites/zafta/themes/zafta/archetypes/default.md
@@ -4923,7 +5157,7 @@ $
 
 &lt;p&gt;The &amp;ldquo;new&amp;rdquo; command uses an archetype to create the post file. Hugo created an empty default archetype file, but that causes an error when there&amp;rsquo;s a theme. For me, the workaround was to create an archetypes file specifically for the post type.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/archetypes/post.md
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/archetypes/post.md
 +++
 Description = &amp;quot;&amp;quot;
 Tags = []
@@ -4981,7 +5215,7 @@ $
 
 &lt;p&gt;Build the web site and then verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rm -rf public
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ rm -rf public
 $ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -4999,7 +5233,7 @@ $
 
 &lt;p&gt;The output says that it created 2 pages. Those are our new posts:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ find public -type f -name &#39;*.html&#39; | xargs ls -l
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ find public -type f -name &#39;*.html&#39; | xargs ls -l
 -rw-r--r--  1 quoha  staff  78 Sep 29 22:13 public/index.html
 -rw-r--r--  1 quoha  staff   0 Sep 29 22:13 public/post/first/index.html
 -rw-r--r--  1 quoha  staff   0 Sep 29 22:13 public/post/index.html
@@ -5021,7 +5255,7 @@ $
 
 &lt;p&gt;The home page will contain a list of posts. Let&amp;rsquo;s update its template to add the posts that we just created. The logic in the template will run every time we build the site.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/index.html 
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/index.html 
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
@@ -5053,7 +5287,7 @@ $
 
 &lt;p&gt;Build the web site and then verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rm -rf public
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ rm -rf public
 $ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -5109,7 +5343,7 @@ $
 
 &lt;h4 id=&#34;update-the-template-file&#34;&gt;Update the Template File&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/_default/single.html 
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/_default/single.html 
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;head&amp;gt;
@@ -5127,7 +5361,7 @@ $
 
 &lt;p&gt;Build the web site and verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rm -rf public
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ rm -rf public
 $ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -5181,7 +5415,7 @@ $
 
 &lt;p&gt;The posts are on the home page. Let&amp;rsquo;s add a link from there to the post. Since this is the home page, we&amp;rsquo;ll update its template.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/index.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/index.html
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
@@ -5194,7 +5428,7 @@ $
 
 &lt;p&gt;Build the web site and verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rm -rf public
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ rm -rf public
 $ hugo --verbose
 INFO: 2014/09/29 Using config file: /Users/quoha/Sites/zafta/config.toml
 INFO: 2014/09/29 syncing from /Users/quoha/Sites/zafta/themes/zafta/static/ to /Users/quoha/Sites/zafta/public/
@@ -5235,7 +5469,7 @@ $
 
 &lt;p&gt;We need to decide which template to update. This will be a listing, so it should be a list template. Let&amp;rsquo;s take a quick look and see which list templates are available.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ find themes/zafta -name list.html | xargs ls -l
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ find themes/zafta -name list.html | xargs ls -l
 -rw-r--r--  1 quoha  staff  0 Sep 29 17:31 themes/zafta/layouts/_default/list.html
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -5247,7 +5481,7 @@ $
 
 &lt;p&gt;The default in Hugo is to use the directory structure of the content/ directory to guide the location of the generated html in the public/ directory. Let&amp;rsquo;s verify that by creating an &amp;ldquo;about&amp;rdquo; page at the top level:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi content/about.md 
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi content/about.md 
 +++
 title = &amp;quot;about&amp;quot;
 description = &amp;quot;about this site&amp;quot;
@@ -5263,7 +5497,7 @@ i&#39;m speechless
 
 &lt;p&gt;Generate the web site and verify the results.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ find public -name &#39;*.html&#39; | xargs ls -l
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ find public -name &#39;*.html&#39; | xargs ls -l
 -rw-rw-r--  1 mdhender  staff   334 Sep 27 15:08 public/about-time/index.html
 -rw-rw-r--  1 mdhender  staff   527 Sep 27 15:08 public/index.html
 -rw-rw-r--  1 mdhender  staff   358 Sep 27 15:08 public/post/first-post/index.html
@@ -5275,7 +5509,7 @@ i&#39;m speechless
 
 &lt;p&gt;One other thing. Take a look at the home page.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat public/index.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ cat public/index.html
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
@@ -5292,7 +5526,7 @@ i&#39;m speechless
 
 &lt;p&gt;Notice that the &amp;ldquo;about&amp;rdquo; link is listed with the posts? That&amp;rsquo;s not desirable, so let&amp;rsquo;s change that first.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/index.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/index.html
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
@@ -5318,7 +5552,7 @@ i&#39;m speechless
 
 &lt;p&gt;But, that about page still renders to about-time/index.html.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ find public -name &#39;*.html&#39; | xargs ls -l
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ find public -name &#39;*.html&#39; | xargs ls -l
 -rw-rw-r--  1 mdhender  staff    334 Sep 27 15:33 public/about-time/index.html
 -rw-rw-r--  1 mdhender  staff    645 Sep 27 15:33 public/index.html
 -rw-rw-r--  1 mdhender  staff    358 Sep 27 15:33 public/post/first-post/index.html
@@ -5328,7 +5562,7 @@ i&#39;m speechless
 
 &lt;p&gt;Knowing that hugo is using the slug to generate the file name, the simplest solution is to change the slug. Let&amp;rsquo;s do it the hard way and change the permalink in the configuration file.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi config.toml
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi config.toml
 [permalinks]
 	page = &amp;quot;/:title/&amp;quot;
 	about = &amp;quot;/:filename/&amp;quot;
@@ -5346,7 +5580,7 @@ i&#39;m speechless
 
 &lt;p&gt;In Hugo, a partial is a sugar-coated template. Normally a template reference has a path specified. Partials are different. Hugo searches for them along a TODO defined search path. This makes it easier for end-users to override the theme&amp;rsquo;s presentation.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/partials/header.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/partials/header.html
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;head&amp;gt;
@@ -5365,19 +5599,19 @@ $ vi themes/zafta/layouts/partials/footer.html
 
 &lt;p&gt;The most noticeable difference between a template call and a partials call is the lack of path:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ template &amp;quot;theme/partials/header.html&amp;quot; . }}
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;{{ template &amp;quot;theme/partials/header.html&amp;quot; . }}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;versus&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ partial &amp;quot;header.html&amp;quot; . }}
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;{{ partial &amp;quot;header.html&amp;quot; . }}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Both pass in the context.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s change the home page template to use these new partials.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/index.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/index.html
 {{ partial &amp;quot;header.html&amp;quot; . }}
 
   &amp;lt;h1&amp;gt;posts&amp;lt;/h1&amp;gt;
@@ -5402,7 +5636,7 @@ $ vi themes/zafta/layouts/partials/footer.html
 
 &lt;h3 id=&#34;update-the-default-single-template-to-use-the-partials&#34;&gt;Update the Default Single Template to Use the Partials&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/_default/single.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/_default/single.html
 {{ partial &amp;quot;header.html&amp;quot; . }}
 
   &amp;lt;h1&amp;gt;{{ .Title }}&amp;lt;/h1&amp;gt;
@@ -5422,12 +5656,12 @@ $ vi themes/zafta/layouts/partials/footer.html
 
 &lt;p&gt;We&amp;rsquo;ll start by updating the template used to render the posts. The template code will look like:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ .Date.Format &amp;quot;Mon, Jan 2, 2006&amp;quot; }}
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;{{ .Date.Format &amp;quot;Mon, Jan 2, 2006&amp;quot; }}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Posts use the default single template, so we&amp;rsquo;ll change that file.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/_default/single.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/_default/single.html
 {{ partial &amp;quot;header.html&amp;quot; . }}
 
   &amp;lt;h1&amp;gt;{{ .Title }}&amp;lt;/h1&amp;gt;
@@ -5448,7 +5682,7 @@ $ vi themes/zafta/layouts/partials/footer.html
 
 &lt;p&gt;Let&amp;rsquo;s restore the default single template before we forget.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ mkdir themes/zafta/layouts/post
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ mkdir themes/zafta/layouts/post
 $ vi themes/zafta/layouts/_default/single.html
 {{ partial &amp;quot;header.html&amp;quot; . }}
 
@@ -5461,7 +5695,7 @@ $ vi themes/zafta/layouts/_default/single.html
 
 &lt;p&gt;Now we&amp;rsquo;ll update the post&amp;rsquo;s version of the single template. If you remember Hugo&amp;rsquo;s rules, the template engine will use this version over the default.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vi themes/zafta/layouts/post/single.html
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;$ vi themes/zafta/layouts/post/single.html
 {{ partial &amp;quot;header.html&amp;quot; . }}
 
   &amp;lt;h1&amp;gt;{{ .Title }}&amp;lt;/h1&amp;gt;
@@ -5483,10 +5717,10 @@ $ vi themes/zafta/layouts/_default/single.html
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>https://j3rrry.netlify.com/post/goisforlovers/</link>
+      <link>/post/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/goisforlovers/</guid>
+      <guid>/post/goisforlovers/</guid>
       <description>
 
 &lt;p&gt;Hugo uses the excellent &lt;a href=&#34;https://golang.org/&#34; target=&#34;_blank&#34;&gt;Go&lt;/a&gt; &lt;a href=&#34;https://golang.org/pkg/html/template/&#34; target=&#34;_blank&#34;&gt;html/template&lt;/a&gt; library for
@@ -5545,7 +5779,7 @@ functions.&lt;/p&gt;
 &lt;p&gt;Each Go template has a struct (object) made available to it. In hugo each
 template is passed either a page or a node struct depending on which type of
 page you are rendering. More details are available on the
-&lt;a href=&#34;https://j3rrry.netlify.com/layout/variables&#34;&gt;variables&lt;/a&gt; page.&lt;/p&gt;
+&lt;a href=&#34;/layout/variables&#34;&gt;variables&lt;/a&gt; page.&lt;/p&gt;
 
 &lt;p&gt;A variable is accessed by referencing the variable name.&lt;/p&gt;
 
@@ -5562,7 +5796,7 @@ page you are rendering. More details are available on the
 
 &lt;p&gt;Go template ship with a few functions which provide basic functionality. The Go
 template system also provides a mechanism for applications to extend the
-available functions with their own. &lt;a href=&#34;https://j3rrry.netlify.com/layout/functions&#34;&gt;Hugo template
+available functions with their own. &lt;a href=&#34;/layout/functions&#34;&gt;Hugo template
 functions&lt;/a&gt; provide some additional functionality we believe
 are useful for building websites. Functions are called by using their name
 followed by the required parameters separated by spaces. Template
@@ -5750,7 +5984,7 @@ you want to inside of your templates.&lt;/p&gt;
 &lt;h2 id=&#34;using-content-page-parameters&#34;&gt;Using Content (page) Parameters&lt;/h2&gt;
 
 &lt;p&gt;In each piece of content you can provide variables to be used by the
-templates. This happens in the &lt;a href=&#34;https://j3rrry.netlify.com/content/front-matter&#34;&gt;front matter&lt;/a&gt;.&lt;/p&gt;
+templates. This happens in the &lt;a href=&#34;/content/front-matter&#34;&gt;front matter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;An example of this is used in this documentation site. Most of the pages
 benefit from having the table of contents provided. Sometimes the TOC just
@@ -5829,10 +6063,10 @@ so, such as in this example:&lt;/p&gt;
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>https://j3rrry.netlify.com/post/hugoisforlovers/</link>
+      <link>/post/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hugoisforlovers/</guid>
+      <guid>/post/hugoisforlovers/</guid>
       <description>
 
 &lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
@@ -5916,10 +6150,10 @@ Having nearly instant feedback enables you to have your creativity flow without 
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>https://j3rrry.netlify.com/post/migrate-from-jekyll/</link>
+      <link>/post/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/migrate-from-jekyll/</guid>
+      <guid>/post/migrate-from-jekyll/</guid>
       <description>
 
 &lt;h2 id=&#34;move-static-content-to-static&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
@@ -5944,7 +6178,7 @@ With Jekyll, something that looked like&lt;/p&gt;
 
 &lt;h2 id=&#34;create-your-hugo-configuration-file&#34;&gt;Create your Hugo configuration file&lt;/h2&gt;
 
-&lt;p&gt;Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the &lt;a href=&#34;https://j3rrry.netlify.com/overview/configuration/&#34;&gt;Hugo configuration documentation&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the &lt;a href=&#34;/overview/configuration/&#34;&gt;Hugo configuration documentation&lt;/a&gt; for details.&lt;/p&gt;
 
 &lt;h2 id=&#34;set-your-configuration-publish-folder-to-site&#34;&gt;Set your configuration publish folder to &lt;code&gt;_site&lt;/code&gt;&lt;/h2&gt;
 
@@ -5970,13 +6204,13 @@ git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
 
 &lt;h2 id=&#34;convert-jekyll-templates-to-hugo-templates&#34;&gt;Convert Jekyll templates to Hugo templates&lt;/h2&gt;
 
-&lt;p&gt;That&amp;rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to &lt;a href=&#34;http://jekyllrb.com/docs/templates/&#34; target=&#34;_blank&#34;&gt;Jekyll&amp;rsquo;s template documentation&lt;/a&gt; if you need to refresh your memory on how you built your blog and &lt;a href=&#34;https://j3rrry.netlify.com/layout/templates/&#34;&gt;Hugo&amp;rsquo;s template&lt;/a&gt; to learn Hugo&amp;rsquo;s way.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to &lt;a href=&#34;http://jekyllrb.com/docs/templates/&#34; target=&#34;_blank&#34;&gt;Jekyll&amp;rsquo;s template documentation&lt;/a&gt; if you need to refresh your memory on how you built your blog and &lt;a href=&#34;/layout/templates/&#34;&gt;Hugo&amp;rsquo;s template&lt;/a&gt; to learn Hugo&amp;rsquo;s way.&lt;/p&gt;
 
 &lt;p&gt;As a single reference data point, converting my templates for &lt;a href=&#34;http://heyitsalex.net/&#34; target=&#34;_blank&#34;&gt;heyitsalex.net&lt;/a&gt; took me no more than a few hours.&lt;/p&gt;
 
 &lt;h2 id=&#34;convert-jekyll-plugins-to-hugo-shortcodes&#34;&gt;Convert Jekyll plugins to Hugo shortcodes&lt;/h2&gt;
 
-&lt;p&gt;Jekyll has &lt;a href=&#34;http://jekyllrb.com/docs/plugins/&#34; target=&#34;_blank&#34;&gt;plugins&lt;/a&gt;; Hugo has &lt;a href=&#34;https://j3rrry.netlify.com/doc/shortcodes/&#34;&gt;shortcodes&lt;/a&gt;. It&amp;rsquo;s fairly trivial to do a port.&lt;/p&gt;
+&lt;p&gt;Jekyll has &lt;a href=&#34;http://jekyllrb.com/docs/plugins/&#34; target=&#34;_blank&#34;&gt;plugins&lt;/a&gt;; Hugo has &lt;a href=&#34;/doc/shortcodes/&#34;&gt;shortcodes&lt;/a&gt;. It&amp;rsquo;s fairly trivial to do a port.&lt;/p&gt;
 
 &lt;h3 id=&#34;implementation&#34;&gt;Implementation&lt;/h3&gt;
 
@@ -6088,28 +6322,6 @@ Liquid::Template.register_tag(&#39;image&#39;, Jekyll::ImageTag)
 &lt;h2 id=&#34;a-practical-example-in-a-diff&#34;&gt;A practical example in a diff&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://heyitsalex.net/&#34; target=&#34;_blank&#34;&gt;Hey, it&amp;rsquo;s Alex&lt;/a&gt; was migrated in less than a &lt;em&gt;father-with-kids day&lt;/em&gt; from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this &lt;a href=&#34;https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610&#34; target=&#34;_blank&#34;&gt;diff&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>An example conference paper</title>
-      <link>https://j3rrry.netlify.com/publication/conference-paper/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/publication/conference-paper/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

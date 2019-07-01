@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>quickstart on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/quickstart/</link>
+    <link>/tags/quickstart/</link>
     <description>Recent content in quickstart on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Mon, 25 Feb 2019 20:25:20 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/quickstart/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/quickstart/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quickstart Hugo Academic Theme</title>
-      <link>https://j3rrry.netlify.com/post/quickstart-hugo-academic-theme/</link>
+      <link>/post/quickstart-hugo-academic-theme/</link>
       <pubDate>Mon, 25 Feb 2019 20:25:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/quickstart-hugo-academic-theme/</guid>
+      <guid>/post/quickstart-hugo-academic-theme/</guid>
       <description>
 
 &lt;p&gt;본 포스팅에서는 hugo-academic 테마를 이용하여 Github Page에 Publishing 하는 방법을 간단하게 다룹니다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo new site my-site
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new site my-site
 $ cd my-site
 $ git init
 $ git submodule add https://github.com/gcushen/hugo-academic.git themes/academic
@@ -64,13 +64,13 @@ theme = &amp;quot;academic&amp;quot;
 
 &lt;p&gt;먼저 빌드를 합니다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo
 $ ls public/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;public/&lt;/code&gt; 디렉토리 안에 빌드된 사이트가 만들어진다. 빌드된 것을 Publishing 하는 것이다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd public/
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd public/
 $ git init
 $ git remote add origin https://github.com/j3rrry/j3rrry.github.io.git
 $ git add .

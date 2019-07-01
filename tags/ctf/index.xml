@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTF on j3rrry</title>
-    <link>https://j3rrry.netlify.com/tags/ctf/</link>
+    <link>/tags/ctf/</link>
     <description>Recent content in CTF on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
     <lastBuildDate>Mon, 24 Jun 2019 17:01:05 +0900</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google CTF 2019 Quals</title>
-      <link>https://j3rrry.netlify.com/post/google-ctf-2019-quals/</link>
+      <link>/post/google-ctf-2019-quals/</link>
       <pubDate>Mon, 24 Jun 2019 17:01:05 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/google-ctf-2019-quals/</guid>
+      <guid>/post/google-ctf-2019-quals/</guid>
       <description>
 
 &lt;p&gt;Google CTF 2019 Quals&lt;/p&gt;
@@ -31,7 +31,7 @@
 
 &lt;h2 id=&#34;doomed-to-repeat-it&#34;&gt;Doomed to Repeat It&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;본 Writeup은 &lt;a href=&#34;https://ctftime.org/writeup/15811&#34; target=&#34;_blank&#34;&gt;Reptilian Shapeshifters&amp;rsquo; Writeup&lt;/a&gt;을 재구성한 것입니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;본 Writeup은 &lt;a href=&#34;https://ctftime.org/writeup/15811&#34; target=&#34;_blank&#34;&gt;Reptilian Shapeshifters&amp;rsquo; Writeup&lt;/a&gt;과 &lt;a href=&#34;https://ctftime.org/writeup/15815&#34; target=&#34;_blank&#34;&gt;Sl33perSh3ll&amp;rsquo;s Writeup&lt;/a&gt;을 재구성한 것입니다.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;solves: 65&lt;/p&gt;
 
@@ -338,36 +338,36 @@ asyncio&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_event_loop()&
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;18
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;19
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;20
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;21
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;34
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;35
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;36
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;37
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;38
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;39
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;40
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;41
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;42
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;43
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;44
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;45
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;46
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;47
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;48
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;49
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;50
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;51
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;52
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;53
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;54
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;55
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;56
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;57
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;58
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;59
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;60
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;61
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;62
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// We vigorously defend against CSRF/XSRF with strict origin checks.
@@ -405,15 +405,67 @@ asyncio&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_event_loop()&
 
 &lt;p&gt;main.go 소스 코드를 확인해보면 CSRF나 XSRF를 방지하고자 &lt;kbd&gt;Origin&lt;/kbd&gt;을 확인하고 있다고 한다.
 그래서 websocket 보낼 때 Origin을 포함하지 않으면 403 Forbidden 이 뜬다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;31
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;32
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// OsRand gets some randomness from the OS.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;OsRand&lt;/span&gt;() (&lt;span style=&#34;color:#66d9ef&#34;&gt;uint64&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 64 ought to be enough for anybody
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint64&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;binary&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Read&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;rand&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Reader&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;binary&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;LittleEndian&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt;); &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;fmt&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Errorf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;couldn&amp;#39;t read random uint64: %v&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt;)
+    }
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Mix in some of our own pre-generated randomness in case the OS runs low.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// See Mining Your Ps and Qs for details.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;14496946463017271296&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;res&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;위 코드는 random/random.go 소스 코드이며 난수 발생기를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; hex(&lt;span style=&#34;color:#ae81ff&#34;&gt;14496946463017271296&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0xc92f800000000000L&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8979835648265197673&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ctypes&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;c_uint64(res)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;value
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; bin(&lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt;)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0b100000000000000000000000000000000000000000000000&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;140737488355328&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;47&lt;/span&gt;
+True
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; bin(res)
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0b100110000110100100000000000000000000000000000000000000000000000&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;47&lt;/span&gt;)
+&lt;span style=&#34;color:#ae81ff&#34;&gt;131072&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;res에 해당 숫자를 곱하면 2의 47승 아래가 전부 0으로 초기화 된다.
+OsRand()는 uint64 자료형을 쓰지만 발생하는 난수의 경우의 수는 131,072(2**17)가지 밖에 안된다.
+따라서, 13만 가지의 카드 배열을 레인보우 테이블처럼 만들어 놓고 풀면 된다.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>HSCTF 6 Writeup</title>
-      <link>https://j3rrry.netlify.com/post/hsctf-6-writeup/</link>
+      <link>/post/hsctf-6-writeup/</link>
       <pubDate>Wed, 05 Jun 2019 18:56:10 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/hsctf-6-writeup/</guid>
+      <guid>/post/hsctf-6-writeup/</guid>
       <description>
 
 &lt;p&gt;Hsctf 6 Writeup&lt;/p&gt;
@@ -861,7 +913,7 @@ binsh = next(e.search(&#39;/bin/sh&#39;))
 
 &lt;p&gt;&lt;code&gt;/bin/sh&lt;/code&gt;를 매개변수로 전달하려고보니.. 이번 문제는 ELF64 바이너리였다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;[*] &#39;/mnt/hgfs/shared/hsctf/combo-chain-lite&#39;
     Arch:     amd64-64-little
     RELRO:    Partial RELRO
     Stack:    No canary found
@@ -1802,7 +1854,7 @@ cool.png로 변경 후 열어보면 flag가 있다.&lt;/p&gt;
 strings 로 푸는것도 아닌거같고 footer도 정상이다.
 그렇다면 header를 확인해보니&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;I found this cool file. Its really cool!
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;I found this cool file. Its really cool!
 &amp;lt;89&amp;gt;PNG^M
 ^Z
 ^@^@^@^MIHDR^@^@^D¶^@^@^@Y^H^F^@^@^@#;­Ñ^@^@^@^DgAMA^@^@±&amp;lt;8f&amp;gt;^Küa^E^@^@^@^FbKGD^@ÿ^@ÿ^@ÿ ½§&amp;lt;93&amp;gt;^@^@^@   pHYs^@^@^K^S^@^@^K^S^A^@&amp;lt;9a&amp;gt;&amp;lt;9c&amp;gt;^X^@^@^@^GtIME^Gã^E^_^O^K^V&amp;lt;80&amp;gt;â &amp;lt;92&amp;gt;^@^@ ^@IDATxÚì]ex^TW^W~ïÌ
@@ -1827,10 +1879,10 @@ hsctf{twoslapsnonetforce}
     
     <item>
       <title>Facebook CTF 2019 Pwnable Overfloat Writeup</title>
-      <link>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</link>
+      <link>/post/facebook-ctf-2019-pwnable-overfloat-writeup/</link>
       <pubDate>Sat, 01 Jun 2019 21:47:09 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/facebook-ctf-2019-pwnable-overfloat-writeup/</guid>
+      <guid>/post/facebook-ctf-2019-pwnable-overfloat-writeup/</guid>
       <description>
 
 &lt;p&gt;Facebook CTF 2019 Pwnable Overfloat Writeup&lt;/p&gt;
@@ -2129,10 +2181,10 @@ Python3 struct module : &lt;a href=&#34;https://docs.python.org/3/library/struct
     
     <item>
       <title>Easy Rev</title>
-      <link>https://j3rrry.netlify.com/post/easy-rev/</link>
+      <link>/post/easy-rev/</link>
       <pubDate>Fri, 29 Mar 2019 19:50:20 +0900</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/easy-rev/</guid>
+      <guid>/post/easy-rev/</guid>
       <description>
 
 &lt;h1 id=&#34;easy-rev&#34;&gt;easy_rev&lt;/h1&gt;
@@ -2151,7 +2203,7 @@ Python3 struct module : &lt;a href=&#34;https://docs.python.org/3/library/struct
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ file easy_rev flag
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ file easy_rev flag
 easy_rev: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=d6ab8e0c86636e8331cc465ae54a5013598dd79e, not stripped
 flag:     openssl enc&#39;d data with salted password
 &lt;/code&gt;&lt;/pre&gt;
@@ -2160,7 +2212,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;void __cdecl main(int argc, const char **argv, const char **envp)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void __cdecl main(int argc, const char **argv, const char **envp)
 {
   signed int i; // [sp+8h] [bp-48h]@1
   int v6[10]; // [sp+10h] [bp-40h]@1
@@ -2192,7 +2244,7 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;int __fastcall swap(int *a1)
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int __fastcall swap(int *a1)
 {
   int result = 0; // [sp+18h] [bp-48h]@1
   int v4 = 3; // [sp+1Ch] [bp-44h]@1
@@ -2244,12 +2296,12 @@ flag:     openssl enc&#39;d data with salted password
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;64 -12 42 632 -123 53 2445 -123 63 1
+&lt;pre&gt;&lt;code class=&#34;language-markup&#34;&gt;64 -12 42 632 -123 53 2445 -123 63 1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;위의 10개의 숫자를 넣으면&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ./easy_rev
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ ./easy_rev
 ==========================================
        NEWBIE REV1 right here !!
 solve the magic I putted, and get the flag
@@ -2267,7 +2319,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;&amp;gt;&amp;gt; sum([64, -12, 42, 632, -123, 53, 2445, -123, 63, 1])
 3042
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -2275,7 +2327,7 @@ Let&#39;s See the result!!!!
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ openssl enc -d -aes-256-cbc -in flag -k 3042
 flag{R2versing_1s_b4sed_0n_H4cking_:)}
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -2286,10 +2338,10 @@ flag{R2versing_1s_b4sed_0n_H4cking_:)}
     
     <item>
       <title>TRUST CTF 2019</title>
-      <link>https://j3rrry.netlify.com/post/trust-ctf-2019/</link>
+      <link>/post/trust-ctf-2019/</link>
       <pubDate>Mon, 18 Feb 2019 04:34:37 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/post/trust-ctf-2019/</guid>
+      <guid>/post/trust-ctf-2019/</guid>
       <description>
 
 &lt;p&gt;퍼너블이 제일 어려웠다고 생각합니다.  왜냐하면 저는 하나도 못풀었으니끼요. 아무튼 재미있었다.&lt;/p&gt;
@@ -2320,7 +2372,7 @@ Download: action_list.txt&lt;/p&gt;
 &lt;p&gt;조혜련의 태보 다이어트 유튜브 영상에서는 &lt;code&gt;jab&lt;/code&gt;, &lt;code&gt;hook&lt;/code&gt; 등의 구호에 맞춰서 약 25분동안 운동을 하는 모습이 나온다.
 nc로 서버에 접속해보면 다음과 같은 문구가 나온다&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;+------------------------------------------------------------------------+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;+------------------------------------------------------------------------+
 | Example)                                                               |
 |                                                                        |
 | left_jab + left_hook + right_speedball &amp;gt;&amp;gt; @==(^0^)@ @(^0^)@== (^0^)@@@ |
@@ -2417,7 +2469,7 @@ nc server.trustctf.com 5252&lt;br /&gt;
 Author : dukup11ch1(유기환)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code&gt;$ md5sum *
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ md5sum *
 c05ce65e737b09f71ff5ae3edebcdbea  1.exe
 cfaa3f5b852ee5cce113b3ccddeb74d0  10.exe
 a93b7803a3679e4b212603c50781201d  11.exe

@@ -2,33 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on j3rrry</title>
-    <link>https://j3rrry.netlify.com/authors/</link>
+    <link>/authors/</link>
     <description>Recent content in Authors on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="https://j3rrry.netlify.com/authors/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://j3rrry.netlify.com/authors/admin/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      <link>/authors/admin/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://j3rrry.netlify.com/authors/admin/</guid>
+      <guid>/authors/admin/</guid>
       <description>&lt;p&gt;홍익대 컴퓨터정보통신공학과를 졸업하고 취업연계과정인 K-Shield Jr. 2기를 수료 중입니다.(2019.03 ~ 2019.06)&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Robert Ford</title>
-      <link>https://j3rrry.netlify.com/authors/robert-ford/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://j3rrry.netlify.com/authors/robert-ford/</guid>
-      <description></description>
     </item>
     
   </channel>
