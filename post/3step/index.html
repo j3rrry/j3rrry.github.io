@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="3step">
+  <meta name="description" content="pwnable 3step">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/3step/">
@@ -131,7 +131,7 @@
   <meta property="og:site_name" content="j3rrry">
   <meta property="og:url" content="/post/3step/">
   <meta property="og:title" content="TUCTF 2019 Pwnable 3step | j3rrry">
-  <meta property="og:description" content="3step"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="pwnable 3step"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-12-03T03:33:19&#43;09:00">
@@ -461,6 +461,11 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/pwn/">PWN</a></span>
+  
 
   
     
@@ -531,7 +536,72 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <pre><code class="language-py">from pwn import *
+      
+
+<p>32bit 바이너리 <code>3step</code>와 접속 정보 <code>nc chal.tuctf.com 30504</code>가 주어졌습니다.</p>
+
+<pre><code class="language-py">&gt;&gt;&gt; e = ELF('./3step')
+[*] '/root/ctf/2019/tu/pwn/3step/3step'
+    Arch:     i386-32-little
+    RELRO:    Full RELRO
+    Stack:    Canary found
+    NX:       NX disabled
+    PIE:      PIE enabled
+    RWX:      Has RWX segments
+</code></pre>
+
+<p>i386 바이너리이고<br />
+Full RELRO 이므로 GOT Overwrite는 아니며<br />
+Canary가 있으므로 BOF는 아니고<br />
+NX bit가 해제되어 있고 RWX 세그먼트가 있으므로 100% 스택에 쉘코드 실행 가능합니다.<br />
+<br></p>
+
+<pre><code class="language-plain">j3rrry@kali:3step# nc chal.tuctf.com 30504
+Welcome to our 3-step program!
+Try out complimentary snacks
+0x5665000c
+0xffb5c08c
+
+Step 1: j3rrry
+Step 2: j4rrry
+Step 3: j5rrry
+</code></pre>
+
+<p>문제 서버에 접속해보면 16진수 2개를 알려준 다음 3 Step에 걸쳐서 입력을 받습니다.<br />
+<br></p>
+
+<pre><code class="language-c">void __cdecl pwnme()
+{
+  void (*v0)(void); // [sp+8h] [bp-20h]@1
+  char buf; // [sp+Ch] [bp-1Ch]@1
+  int v2; // [sp+1Ch] [bp-Ch]@1
+
+  v2 = *MK_FP(__GS__, 20);
+  puts(&quot;Try out complimentary snacks&quot;);
+  printf(&quot;%p\n&quot;, &amp;buf1);
+  printf(&quot;%p\n\n&quot;, &amp;buf);
+  printf(&quot;Step 1: &quot;);
+  read(0, &amp;buf1, 0x12);
+  printf(&quot;Step 2: &quot;);
+  read(0, &amp;buf, 0x10);
+  printf(&quot;Step 3: &quot;);
+  read(0, &amp;v0, 4);
+  v0();
+  if ( *MK_FP(__GS__, 20) != v2 )
+    _stack_chk_fail_local();
+}
+</code></pre>
+
+<p>바이너리를 디스어셈블링 해보면<br />
+buf1과 buf의 주소를 출력해줍니다.<br />
+buf1은 bss 영역, buf는 스택 영역입니다.</p>
+
+<p>그리고 입력을 받는데 길이제한이 0x12, 0x10, 4로 매우 작습니다.<br />
+쉘코드를 경량화하도록 커스텀을 해야하는데요.</p>
+
+<h1 id="exploit">Exploit</h1>
+
+<pre><code class="language-py">from pwn import *
 
 def start():
     e = ELF('./3step')
@@ -586,6 +656,18 @@ if __name__ == '__main__':
     </div>
 
     
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/ctf/">CTF</a>
+  
+  <a class="badge badge-light" href="/tags/2019/">2019</a>
+  
+  <a class="badge badge-light" href="/tags/pwn/">pwn</a>
+  
+  <a class="badge badge-light" href="/tags/3step/">3step</a>
+  
+</div>
 
 
 
@@ -698,6 +780,24 @@ if __name__ == '__main__':
 
 
       
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/google-ctf-2019-quals/">Google CTF 2019 Quals</a></li>
+          
+          <li><a href="/post/hsctf-6-writeup/">HSCTF 6 Writeup</a></li>
+          
+          <li><a href="/post/facebook-ctf-2019-pwnable-overfloat-writeup/">Facebook CTF 2019 Pwnable Overfloat Writeup</a></li>
+          
+          <li><a href="/post/easy-rev/">Easy Rev</a></li>
+          
+          <li><a href="/post/trust-ctf-2019/">TRUST CTF 2019</a></li>
+          
+        </ul>
+      </div>
       
     
 
