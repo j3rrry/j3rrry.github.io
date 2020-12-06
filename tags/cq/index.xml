@@ -20,10 +20,10 @@
       <guid>/cq/</guid>
       <description>
 
-&lt;h1 id=&#34;바람의나라-연-거래소-최저가-계산기&#34;&gt;바람의나라 연 / 거래소 최저가 계산기&lt;/h1&gt;
+&lt;h1 id=&#34;바람의나라-연-거래소-최저가-계산기&#34;&gt;바람의나라: 연 / 거래소 최저가 계산기&lt;/h1&gt;
 
-&lt;p&gt;&lt;input type=&#34;number&#34; id=&#34;baram_price_avg&#34; style=&#34;width:5em&#34; placeholder=&#34;16.1208&#34;&gt;
-  &lt;input type=&#34;button&#34; value=&#34;Calc&#34; id=&#34;baram_button&#34;&gt;
+&lt;p&gt;평균 거래 단가: &lt;input type=&#34;number&#34; id=&#34;baram_price_avg&#34; style=&#34;width:5em&#34; onkeyup=&#34;baram_func();&#34; placeholder=&#34;16.1208&#34;&gt;
+  &lt;!--input type=&#34;button&#34; value=&#34;Calc&#34; id=&#34;baram_button&#34; onclick=&#34;baram_func();&#34;--&gt;
 &lt;p id=&#34;baram_price_min_1&#34;&gt;&lt;/p&gt;
 &lt;p id=&#34;baram_price_min_i&#34;&gt;&lt;/p&gt;&lt;/p&gt;
 
@@ -50,16 +50,20 @@
 &lt;p id=&#34;exp&#34;&gt;&lt;/p&gt;
 
 &lt;script&gt;
-document.getElementById(&#39;baram_button&#39;).onclick = function(){
+//document.getElementById(&#39;baram_button&#39;).onclick = function(){
+var baram_func = function(){
   var price_avg = document.getElementById(&#39;baram_price_avg&#39;)      .value;
+  if (price_avg == 0){
+    price_avg = 16.1208;
+  }
   var price_min = price_avg * 0.8;
   var a0 = price_min % 1;
-  var i, a1, a2, a3, a4;
+  var i, a1, a2, a3, a4=&#39;&#39;;
   document.getElementById(&#39;baram_price_min_1&#39;).innerHTML = &#39;1개, &#39; + price_min;
     for (i = 2; i &lt; 1000; i++) {
         a1 = price_min * i;
         a2 = a1 % 1;
-        if (a2 &gt;= a0) {
+        if (a2 &gt; a0) {
             a3 = Math.ceil(a1) / i;
             a4 += i + &#39;개, 총: &#39; + a1 + &#39;, 평균: &#39; + a3 + &#39;&lt;br&gt;&#39;;
             a0 = a2;

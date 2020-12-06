@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Tmux">
+  <meta name="description" content="정보보호 컨설턴트">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/tmux/">
+  <link rel="alternate" hreflang="en-us" href="/tags/frida/">
 
   
 
@@ -109,12 +109,15 @@
   
 
   
+  <link rel="alternate" href="/tags/frida/index.xml" type="application/rss+xml" title="j3rrry">
+  <link rel="feed" href="/tags/frida/index.xml" type="application/rss+xml" title="j3rrry">
+  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/tmux/">
+  <link rel="canonical" href="/tags/frida/">
 
   
   
@@ -129,14 +132,12 @@
   <meta property="twitter:creator" content="@leunja">
   
   <meta property="og:site_name" content="j3rrry">
-  <meta property="og:url" content="/post/tmux/">
-  <meta property="og:title" content="Tmux | j3rrry">
-  <meta property="og:description" content="Tmux"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/tags/frida/">
+  <meta property="og:title" content="frida | j3rrry">
+  <meta property="og:description" content="정보보호 컨설턴트"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-27T07:17:12&#43;09:00">
-  
-  <meta property="article:modified_time" content="2019-06-27T07:17:12&#43;09:00">
+  <meta property="og:updated_time" content="2020-12-03T04:12:48&#43;09:00">
   
 
   
@@ -148,7 +149,7 @@
 
 
 
-  <title>Tmux | j3rrry</title>
+  <title>frida | j3rrry</title>
 
 </head>
 
@@ -394,8 +395,6 @@
 </nav>
 
 
-  <article class="article" itemscope itemtype="http://schema.org/Article">
-
   
 
 
@@ -413,371 +412,37 @@
 
   
   
-  
-<div class="article-container pt-3">
-  <h1 itemprop="name">Tmux</h1>
-
-  
-  <p class="page-subtitle">Tmux</p>
-  
-
   
     
-
-
-
-<meta content="2019-06-27 07:17:12 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-06-27 07:17:12 &#43;0900 KST" itemprop="dateModified">
-
-<div class="article-metadata">
+  
+<div class="universal-wrapper pt-3">
+  <h1 itemprop="name">frida</h1>
 
   
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    <time>2019-06-27</time>
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/tmux/#disqus_thread"></a>
-  
-
-  
-  
-
-  
-    
-<div class="share-box" aria-hidden="true">
-  <ul class="share">
-    <li>
-      <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Tmux&amp;url=%2fpost%2ftmux%2f"
-         target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2ftmux%2f"
-         target="_blank" rel="noopener">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-    </li>
-    <li>
-      <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2ftmux%2f&amp;title=Tmux"
-         target="_blank" rel="noopener">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </li>
-    <li>
-      <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2ftmux%2f&amp;title=Tmux"
-         target="_blank" rel="noopener">
-        <i class="fab fa-weibo"></i>
-      </a>
-    </li>
-    <li>
-      <a class="email"
-         href="mailto:?subject=Tmux&amp;body=%2fpost%2ftmux%2f">
-        <i class="fas fa-envelope"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-  
-
-</div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 </div>
 
 
 
-  <div class="article-container">
+<div class="universal-wrapper">
+  
 
-    <div class="article-style" itemprop="articleBody">
+  
+  
+  <div>
+    <h2><a href="/post/frida/">iOS hooking</a></h2>
+    <div class="article-style">
       
-
-<h1 id="index">Index</h1>
-
-<ol>
-<li><a href="#prefix-key-index">Prefix key</a><br /></li>
-<li><a href="#sessions-windows-panes-index">Sessions, Windows, Panes</a></li>
-<li><a href="#reorder-tmux-windows-index">Reorder tmux windows?</a> <code>C-b + .</code><br /></li>
-<li><a href="#copy-mode-index">Copy mode</a></li>
-<li><a href="#my-config-file-index">My config file</a><br />
-&nbsp;<br />
-&nbsp;<br /></li>
-</ol>
-
-<h1 id="prefix-key-index"><a href="#index">Prefix key</a></h1>
-
-<p>프리픽스 키란, tmux 단축키를 사용하기위해 먼저 선행되어야하는 키이다.<br />
-인공지능 스피커를 부를 때 선행되는 호출 명령어와 똑같다.<br />
-기본 프리픽스 키는 C-b(Ctrl+b) 이다.<br />
-만약 프리픽스 키를 <a href="https://www.gnu.org/software/screen/manual/screen.html" target="_blank">screen</a>과 같이 C-a(Ctrl+a) 로 바꾸고 싶다면</p>
-
-<pre><code># ~/.tmux.conf
-set -g prefix C-a
-unbind C-b
-bind-key C-a send-prefix
-</code></pre>
-
-<p>&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="sessions-windows-panes-index"><a href="#index">Sessions, Windows, Panes</a></h1>
-
-<p>쉘에 <code>tmux</code> 명령어를 치면 생성되는 것이 바로 세션이다.<br />
-세션이 생성될 때 1개의 윈도우도 같이 생성된다.<br />
-세션 안에서 여러개의 윈도우를 생성할 수 있으며<br />
-각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="reorder-tmux-windows-index"><a href="#index">Reorder tmux windows?</a></h1>
-
-<p>보통 session 안에서 창을 여러개 띄워 놓고 하게 되는데, <code>창</code>의 순서를 바꾸고 싶을 때<br />
-창의 이름을 바꿈으로써 순서를 바꿀 수 있다.</p>
-
-<pre><code>C-b + .
-(move-window) [이름 바꾸기]
-</code></pre>
-
-<p><a href="https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091" target="_blank">https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091</a>
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="copy-mode-index"><a href="#index">Copy mode</a></h1>
-
-<p><code>C-b</code> + <code>[</code> : copy 모드 진입<br />
-<code>&lt;Space Bar&gt;</code> : copy 시작<br />
-<code>&lt;Enter&gt;</code> : copy 끝<br />
-<code>C-b</code> + <code>]</code> : paste 붙여넣기
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="my-config-file-index"><a href="#index">My config file</a></h1>
-
-<pre><code class="language-py"># ~/.tmux.conf by j3rrry
-
-# command key
-set -g prefix C-a
-unbind-key C-b
-bind-key C-a send-prefix
-
-# 0 is too far from ` ;)
-set -g base-index 1
-
-bind-key \ split-window -h
-bind-key - split-window -v
-
-# Use Alt-vim keys without prefix key to switch panes
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R
-
-set-window-option -g mode-keys vi
-
-# No delay for escape key press
-set -sg escape-time 0
-
-# THEME
-set -g status-bg black
-set -g status-fg white
-set -g window-status-current-attr bold
-</code></pre>
-
-    </div>
-
-    
-
-<div class="article-tags">
-  
-  <a class="badge badge-light" href="/tags/tmux/">tmux</a>
-  
-</div>
-
-
-
-    
+      using Frida
       
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-  
-  
-    
-  
-  
-  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
-    
-      
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu411e86c0f781efe1eb89419db5a5ee89_120575_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
-    
-
-    <div class="media-body">
-      <h5 class="card-title" itemprop="name"><a href="/">j3rrry</a></h5>
-      <h6 class="card-subtitle">정보보호 컨설턴트</h6>
-      <p class="card-text" itemprop="description">4년제 졸업했으며 취업연계 교육을 받았으며 CTF 참가하는 것을 좋아합니다.</p>
-      <ul class="network-icon" aria-hidden="true">
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="/#contact" >
-              <i class="fas fa-envelope"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/leunja" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://fb.com/n3cin1" target="_blank" rel="noopener">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://github.com/j3rrry" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-        
-      </ul>
     </div>
   </div>
+  
 
+  
 
-
-      
-      
-    
-
-    
-
-    
-<section id="comments">
-  <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "j3rrry" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</section>
-
-
-
-  </div>
-</article>
+</div>
 
       
 

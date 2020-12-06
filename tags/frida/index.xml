@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>frida on j3rrry</title>
+    <link>/tags/frida/</link>
+    <description>Recent content in frida on j3rrry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year} j3rrry</copyright>
+    <lastBuildDate>Thu, 03 Dec 2020 04:12:48 +0900</lastBuildDate>
+    
+	    <atom:link href="/tags/frida/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iOS hooking</title>
+      <link>/post/frida/</link>
+      <pubDate>Thu, 03 Dec 2020 04:12:48 +0900</pubDate>
+      
+      <guid>/post/frida/</guid>
+      <description>&lt;p&gt;IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.&lt;br /&gt;
+frida로 앱 base주소를 얻고 offset을 더해준 주소에 후킹을 걸면 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var module_base = Module.findBaseAddress(&#39;testapp&#39;);    // get base addr
+var custom3_5fdfd4 = module_base.add(0x5fdfd4);         // add function offset
+
+Interceptor.attach(custom3_5fdfd4, {
+    onEnter: function (args) {
+        send(&amp;quot;[*] custom3()  called&amp;quot;);                  // before call
+    },
+    onLeave: function (retval) {
+        //send(&amp;quot;[] custom3 ret: &amp;quot; + retval.toString()); // after call
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

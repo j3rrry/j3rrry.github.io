@@ -109,6 +109,30 @@
     </item>
     
     <item>
+      <title>iOS hooking</title>
+      <link>/post/frida/</link>
+      <pubDate>Thu, 03 Dec 2020 04:12:48 +0900</pubDate>
+      
+      <guid>/post/frida/</guid>
+      <description>&lt;p&gt;IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.&lt;br /&gt;
+frida로 앱 base주소를 얻고 offset을 더해준 주소에 후킹을 걸면 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var module_base = Module.findBaseAddress(&#39;testapp&#39;);    // get base addr
+var custom3_5fdfd4 = module_base.add(0x5fdfd4);         // add function offset
+
+Interceptor.attach(custom3_5fdfd4, {
+    onEnter: function (args) {
+        send(&amp;quot;[*] custom3()  called&amp;quot;);                  // before call
+    },
+    onLeave: function (retval) {
+        //send(&amp;quot;[] custom3 ret: &amp;quot; + retval.toString()); // after call
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>TUCTF 2019 Pwnable 3step</title>
       <link>/post/3step/</link>
       <pubDate>Tue, 03 Dec 2019 03:33:19 +0900</pubDate>
@@ -493,7 +517,10 @@ highlight = false&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;#prefix-key-index&#34;&gt;Prefix key&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#sessions-windows-panes-index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#reorder-tmux-windows-index&#34;&gt;Reorder tmux windows?&lt;/a&gt; &lt;code&gt;C-b + .&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#my-config-file-index&#34;&gt;My config file&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#copy-mode-index&#34;&gt;Copy mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#my-config-file-index&#34;&gt;My config file&lt;/a&gt;&lt;br /&gt;
+&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1 id=&#34;prefix-key-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Prefix key&lt;/a&gt;&lt;/h1&gt;
@@ -509,12 +536,17 @@ unbind C-b
 bind-key C-a send-prefix
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
+
 &lt;h1 id=&#34;sessions-windows-panes-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;쉘에 &lt;code&gt;tmux&lt;/code&gt; 명령어를 치면 생성되는 것이 바로 세션이다.&lt;br /&gt;
 세션이 생성될 때 1개의 윈도우도 같이 생성된다.&lt;br /&gt;
 세션 안에서 여러개의 윈도우를 생성할 수 있으며&lt;br /&gt;
-각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.&lt;/p&gt;
+각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.
+&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
 
 &lt;h1 id=&#34;reorder-tmux-windows-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Reorder tmux windows?&lt;/a&gt;&lt;/h1&gt;
 
@@ -525,7 +557,18 @@ bind-key C-a send-prefix
 (move-window) [이름 바꾸기]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&#34; target=&#34;_blank&#34;&gt;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&#34; target=&#34;_blank&#34;&gt;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&lt;/a&gt;
+&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&#34;copy-mode-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Copy mode&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;C-b&lt;/code&gt; + &lt;code&gt;[&lt;/code&gt; : copy 모드 진입&lt;br /&gt;
+&lt;code&gt;&amp;lt;Space Bar&amp;gt;&lt;/code&gt; : copy 시작&lt;br /&gt;
+&lt;code&gt;&amp;lt;Enter&amp;gt;&lt;/code&gt; : copy 끝&lt;br /&gt;
+&lt;code&gt;C-b&lt;/code&gt; + &lt;code&gt;]&lt;/code&gt; : paste 붙여넣기
+&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
 
 &lt;h1 id=&#34;my-config-file-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;My config file&lt;/a&gt;&lt;/h1&gt;
 
@@ -3205,7 +3248,21 @@ flag{R2versing_1s_b4sed_0n_H4cking_:)}
       <pubDate>Tue, 12 Mar 2019 02:22:38 +0900</pubDate>
       
       <guid>/post/git-commands/</guid>
-      <description>&lt;p&gt;submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
+      <description>&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git status
+git add .
+git commit -m &#39;commit log 1&#39;
+git push origin master
+hugo
+cd ./public/
+git status
+git add .
+git commit -m &#39;commit log 1&#39;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;br /&gt;
+submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
 &lt;/code&gt;&lt;/pre&gt;
@@ -3220,10 +3277,10 @@ flag{R2versing_1s_b4sed_0n_H4cking_:)}
       <guid>/cq/</guid>
       <description>
 
-&lt;h1 id=&#34;바람의나라-연-거래소-최저가-계산기&#34;&gt;바람의나라 연 / 거래소 최저가 계산기&lt;/h1&gt;
+&lt;h1 id=&#34;바람의나라-연-거래소-최저가-계산기&#34;&gt;바람의나라: 연 / 거래소 최저가 계산기&lt;/h1&gt;
 
-&lt;p&gt;&lt;input type=&#34;number&#34; id=&#34;baram_price_avg&#34; style=&#34;width:5em&#34; placeholder=&#34;16.1208&#34;&gt;
-  &lt;input type=&#34;button&#34; value=&#34;Calc&#34; id=&#34;baram_button&#34;&gt;
+&lt;p&gt;평균 거래 단가: &lt;input type=&#34;number&#34; id=&#34;baram_price_avg&#34; style=&#34;width:5em&#34; onkeyup=&#34;baram_func();&#34; placeholder=&#34;16.1208&#34;&gt;
+  &lt;!--input type=&#34;button&#34; value=&#34;Calc&#34; id=&#34;baram_button&#34; onclick=&#34;baram_func();&#34;--&gt;
 &lt;p id=&#34;baram_price_min_1&#34;&gt;&lt;/p&gt;
 &lt;p id=&#34;baram_price_min_i&#34;&gt;&lt;/p&gt;&lt;/p&gt;
 
@@ -3250,16 +3307,20 @@ flag{R2versing_1s_b4sed_0n_H4cking_:)}
 &lt;p id=&#34;exp&#34;&gt;&lt;/p&gt;
 
 &lt;script&gt;
-document.getElementById(&#39;baram_button&#39;).onclick = function(){
+//document.getElementById(&#39;baram_button&#39;).onclick = function(){
+var baram_func = function(){
   var price_avg = document.getElementById(&#39;baram_price_avg&#39;)      .value;
+  if (price_avg == 0){
+    price_avg = 16.1208;
+  }
   var price_min = price_avg * 0.8;
   var a0 = price_min % 1;
-  var i, a1, a2, a3, a4;
+  var i, a1, a2, a3, a4=&#39;&#39;;
   document.getElementById(&#39;baram_price_min_1&#39;).innerHTML = &#39;1개, &#39; + price_min;
     for (i = 2; i &lt; 1000; i++) {
         a1 = price_min * i;
         a2 = a1 % 1;
-        if (a2 &gt;= a0) {
+        if (a2 &gt; a0) {
             a3 = Math.ceil(a1) / i;
             a4 += i + &#39;개, 총: &#39; + a1 + &#39;, 평균: &#39; + a3 + &#39;&lt;br&gt;&#39;;
             a0 = a2;

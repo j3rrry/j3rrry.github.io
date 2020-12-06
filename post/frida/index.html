@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Tmux">
+  <meta name="description" content="using Frida">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/tmux/">
+  <link rel="alternate" hreflang="en-us" href="/post/frida/">
 
   
 
@@ -114,7 +114,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/tmux/">
+  <link rel="canonical" href="/post/frida/">
 
   
   
@@ -129,26 +129,26 @@
   <meta property="twitter:creator" content="@leunja">
   
   <meta property="og:site_name" content="j3rrry">
-  <meta property="og:url" content="/post/tmux/">
-  <meta property="og:title" content="Tmux | j3rrry">
-  <meta property="og:description" content="Tmux"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/post/frida/">
+  <meta property="og:title" content="iOS hooking | j3rrry">
+  <meta property="og:description" content="using Frida"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-27T07:17:12&#43;09:00">
+  <meta property="article:published_time" content="2020-12-03T04:12:48&#43;09:00">
   
-  <meta property="article:modified_time" content="2019-06-27T07:17:12&#43;09:00">
+  <meta property="article:modified_time" content="2020-12-03T04:12:48&#43;09:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>Tmux | j3rrry</title>
+
+
+  <title>iOS hooking | j3rrry</title>
 
 </head>
 
@@ -415,10 +415,10 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Tmux</h1>
+  <h1 itemprop="name">iOS hooking</h1>
 
   
-  <p class="page-subtitle">Tmux</p>
+  <p class="page-subtitle">using Frida</p>
   
 
   
@@ -426,8 +426,8 @@
 
 
 
-<meta content="2019-06-27 07:17:12 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-06-27 07:17:12 &#43;0900 KST" itemprop="dateModified">
+<meta content="2020-12-03 04:12:48 &#43;0900 KST" itemprop="datePublished">
+<meta content="2020-12-03 04:12:48 &#43;0900 KST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -440,7 +440,7 @@
     
       
     
-    <time>2019-06-27</time>
+    <time>2020-12-03</time>
   </span>
   
 
@@ -456,10 +456,15 @@
   
   
   <span class="middot-divider"></span>
-  <a href="/post/tmux/#disqus_thread"></a>
+  <a href="/post/frida/#disqus_thread"></a>
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/frida/">frida</a></span>
   
 
   
@@ -468,35 +473,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Tmux&amp;url=%2fpost%2ftmux%2f"
+         href="https://twitter.com/intent/tweet?text=iOS%20hooking&amp;url=%2fpost%2ffrida%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2ftmux%2f"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2ffrida%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-facebook-f"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2ftmux%2f&amp;title=Tmux"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2ffrida%2f&amp;title=iOS%20hooking"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2ftmux%2f&amp;title=Tmux"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2ffrida%2f&amp;title=iOS%20hooking"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Tmux&amp;body=%2fpost%2ftmux%2f">
+         href="mailto:?subject=iOS%20hooking&amp;body=%2fpost%2ffrida%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -531,97 +536,20 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
+      <p>IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.<br />
+frida로 앱 base주소를 얻고 offset을 더해준 주소에 후킹을 걸면 된다.</p>
 
-<h1 id="index">Index</h1>
+<pre><code class="language-js">var module_base = Module.findBaseAddress('testapp');    // get base addr
+var custom3_5fdfd4 = module_base.add(0x5fdfd4);         // add function offset
 
-<ol>
-<li><a href="#prefix-key-index">Prefix key</a><br /></li>
-<li><a href="#sessions-windows-panes-index">Sessions, Windows, Panes</a></li>
-<li><a href="#reorder-tmux-windows-index">Reorder tmux windows?</a> <code>C-b + .</code><br /></li>
-<li><a href="#copy-mode-index">Copy mode</a></li>
-<li><a href="#my-config-file-index">My config file</a><br />
-&nbsp;<br />
-&nbsp;<br /></li>
-</ol>
-
-<h1 id="prefix-key-index"><a href="#index">Prefix key</a></h1>
-
-<p>프리픽스 키란, tmux 단축키를 사용하기위해 먼저 선행되어야하는 키이다.<br />
-인공지능 스피커를 부를 때 선행되는 호출 명령어와 똑같다.<br />
-기본 프리픽스 키는 C-b(Ctrl+b) 이다.<br />
-만약 프리픽스 키를 <a href="https://www.gnu.org/software/screen/manual/screen.html" target="_blank">screen</a>과 같이 C-a(Ctrl+a) 로 바꾸고 싶다면</p>
-
-<pre><code># ~/.tmux.conf
-set -g prefix C-a
-unbind C-b
-bind-key C-a send-prefix
-</code></pre>
-
-<p>&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="sessions-windows-panes-index"><a href="#index">Sessions, Windows, Panes</a></h1>
-
-<p>쉘에 <code>tmux</code> 명령어를 치면 생성되는 것이 바로 세션이다.<br />
-세션이 생성될 때 1개의 윈도우도 같이 생성된다.<br />
-세션 안에서 여러개의 윈도우를 생성할 수 있으며<br />
-각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="reorder-tmux-windows-index"><a href="#index">Reorder tmux windows?</a></h1>
-
-<p>보통 session 안에서 창을 여러개 띄워 놓고 하게 되는데, <code>창</code>의 순서를 바꾸고 싶을 때<br />
-창의 이름을 바꿈으로써 순서를 바꿀 수 있다.</p>
-
-<pre><code>C-b + .
-(move-window) [이름 바꾸기]
-</code></pre>
-
-<p><a href="https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091" target="_blank">https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091</a>
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="copy-mode-index"><a href="#index">Copy mode</a></h1>
-
-<p><code>C-b</code> + <code>[</code> : copy 모드 진입<br />
-<code>&lt;Space Bar&gt;</code> : copy 시작<br />
-<code>&lt;Enter&gt;</code> : copy 끝<br />
-<code>C-b</code> + <code>]</code> : paste 붙여넣기
-&nbsp;<br />
-&nbsp;</p>
-
-<h1 id="my-config-file-index"><a href="#index">My config file</a></h1>
-
-<pre><code class="language-py"># ~/.tmux.conf by j3rrry
-
-# command key
-set -g prefix C-a
-unbind-key C-b
-bind-key C-a send-prefix
-
-# 0 is too far from ` ;)
-set -g base-index 1
-
-bind-key \ split-window -h
-bind-key - split-window -v
-
-# Use Alt-vim keys without prefix key to switch panes
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R
-
-set-window-option -g mode-keys vi
-
-# No delay for escape key press
-set -sg escape-time 0
-
-# THEME
-set -g status-bg black
-set -g status-fg white
-set -g window-status-current-attr bold
+Interceptor.attach(custom3_5fdfd4, {
+    onEnter: function (args) {
+        send(&quot;[*] custom3()  called&quot;);                  // before call
+    },
+    onLeave: function (retval) {
+        //send(&quot;[] custom3 ret: &quot; + retval.toString()); // after call
+    }
+});
 </code></pre>
 
     </div>
@@ -630,7 +558,7 @@ set -g window-status-current-attr bold
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tags/tmux/">tmux</a>
+  <a class="badge badge-light" href="/tags/frida/">frida</a>
   
 </div>
 

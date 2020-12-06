@@ -461,6 +461,11 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/git/">Git</a></span>
+  
 
   
     
@@ -531,7 +536,21 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>submodule을 포함한 Repo를 clone할 때 명령어 옵션 <code>--recurse-submodules</code></p>
+      <pre><code class="language-git">git status
+git add .
+git commit -m 'commit log 1'
+git push origin master
+hugo
+cd ./public/
+git status
+git add .
+git commit -m 'commit log 1'
+git push origin master
+</code></pre>
+
+<p>&nbsp;<br />
+&nbsp;<br />
+submodule을 포함한 Repo를 clone할 때 명령어 옵션 <code>--recurse-submodules</code></p>
 
 <pre><code class="language-git">git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
 </code></pre>

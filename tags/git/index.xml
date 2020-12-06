@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on j3rrry</title>
+    <title>Git on j3rrry</title>
     <link>/tags/git/</link>
-    <description>Recent content in git on j3rrry</description>
+    <description>Recent content in Git on j3rrry</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year} j3rrry</copyright>
@@ -1435,7 +1435,21 @@ hsctf{twoslapsnonetforce}
       <pubDate>Tue, 12 Mar 2019 02:22:38 +0900</pubDate>
       
       <guid>/post/git-commands/</guid>
-      <description>&lt;p&gt;submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
+      <description>&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git status
+git add .
+git commit -m &#39;commit log 1&#39;
+git push origin master
+hugo
+cd ./public/
+git status
+git add .
+git commit -m &#39;commit log 1&#39;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;br /&gt;
+&amp;nbsp;&lt;br /&gt;
+submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
 &lt;/code&gt;&lt;/pre&gt;
