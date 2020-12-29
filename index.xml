@@ -3314,16 +3314,16 @@ var baram_func = function(){
     price_avg = 16.1208;
   }
   var price_min = price_avg * 0.8;
-  var a0 = price_min % 1;
+  var a0 = Math.ceil(price_min);
   var i, a1, a2, a3, a4=&#39;&#39;;
   document.getElementById(&#39;baram_price_min_1&#39;).innerHTML = &#39;1개, &#39; + price_min;
     for (i = 2; i &lt; 1000; i++) {
         a1 = price_min * i;
-        a2 = a1 % 1;
-        if (a2 &gt; a0) {
-            a3 = Math.ceil(a1) / i;
-            a4 += i + &#39;개, 총: &#39; + a1 + &#39;, 평균: &#39; + a3 + &#39;&lt;br&gt;&#39;;
-            a0 = a2;
+        a2 = Math.ceil(a1) / i;
+        a3 = Math.round(a2 * 10000) / 10000;
+        if (a3 &lt; a0) {
+            a4 += i + &#39;개, 총: &#39; + a1 + &#39;, 평균: &#39; + a2 + &#39;&lt;br&gt;&#39;;
+            a0 = a3;
         }
     }
     document.getElementById(&#39;baram_price_min_i&#39;).innerHTML = a4;
