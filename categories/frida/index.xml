@@ -18,22 +18,20 @@
       <pubDate>Thu, 03 Dec 2020 04:12:48 +0900</pubDate>
       
       <guid>/post/frida/</guid>
-      <description>&lt;p&gt;IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.&lt;br /&gt;
+      <description>&lt;p&gt;IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.&lt;br&gt;
 frida로 앱 base주소를 얻고 offset을 더해준 주소에 후킹을 걸면 된다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var module_base = Module.findBaseAddress(&#39;testapp&#39;);    // get base addr
-var custom3_5fdfd4 = module_base.add(0x5fdfd4);         // add function offset
-
-Interceptor.attach(custom3_5fdfd4, {
-    onEnter: function (args) {
-        send(&amp;quot;[*] custom3()  called&amp;quot;);                  // before call
-    },
-    onLeave: function (retval) {
-        //send(&amp;quot;[] custom3 ret: &amp;quot; + retval.toString()); // after call
-    }
-});
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;module_base&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Module&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;findBaseAddress&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;testapp&amp;#39;&lt;/span&gt;);    &lt;span style=&#34;color:#75715e&#34;&gt;// get base addr
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;custom3_5fdfd4&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;module_base&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0x5fdfd4&lt;/span&gt;);         &lt;span style=&#34;color:#75715e&#34;&gt;// add function offset
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Interceptor&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;attach&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;custom3_5fdfd4&lt;/span&gt;, {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;onEnter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;args&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;send&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[*] custom3()  called&amp;#34;&lt;/span&gt;);                  &lt;span style=&#34;color:#75715e&#34;&gt;// before call
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;onLeave&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;retval&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;//send(&amp;#34;[] custom3 ret: &amp;#34; + retval.toString()); // after call
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

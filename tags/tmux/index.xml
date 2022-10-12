@@ -18,99 +18,79 @@
       <pubDate>Thu, 27 Jun 2019 07:17:12 +0900</pubDate>
       
       <guid>/post/tmux/</guid>
-      <description>
-
-&lt;h1 id=&#34;index&#34;&gt;Index&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;index&#34;&gt;Index&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#prefix-key-index&#34;&gt;Prefix key&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prefix-key-index&#34;&gt;Prefix key&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#sessions-windows-panes-index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#reorder-tmux-windows-index&#34;&gt;Reorder tmux windows?&lt;/a&gt; &lt;code&gt;C-b + .&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reorder-tmux-windows-index&#34;&gt;Reorder tmux windows?&lt;/a&gt; &lt;code&gt;C-b + .&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#copy-mode-index&#34;&gt;Copy mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#my-config-file-index&#34;&gt;My config file&lt;/a&gt;&lt;br /&gt;
-&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#my-config-file-index&#34;&gt;My config file&lt;/a&gt;&lt;br&gt;
+ &lt;br&gt;
+ &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h1 id=&#34;prefix-key-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Prefix key&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;프리픽스 키란, tmux 단축키를 사용하기위해 먼저 선행되어야하는 키이다.&lt;br /&gt;
-인공지능 스피커를 부를 때 선행되는 호출 명령어와 똑같다.&lt;br /&gt;
-기본 프리픽스 키는 C-b(Ctrl+b) 이다.&lt;br /&gt;
-만약 프리픽스 키를 &lt;a href=&#34;https://www.gnu.org/software/screen/manual/screen.html&#34; target=&#34;_blank&#34;&gt;screen&lt;/a&gt;과 같이 C-a(Ctrl+a) 로 바꾸고 싶다면&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# ~/.tmux.conf
+&lt;h1 id=&#34;prefix-keyindex&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Prefix key&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;프리픽스 키란, tmux 단축키를 사용하기위해 먼저 선행되어야하는 키이다.&lt;br&gt;
+인공지능 스피커를 부를 때 선행되는 호출 명령어와 똑같다.&lt;br&gt;
+기본 프리픽스 키는 C-b(Ctrl+b) 이다.&lt;br&gt;
+만약 프리픽스 키를 &lt;a href=&#34;https://www.gnu.org/software/screen/manual/screen.html&#34;&gt;screen&lt;/a&gt;과 같이 C-a(Ctrl+a) 로 바꾸고 싶다면&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# ~/.tmux.conf
 set -g prefix C-a
 unbind C-b
 bind-key C-a send-prefix
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
-
-&lt;h1 id=&#34;sessions-windows-panes-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;쉘에 &lt;code&gt;tmux&lt;/code&gt; 명령어를 치면 생성되는 것이 바로 세션이다.&lt;br /&gt;
-세션이 생성될 때 1개의 윈도우도 같이 생성된다.&lt;br /&gt;
-세션 안에서 여러개의 윈도우를 생성할 수 있으며&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; &lt;br&gt;
+ &lt;/p&gt;
+&lt;h1 id=&#34;sessions-windows-panesindex&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Sessions, Windows, Panes&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;쉘에 &lt;code&gt;tmux&lt;/code&gt; 명령어를 치면 생성되는 것이 바로 세션이다.&lt;br&gt;
+세션이 생성될 때 1개의 윈도우도 같이 생성된다.&lt;br&gt;
+세션 안에서 여러개의 윈도우를 생성할 수 있으며&lt;br&gt;
 각각의 윈도우마다 경계선으로 구분되는 여러개의 팬(pane)을 만들 수 있다.
-&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
-
-&lt;h1 id=&#34;reorder-tmux-windows-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Reorder tmux windows?&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;보통 session 안에서 창을 여러개 띄워 놓고 하게 되는데, &lt;code&gt;창&lt;/code&gt;의 순서를 바꾸고 싶을 때&lt;br /&gt;
+ &lt;br&gt;
+ &lt;/p&gt;
+&lt;h1 id=&#34;reorder-tmux-windowsindex&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Reorder tmux windows?&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;보통 session 안에서 창을 여러개 띄워 놓고 하게 되는데, &lt;code&gt;창&lt;/code&gt;의 순서를 바꾸고 싶을 때&lt;br&gt;
 창의 이름을 바꿈으로써 순서를 바꿀 수 있다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;C-b + .
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C-b + .
 (move-window) [이름 바꾸기]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&#34; target=&#34;_blank&#34;&gt;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&lt;/a&gt;
-&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
-
-&lt;h1 id=&#34;copy-mode-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Copy mode&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;C-b&lt;/code&gt; + &lt;code&gt;[&lt;/code&gt; : copy 모드 진입&lt;br /&gt;
-&lt;code&gt;&amp;lt;Space Bar&amp;gt;&lt;/code&gt; : copy 시작&lt;br /&gt;
-&lt;code&gt;&amp;lt;Enter&amp;gt;&lt;/code&gt; : copy 끝&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&#34;&gt;https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows#comment-920091&lt;/a&gt;
+ &lt;br&gt;
+ &lt;/p&gt;
+&lt;h1 id=&#34;copy-modeindex&#34;&gt;&lt;a href=&#34;#index&#34;&gt;Copy mode&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;C-b&lt;/code&gt; + &lt;code&gt;[&lt;/code&gt; : copy 모드 진입&lt;br&gt;
+&lt;code&gt;&amp;lt;Space Bar&amp;gt;&lt;/code&gt; : copy 시작&lt;br&gt;
+&lt;code&gt;&amp;lt;Enter&amp;gt;&lt;/code&gt; : copy 끝&lt;br&gt;
 &lt;code&gt;C-b&lt;/code&gt; + &lt;code&gt;]&lt;/code&gt; : paste 붙여넣기
-&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
-
-&lt;h1 id=&#34;my-config-file-index&#34;&gt;&lt;a href=&#34;#index&#34;&gt;My config file&lt;/a&gt;&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;# ~/.tmux.conf by j3rrry
-
-# command key
-set -g prefix C-a
-unbind-key C-b
-bind-key C-a send-prefix
-
-# 0 is too far from ` ;)
-set -g base-index 1
-
-bind-key \ split-window -h
-bind-key - split-window -v
-
-# Use Alt-vim keys without prefix key to switch panes
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R
-
-set-window-option -g mode-keys vi
-
-# No delay for escape key press
-set -sg escape-time 0
-
-# THEME
-set -g status-bg black
-set -g status-fg white
-set -g window-status-current-attr bold
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+ &lt;br&gt;
+ &lt;/p&gt;
+&lt;h1 id=&#34;my-config-fileindex&#34;&gt;&lt;a href=&#34;#index&#34;&gt;My config file&lt;/a&gt;&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ~/.tmux.conf by j3rrry&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# command key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g prefix C&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;unbind&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;key C&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;key C&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;a send&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;prefix
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 0 is too far from ` ;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g base&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;index &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;key \ split&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;window &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;h
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;key &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; split&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;window &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Use Alt-vim keys without prefix key to switch panes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;n M&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;h select&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;pane &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;L
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;n M&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j select&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;pane &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;D
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;n M&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;k select&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;pane &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;U
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;n M&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;l select&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;pane &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;R
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;option &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g mode&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;keys vi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# No delay for escape key press&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sg escape&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;time &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# THEME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g status&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;bg black
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g status&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;fg white
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;set &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;g window&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;status&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;current&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;attr bold
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

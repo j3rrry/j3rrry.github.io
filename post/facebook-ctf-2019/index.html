@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -424,8 +424,8 @@
 
 
 
-<meta content="2019-06-03 14:55:25 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-06-03 14:55:25 &#43;0900 KST" itemprop="dateModified">
+<meta content="2019-06-03 14:55:25 &#43;0900 &#43;0900" itemprop="datePublished">
+<meta content="2019-06-03 14:55:25 &#43;0900 &#43;0900" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -529,12 +529,8 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<p>Facebook CTF 2019</p>
-
+      <p>Facebook CTF 2019</p>
 <h1 id="easter-egg">EASTER EGG</h1>
-
 
 
 
@@ -544,44 +540,38 @@
 
 
 </figure>
-
-<p><a href="https://www.fbctf.com/careers" target="_blank">https://www.fbctf.com/careers</a> 페이지에 텍스트를 마우스로 드래그해보면 숨어있는 문자가 뿔뿔이 흩어져있다.
+<p><a href="https://www.fbctf.com/careers">https://www.fbctf.com/careers</a> 페이지에 텍스트를 마우스로 드래그해보면 숨어있는 문자가 뿔뿔이 흩어져있다.
 그걸 모아보면 <code>fb{we're_hiring}</code></p>
-
-<pre><code class="language-diff">$ egrep -io '&lt;span style=&quot;color:white&quot;&gt;.&lt;/span&gt;' careers
-&lt;span style=&quot;color:white&quot;&gt;f&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;b&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;{&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;w&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;e&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;'&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;r&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;e&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;_&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;h&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;i&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;r&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;i&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;n&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;g&lt;/span&gt;
-&lt;span style=&quot;color:white&quot;&gt;}&lt;/span&gt;
-$ egrep -io '&lt;span style=&quot;color:white&quot;&gt;.&lt;/span&gt;' careers | sed 's/&lt;[a-z=&quot;: ]*&gt;//' | sed 's/&lt;\/span&gt;//' | tr -d '\n'
-fb{we're_hiring}
-</code></pre>
-
-<p>pwnable<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ egrep -io &#39;&lt;span style=&#34;color:white&#34;&gt;.&lt;/span&gt;&#39; careers
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;f&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;b&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;{&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;w&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;e&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;&#39;&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;r&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;e&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;_&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;h&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;i&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;r&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;i&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;n&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;g&lt;/span&gt;
+</span></span><span style="display:flex;"><span>&lt;span style=&#34;color:white&#34;&gt;}&lt;/span&gt;
+</span></span><span style="display:flex;"><span>$ egrep -io &#39;&lt;span style=&#34;color:white&#34;&gt;.&lt;/span&gt;&#39; careers | sed &#39;s/&lt;[a-z=&#34;: ]*&gt;//&#39; | sed &#39;s/&lt;\/span&gt;//&#39; | tr -d &#39;\n&#39;
+</span></span><span style="display:flex;"><span>fb{we&#39;re_hiring}
+</span></span></code></pre></div><p>pwnable<br>
 babylist : <code>#UAF</code></p>
-
-<p>중국어 Web위주 ProductsManager events hr_admin_module , pdfme, rceservice, secret_note_keeper : <a href="https://github.com/w181496/CTF/tree/master/fbctf2019" target="_blank">https://github.com/w181496/CTF/tree/master/fbctf2019</a><br />
-Regexicide : <a href="https://github.com/utcoalition/Public-CTF-Writeups" target="_blank">https://github.com/utcoalition/Public-CTF-Writeups</a><br />
-pwnable r4nk : <a href="https://ctftime.org/writeup/15478" target="_blank">https://ctftime.org/writeup/15478</a><br />
-pwnable overfloat : <a href="https://made0x78.com/ctfs-fbctf19-overfloat/" target="_blank">https://made0x78.com/ctfs-fbctf19-overfloat/</a><br />
-GoN member babylist(pwn), keybaseish, kpets, otp_server(pwn), raddest_db(pwn), rank(pwn) : <a href="https://github.com/pr0cf5/CTF-writeups/tree/master/2019/fbctf" target="_blank">https://github.com/pr0cf5/CTF-writeups/tree/master/2019/fbctf</a><br />
-homework_assignment_1337, Products manager, : <a href="https://k3ramas.blogspot.com/2019/06/facebook-ctf-2019.html" target="_blank">https://k3ramas.blogspot.com/2019/06/facebook-ctf-2019.html</a><br />
-easer egg : <a href="https://github.com/Hong5489/fbctf2019" target="_blank">https://github.com/Hong5489/fbctf2019</a></p>
-
-<p>[17:35] <toblu> I&rsquo;m interested in how to solve SOMBRERO ROJO (part 1). Maybe part 2 as well. Is there a writeup anywhere?<br />
-[17:36] <fluxchief> toblu: re sombrero 2: there was a off-by-one that needed to be patched + the binary path can&rsquo;t be too long otherwise it will overflow some buffer</p>
+<p>중국어 Web위주 ProductsManager events hr_admin_module , pdfme, rceservice, secret_note_keeper : <a href="https://github.com/w181496/CTF/tree/master/fbctf2019">https://github.com/w181496/CTF/tree/master/fbctf2019</a><br>
+Regexicide : <a href="https://github.com/utcoalition/Public-CTF-Writeups">https://github.com/utcoalition/Public-CTF-Writeups</a><br>
+pwnable r4nk : <a href="https://ctftime.org/writeup/15478">https://ctftime.org/writeup/15478</a><br>
+pwnable overfloat : <a href="https://made0x78.com/ctfs-fbctf19-overfloat/">https://made0x78.com/ctfs-fbctf19-overfloat/</a><br>
+GoN member babylist(pwn), keybaseish, kpets, otp_server(pwn), raddest_db(pwn), rank(pwn) : <a href="https://github.com/pr0cf5/CTF-writeups/tree/master/2019/fbctf">https://github.com/pr0cf5/CTF-writeups/tree/master/2019/fbctf</a><br>
+homework_assignment_1337, Products manager, : <a href="https://k3ramas.blogspot.com/2019/06/facebook-ctf-2019.html">https://k3ramas.blogspot.com/2019/06/facebook-ctf-2019.html</a><br>
+easer egg : <a href="https://github.com/Hong5489/fbctf2019">https://github.com/Hong5489/fbctf2019</a></p>
+<p>[17:35] <!-- raw HTML omitted --> I&rsquo;m interested in how to solve SOMBRERO ROJO (part 1). Maybe part 2 as well. Is there a writeup anywhere?<br>
+[17:36] <!-- raw HTML omitted --> toblu: re sombrero 2: there was a off-by-one that needed to be patched + the binary path can&rsquo;t be too long otherwise it will overflow some buffer</p>
 
     </div>
 
@@ -707,7 +697,7 @@ easer egg : <a href="https://github.com/Hong5489/fbctf2019" target="_blank">http
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -826,7 +816,7 @@ easer egg : <a href="https://github.com/Hong5489/fbctf2019" target="_blank">http
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -841,7 +831,7 @@ easer egg : <a href="https://github.com/Hong5489/fbctf2019" target="_blank">http
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

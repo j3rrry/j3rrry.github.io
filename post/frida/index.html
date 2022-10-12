@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -426,8 +426,8 @@
 
 
 
-<meta content="2020-12-03 04:12:48 &#43;0900 KST" itemprop="datePublished">
-<meta content="2020-12-03 04:12:48 &#43;0900 KST" itemprop="dateModified">
+<meta content="2020-12-03 04:12:48 &#43;0900 &#43;0900" itemprop="datePublished">
+<meta content="2020-12-03 04:12:48 &#43;0900 &#43;0900" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -536,22 +536,20 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.<br />
+      <p>IDA로 후킹할 사용자 함수의 상대 offset을 알아낸다.<br>
 frida로 앱 base주소를 얻고 offset을 더해준 주소에 후킹을 걸면 된다.</p>
-
-<pre><code class="language-js">var module_base = Module.findBaseAddress('testapp');    // get base addr
-var custom3_5fdfd4 = module_base.add(0x5fdfd4);         // add function offset
-
-Interceptor.attach(custom3_5fdfd4, {
-    onEnter: function (args) {
-        send(&quot;[*] custom3()  called&quot;);                  // before call
-    },
-    onLeave: function (retval) {
-        //send(&quot;[] custom3 ret: &quot; + retval.toString()); // after call
-    }
-});
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">module_base</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Module</span>.<span style="color:#a6e22e">findBaseAddress</span>(<span style="color:#e6db74">&#39;testapp&#39;</span>);    <span style="color:#75715e">// get base addr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">custom3_5fdfd4</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">module_base</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">0x5fdfd4</span>);         <span style="color:#75715e">// add function offset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Interceptor</span>.<span style="color:#a6e22e">attach</span>(<span style="color:#a6e22e">custom3_5fdfd4</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onEnter</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;[*] custom3()  called&#34;</span>);                  <span style="color:#75715e">// before call
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onLeave</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">retval</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//send(&#34;[] custom3 ret: &#34; + retval.toString()); // after call
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
     </div>
 
     
@@ -682,7 +680,7 @@ Interceptor.attach(custom3_5fdfd4, {
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -801,7 +799,7 @@ Interceptor.attach(custom3_5fdfd4, {
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -816,7 +814,7 @@ Interceptor.attach(custom3_5fdfd4, {
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

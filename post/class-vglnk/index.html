@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -530,34 +530,29 @@
 
     <div class="article-style" itemprop="articleBody">
       <p>Github Page Theme에는 여러 Plugin들이 적용되어 있다. Posting을 하다보니 원치않는 link를 만들고 있는 것을 확인했다. HTML tag로 a tag가 사용되었으며 자동으로 color는 어두운 색으로 지정된다. 특히 폰트 색이 어두워지기 때문에 곤란해지는 상황이 일어났다. 왜냐하면 내가 사용하는 Code Block의 경우 배경색을 Dark(monokai)로 지정해서 쓰고 있기 때문에 어두운 색인 폰트가 안보이게 된 것이었다.</p>
-
 <p>해결 방법은 두가지로 정리해볼 수 있을 것 같다.</p>
-
 <ol>
 <li>class 속성 <code>nolinks</code> 주기</li>
 <li><strong>(Disqus 사용하는 분) Affiliate links 해제하기</strong></li>
 </ol>
-
-<p>첫 번째 방법은 HTML tag의 class 속성으로 <code>nolinks</code>를 주기만 하면 된다.<sup class="footnote-ref" id="fnref:twpower-s-blog"><a href="#fn:twpower-s-blog">1</a></sup></p>
-
-<pre><code class="language-html">  &lt;body class=&quot;single-body nolinks&quot;&gt;
-</code></pre>
-
-<p>두 번째 방법은 Disqus 사용하시는 분들만 해당할 것 같다.
-구글링을 하다가 @ediano의 댓글<sup class="footnote-ref" id="fnref:Disqus"><a href="#fn:Disqus">2</a></sup>을 읽고나서 Disqus의 문제란 것을 알게 되었다.
-<a href="https://help.disqus.com/ads/how-to-disable-affiliate-linking" target="_blank"><img src="https://user-images.githubusercontent.com/19237789/53184282-1df65300-3640-11e9-9889-f5f36499bc5e.png" alt="" /></a>
+<p>첫 번째 방법은 HTML tag의 class 속성으로 <code>nolinks</code>를 주기만 하면 된다.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;single-body nolinks&#34;</span>&gt;
+</span></span></code></pre></div><p>두 번째 방법은 Disqus 사용하시는 분들만 해당할 것 같다.
+구글링을 하다가 @ediano의 댓글<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>을 읽고나서 Disqus의 문제란 것을 알게 되었다.
+<!-- raw HTML omitted -->![][affiliateLinksImage]<!-- raw HTML omitted -->
 곧바로 Disqus의 autolink에 대해 검색해보니 Affiliate link라는 것이 있다는 것을 알았다</p>
-
-<p>Admin &gt; Settings &gt; <a href="https://disqus.com/admin/settings/advanced/" target="_blank">Advanced</a>로 가서 Affiliate Links 를 체크 해제하면 된다.</p>
-<div class="footnotes">
-
-<hr />
-
+<p>Admin &gt; Settings &gt; [Advanced][Advanced]로 가서 Affiliate Links 를 체크 해제하면 된다.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:twpower-s-blog"><a href="https://twpower.github.io/85-remove-vglnk-in-html-class-attribute" target="_blank">https://twpower.github.io/85-remove-vglnk-in-html-class-attribute</a>
- <a class="footnote-return" href="#fnref:twpower-s-blog"><sup>^</sup></a></li>
-<li id="fn:Disqus"><a href="https://gist.github.com/alexpeattie/4729247#gistcomment-2829295" target="_blank">https://gist.github.com/alexpeattie/4729247#gistcomment-2829295</a>
- <a class="footnote-return" href="#fnref:Disqus"><sup>^</sup></a></li>
+<li id="fn:1">
+<p><a href="https://twpower.github.io/85-remove-vglnk-in-html-class-attribute">https://twpower.github.io/85-remove-vglnk-in-html-class-attribute</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://gist.github.com/alexpeattie/4729247#gistcomment-2829295">https://gist.github.com/alexpeattie/4729247#gistcomment-2829295</a>
+[affiliateLinksImage]: <a href="https://user-images.githubusercontent.com/19237789/53184282-1df65300-3640-11e9-9889-f5f36499bc5e.png">https://user-images.githubusercontent.com/19237789/53184282-1df65300-3640-11e9-9889-f5f36499bc5e.png</a>
+[Advanced]: <a href="https://disqus.com/admin/settings/advanced/">https://disqus.com/admin/settings/advanced/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
 </div>
 
@@ -697,7 +692,7 @@
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -816,7 +811,7 @@
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -831,7 +826,7 @@
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

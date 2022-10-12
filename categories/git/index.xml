@@ -18,25 +18,21 @@
       <pubDate>Tue, 12 Mar 2019 02:22:38 +0900</pubDate>
       
       <guid>/post/git-commands/</guid>
-      <description>&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git status
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-git&#34; data-lang=&#34;git&#34;&gt;git status
 git add .
-git commit -m &#39;commit log 1&#39;
+git commit -m &amp;#39;commit log 1&amp;#39;
 git push origin master
 hugo
 cd ./public/
 git status
 git add .
-git commit -m &#39;commit log 1&#39;
+git commit -m &amp;#39;commit log 1&amp;#39;
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; &lt;br&gt;
+ &lt;br&gt;
 submodule을 포함한 Repo를 clone할 때 명령어 옵션 &lt;code&gt;--recurse-submodules&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-git&#34; data-lang=&#34;git&#34;&gt;git clone --recurse-submodules https://github.com/j3rrry/hugo-site.git
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

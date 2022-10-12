@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -529,46 +529,32 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<p>Github에 Publish하는 방법은 3 가지가 있다.</p>
-
+      <p>Github에 Publish하는 방법은 3 가지가 있다.</p>
 <ol>
 <li>master</li>
 <li>gh-pages</li>
 <li>master의 /docs</li>
 </ol>
-
 <h1 id="master로-publish하기">master로 Publish하기</h1>
-
 <p>제일 간단한 방법이다.
 만약에 Repo 이름을 <code>username.github.io</code>로 지었다면 이미 Publish 됐을 것이다.
 (Github에서 Refresh하는 시간이 조금 걸리긴 한다..)</p>
-
 <p>Repo 이름을 <code>ProjName</code> 으로 했다면 <code>username.github.io/ProjName</code>으로 Publish 된다.</p>
-
 <h1 id="gh-pages로-publish하기">gh-pages로 Publish하기</h1>
-
 <p>따로 branch를 만들어야한다.</p>
-
-<pre><code class="language-bash">git branch -b gh-pages
-</code></pre>
-
-<p>master branch는 더 이상 필요가 없다.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch -b gh-pages
+</span></span></code></pre></div><p>master branch는 더 이상 필요가 없다.</p>
 <h1 id="docs로-publish하기">/docs로 Publish하기</h1>
-
-<p>Jekyll은 Github Page에서 자체적으로 빌드를 지원해준다.<sup class="footnote-ref" id="fnref:jekyll-s-build-process"><a href="#fn:jekyll-s-build-process">1</a></sup>
+<p>Jekyll은 Github Page에서 자체적으로 빌드를 지원해준다.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
 그러나 이 Publishing 방법은 주로 Hugo나 Hexo같이 Github Page에서 자체 빌드를 지원하지 않는 Static Site Generatoer들이 고려해 볼만하다.
 Repo의 최상위 경로에 <code>/docs</code> 폴더를 Publish 하는 것이다.
 오직 master branch에서만 가능하다.</p>
-<div class="footnotes">
-
-<hr />
-
+<div class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:jekyll-s-build-process"><a href="https://help.github.com/articles/about-github-pages-and-jekyll/#jekylls-build-process" target="_blank">https://help.github.com/articles/about-github-pages-and-jekyll/#jekylls-build-process</a>
- <a class="footnote-return" href="#fnref:jekyll-s-build-process"><sup>^</sup></a></li>
+<li id="fn:1">
+<p><a href="https://help.github.com/articles/about-github-pages-and-jekyll/#jekylls-build-process">https://help.github.com/articles/about-github-pages-and-jekyll/#jekylls-build-process</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
 </div>
 
@@ -696,7 +682,7 @@ Repo의 최상위 경로에 <code>/docs</code> 폴더를 Publish 하는 것이�
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -815,7 +801,7 @@ Repo의 최상위 경로에 <code>/docs</code> 폴더를 Publish 하는 것이�
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -830,7 +816,7 @@ Repo의 최상위 경로에 <code>/docs</code> 폴더를 Publish 하는 것이�
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

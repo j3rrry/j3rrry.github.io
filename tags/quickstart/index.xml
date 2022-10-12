@@ -18,83 +18,51 @@
       <pubDate>Mon, 25 Feb 2019 20:25:20 +0900</pubDate>
       
       <guid>/post/quickstart-hugo-academic-theme/</guid>
-      <description>
-
-&lt;p&gt;본 포스팅에서는 hugo-academic 테마를 이용하여 Github Page에 Publishing 하는 방법을 간단하게 다룹니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new site my-site
-$ cd my-site
-$ git init
-$ git submodule add https://github.com/gcushen/hugo-academic.git themes/academic
-$ cp -r themes/academic/exampleSite/. .
-
-$ # Test http://localhost:1313
-$ hugo server -D # -b &amp;quot;192.168.0.2&amp;quot; --bind=&amp;quot;0.0.0.0&amp;quot;
-
-$ # github에 commit하기
-$ git remote add origin https://github.com/j3rrry/my-site.git
-$ git add .
-$ git commit -m &#39;first commit&#39;
-$ git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;publishing&#34;&gt;Publishing&lt;/h1&gt;
-
-&lt;p&gt;사이트를 Publishing 하기 위해서 &lt;code&gt;config/_default/config.toml&lt;/code&gt; 을 수정해 줘야합니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;baseURL = &amp;quot;https://j3rrry.github.io/&amp;quot;
-theme = &amp;quot;academic&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;제일 중요한 두 가지가 &lt;code&gt;baseURL&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:conf&#34;&gt;&lt;a href=&#34;#fn:conf&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;과 &lt;code&gt;theme&lt;/code&gt;.&lt;/p&gt;
-
+      <description>&lt;p&gt;본 포스팅에서는 hugo-academic 테마를 이용하여 Github Page에 Publishing 하는 방법을 간단하게 다룹니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo new site my-site
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd my-site
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git submodule add https://github.com/gcushen/hugo-academic.git themes/academic
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cp -r themes/academic/exampleSite/. .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#75715e&#34;&gt;# Test http://localhost:1313&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo server -D &lt;span style=&#34;color:#75715e&#34;&gt;# -b &amp;#34;192.168.0.2&amp;#34; --bind=&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#75715e&#34;&gt;# github에 commit하기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote add origin https://github.com/j3rrry/my-site.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;first commit&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;baseURL&lt;/code&gt;은 url을 넣어주면 된다. (Academic v4.0.0은 url 작성 시 맨 뒤에 &lt;code&gt;/&lt;/code&gt;를 추가하도록 하고 있다.)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;baseURL&lt;/code&gt;은 url을 넣어주면 된다. (Academic v4.0.0은 url 작성 시 맨 뒤에 &lt;code&gt;/&lt;/code&gt;를 추가하도록 하고 있다.)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;theme&lt;/code&gt;를 지정해주지 않으면 Hugo 기본 테마가 적용된다. &lt;code&gt;themes/&lt;/code&gt; 디렉토리 안에 있는 테마 이름과 동일하게 지정해주면 된다.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Github Page에서는 세 가지 방법으로 Publishing 할 수 있습니다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:gh-publishing&#34;&gt;&lt;a href=&#34;#fn:gh-publishing&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+&lt;p&gt;Github Page에서는 세 가지 방법으로 Publishing 할 수 있습니다.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
 그 중에서 첫 번째 방법인 &lt;code&gt;master&lt;/code&gt; branch로 Hugo site를 Publishing 해보겠습니다.&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;j3rrry.github.io&lt;/code&gt;를 이름으로 갖는 레포지토리 만들어 놓기&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;먼저 빌드를 합니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo
-$ ls public/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;public/&lt;/code&gt; 디렉토리 안에 빌드된 사이트가 만들어진다. 빌드된 것을 Publishing 하는 것이다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd public/
-$ git init
-$ git remote add origin https://github.com/j3rrry/j3rrry.github.io.git
-$ git add .
-$ git commit -m &#39;first commit&#39;
-$ git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;앞으로도 계속 새로운 포스팅을 하거나 테마를 수정한 다음에는 빌드한 후 &lt;code&gt;j3rrry.github.io&lt;/code&gt; 레포지토리에 commit을 하면 &lt;code&gt;https://j3rrry.github.io&lt;/code&gt;에 적용될 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ hugo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ls public/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;public/&lt;/code&gt; 디렉토리 안에 빌드된 사이트가 만들어진다. 빌드된 것을 Publishing 하는 것이다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd public/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote add origin https://github.com/j3rrry/j3rrry.github.io.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;first commit&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;앞으로도 계속 새로운 포스팅을 하거나 테마를 수정한 다음에는 빌드한 후 &lt;code&gt;j3rrry.github.io&lt;/code&gt; 레포지토리에 commit을 하면 &lt;code&gt;https://j3rrry.github.io&lt;/code&gt;에 적용될 것이다.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
-
-&lt;p&gt;참고1: &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34; target=&#34;_blank&#34;&gt;https://gohugo.io/getting-started/quick-start/&lt;/a&gt;&lt;br /&gt;
-참고2: &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/&#34; target=&#34;_blank&#34;&gt;https://sourcethemes.com/academic/docs/install/&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
 &lt;ol&gt;
-&lt;li id=&#34;fn:conf&#34;&gt;&lt;a href=&#34;https://gohugo.io/getting-started/configuration/#all-configuration-settings&#34; target=&#34;_blank&#34;&gt;https://gohugo.io/getting-started/configuration/#all-configuration-settings&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:conf&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:gh-publishing&#34;&gt;&lt;a href=&#34;https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages&#34; target=&#34;_blank&#34;&gt;https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:gh-publishing&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages&#34;&gt;https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages&lt;/a&gt;
+[Netlify]: &lt;a href=&#34;https://netlify.com&#34;&gt;https://netlify.com&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>

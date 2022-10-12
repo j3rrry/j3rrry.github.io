@@ -87,7 +87,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/academic.9d6ce9c04eee97bcc8f93581ce7495e2.css">
+    <link rel="stylesheet" href="/css/academic.e78f017ea792fc76a38fabdaae146b55.css">
   
 
   
@@ -426,8 +426,8 @@
 
 
 
-<meta content="2019-06-27 11:04:12 &#43;0900 KST" itemprop="datePublished">
-<meta content="2019-06-27 11:04:12 &#43;0900 KST" itemprop="dateModified">
+<meta content="2019-06-27 11:04:12 &#43;0900 &#43;0900" itemprop="datePublished">
+<meta content="2019-06-27 11:04:12 &#43;0900 &#43;0900" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -531,65 +531,39 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<h1 id="index">Index</h1>
-
+      <h1 id="index">Index</h1>
 <ol>
-<li><a href="#markup-index">markup</a><br /></li>
-<li><a href="#c-index">c</a><br /></li>
+<li><a href="#markup-index">markup</a></li>
+<li><a href="#c-index">c</a></li>
 <li><a href="#css-index">css</a></li>
 <li><a href="#python-index">python</a></li>
 <li><a href="#go-index">go</a></li>
 </ol>
-
-<h1 id="markup-index"><a href="#index">markup</a></h1>
-
-<pre><code class="language-markup">markup
-</code></pre>
-
-<h1 id="c-index"><a href="#index">c</a></h1>
-
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main(){
-    int a = 1, b = 2;
-    printf(&quot;%d\n&quot;, a+b);
-}
-</code></pre>
-
-<h1 id="css-index"><a href="#index">css</a></h1>
-
-<pre><code class="language-css">p {
-    word-break: keep-all;
-}
-</code></pre>
-
-<h1 id="python-index"><a href="#index">python</a></h1>
-
-<pre><code class="language-python">import ctypes
-
-def main():
-    a = ctypes.c_int(0x1000000000000000000000).value
-    print a
-
-if __name__ == '__main__':
-    main()
-</code></pre>
-
-<h1 id="go-index"><a href="#index">go</a></h1>
-
-<pre data-line="2"><code class="language-go">
-// golang
-func checkOrigin(r *http.Request) bool {
-    o := r.Header.Get("Origin")
-    if o == "" {
-        log.Print("Websocket missing origin and/or host")
-        return false
-    }
-    return true
-}
-</code></pre>
+<h1 id="markupindex"><a href="#index">markup</a></h1>
+<pre tabindex="0"><code class="language-markup" data-lang="markup">markup
+</code></pre><h1 id="cindex"><a href="#index">c</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a<span style="color:#f92672">+</span>b);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="cssindex"><a href="#index">css</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">word-break</span>: keep-all;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="pythonindex"><a href="#index">python</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> ctypes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> ctypes<span style="color:#f92672">.</span>c_int(<span style="color:#ae81ff">0x1000000000000000000000</span>)<span style="color:#f92672">.</span>value
+</span></span><span style="display:flex;"><span>    print a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h1 id="goindex"><a href="#index">go</a></h1>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
     </div>
 
@@ -715,7 +689,7 @@ func checkOrigin(r *http.Request) bool {
 <section id="comments">
   <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -834,7 +808,7 @@ func checkOrigin(r *http.Request) bool {
     
     
     
-    <script src="/js/academic.min.55cec13bc0aa6adeb045a602375e60b9.js"></script>
+    <script src="/js/academic.min.60fe6a17da6f5e53d33cccef2fb2e256.js"></script>
 
     
 
@@ -849,7 +823,7 @@ func checkOrigin(r *http.Request) bool {
   
 
   <p class="powered-by">
-    &copy; 2021 j3rrry &middot; 
+    © 2022 j3rrry &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
